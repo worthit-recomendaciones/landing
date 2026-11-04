@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="kt-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#315CF5" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00111c" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kt-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a3344"/>
+      <stop offset="40%" stop-color="#151b24"/>
+      <stop offset="100%" stop-color="#0b0e14"/>
+    </linearGradient>
+    <filter id="kt-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="220" rx="140" ry="120" fill="url(#kt-glow)"/>
+
+  <g filter="url(#kt-shadow)">
+    <!-- Base Power Base Station Platform -->
+    <rect x="90" y="315" width="220" height="24" rx="8" fill="#0c1118" stroke="#28374d" stroke-width="2"/>
+
+    <!-- Base Circular LCD Temperature Readout Display -->
+    <circle cx="140" cy="327" r="9" fill="#040609" stroke="#315CF5" stroke-width="1.5"/>
+    <text x="140" y="330" text-anchor="middle" font-family="monospace" font-size="6.5" font-weight="bold" fill="#C7F36B">93°</text>
+
+    <!-- Base Rotary Clicker Dial on right -->
+    <circle cx="270" cy="327" r="8" fill="#1b2433" stroke="#485c7d" stroke-width="1.5"/>
+    <circle cx="270" cy="327" r="3" fill="#C7F36B"/>
+
+    <!-- Kettle Main Pot Vessel (Matte Black Fluted Body) -->
+    <path d="M 145 160 L 130 315 L 245 315 L 230 160 Z" fill="url(#kt-body)" stroke="#374861" stroke-width="2"/>
+
+    <!-- Kettle Lid with Walnut Wood Knob -->
+    <ellipse cx="187.5" cy="160" rx="42.5" ry="12" fill="#1b2433" stroke="#435673" stroke-width="1.5"/>
+    <rect x="180" y="138" width="15" height="18" rx="4" fill="#7d4e27" stroke="#a86e3f" stroke-width="1.5"/>
+
+    <!-- Graceful Gooseneck Pour Spout (Left) -->
+    <path d="M 132 295 C 95 285, 60 250, 68 185 C 70 170, 78 160, 88 152" 
+          fill="none" stroke="url(#kt-body)" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 132 295 C 95 285, 60 250, 68 185 C 70 170, 78 160, 88 152" 
+          fill="none" stroke="#475b7a" stroke-width="2" stroke-linecap="round"/>
+    <!-- Tapered pour flute tip -->
+    <polygon points="86,150 90,147 93,154 88,156" fill="#C7F36B"/>
+
+    <!-- Steam vapor whisper curling from spout -->
+    <path d="M 88 145 Q 80 130 88 115 T 82 90" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Ergonomic Counterbalanced Pour Handle (Right) -->
+    <path d="M 235 175 L 290 170 C 300 170, 305 185, 298 200 L 260 270 C 255 280, 248 280, 242 275" 
+          fill="none" stroke="#0e131c" stroke-width="16" stroke-linecap="round"/>
+    <path d="M 235 175 L 290 170 C 300 170, 305 185, 298 200 L 260 270 C 255 280, 248 280, 242 275" 
+          fill="none" stroke="#2f3f56" stroke-width="2" stroke-linecap="round"/>
+    <!-- Counterbalance weighted thumb-rest cap -->
+    <circle cx="295" cy="180" r="7" fill="#7d4e27" stroke="#a86e3f" stroke-width="1.5"/>
+
+    <!-- Brand mark badge on kettle side -->
+    <rect x="180" y="235" width="15" height="15" rx="3" fill="#0c1118" stroke="#315CF5" stroke-width="1"/>
+    <circle cx="187.5" cy="242.5" r="3" fill="#C7F36B"/>
+  </g>
+</svg>

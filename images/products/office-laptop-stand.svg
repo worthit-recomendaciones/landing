@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ls-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#315CF5" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00111c" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ls-alu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#556580"/>
+      <stop offset="40%" stop-color="#2d3748"/>
+      <stop offset="100%" stop-color="#141a24"/>
+    </linearGradient>
+    <linearGradient id="ls-bevel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8397b8"/>
+      <stop offset="100%" stop-color="#3d4c63"/>
+    </linearGradient>
+    <filter id="ls-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="220" rx="140" ry="120" fill="url(#ls-glow)"/>
+
+  <g filter="url(#ls-shadow)">
+    <!-- Base Plate on Table (Beveled Trapezoid) -->
+    <polygon points="100,320 300,320 280,260 120,260" fill="url(#ls-alu)" stroke="#435570" stroke-width="2"/>
+    <polygon points="100,320 300,320 300,326 100,326" fill="#121822"/>
+
+    <!-- Non-slip Silicone pads on base -->
+    <rect x="130" y="270" width="40" height="8" rx="2" fill="#0b0e14"/>
+    <rect x="230" y="270" width="40" height="8" rx="2" fill="#0b0e14"/>
+
+    <!-- Twin Articulated Support Arms -->
+    <!-- Left Arm -->
+    <polygon points="135,260 155,260 145,170 125,170" fill="url(#ls-alu)" stroke="#4a5d7c" stroke-width="1.5"/>
+    <circle cx="145" cy="260" r="10" fill="#222c3d" stroke="#315CF5" stroke-width="2"/>
+    <circle cx="145" cy="260" r="4" fill="#C7F36B"/>
+    <circle cx="135" cy="170" r="10" fill="#222c3d" stroke="#315CF5" stroke-width="2"/>
+    <circle cx="135" cy="170" r="4" fill="#C7F36B"/>
+
+    <!-- Right Arm -->
+    <polygon points="245,260 265,260 275,170 255,170" fill="url(#ls-alu)" stroke="#4a5d7c" stroke-width="1.5"/>
+    <circle cx="255" cy="260" r="10" fill="#222c3d" stroke="#315CF5" stroke-width="2"/>
+    <circle cx="255" cy="260" r="4" fill="#C7F36B"/>
+    <circle cx="265" cy="170" r="10" fill="#222c3d" stroke="#315CF5" stroke-width="2"/>
+    <circle cx="265" cy="170" r="4" fill="#C7F36B"/>
+
+    <!-- Upper Angled Laptop Cradle Tray -->
+    <polygon points="80,195 320,195 300,105 100,105" fill="url(#ls-alu)" stroke="url(#ls-bevel)" stroke-width="2"/>
+
+    <!-- Large Hexagonal Cooling Cutouts in Tray -->
+    <rect x="140" y="125" width="45" height="40" rx="8" fill="#0c121b" stroke="#253245" stroke-width="1.5"/>
+    <rect x="215" y="125" width="45" height="40" rx="8" fill="#0c121b" stroke="#253245" stroke-width="1.5"/>
+
+    <!-- Cable Management slot -->
+    <rect x="175" y="138" width="50" height="14" rx="7" fill="#090d14"/>
+
+    <!-- Dual Front Retention Hooks (Holding laptop edge) -->
+    <path d="M 115 195 L 115 212 L 135 212 L 135 195 Z" fill="#202a3a" stroke="#485c7a" stroke-width="1.5"/>
+    <rect x="117" y="198" width="16" height="5" rx="1.5" fill="#C7F36B"/>
+
+    <path d="M 265 195 L 265 212 L 285 212 L 285 195 Z" fill="#202a3a" stroke="#485c7a" stroke-width="1.5"/>
+    <rect x="267" y="198" width="16" height="5" rx="1.5" fill="#C7F36B"/>
+
+    <!-- Sleek laptop silhouette sitting comfortably on stand -->
+    <polygon points="70,185 330,185 315,90 85,90" fill="#1b2536" stroke="#3b4d6a" stroke-width="1.5" opacity="0.35"/>
+    <polygon points="85,90 315,90 315,35 85,35" fill="#0e141f" stroke="#315CF5" stroke-width="1" opacity="0.35"/>
+  </g>
+</svg>

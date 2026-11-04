@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="dm-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C7F36B" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#315CF5" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dm-leather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#232d3d"/>
+      <stop offset="50%" stop-color="#141a24"/>
+      <stop offset="100%" stop-color="#0a0d13"/>
+    </linearGradient>
+    <linearGradient id="dm-felt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#353e4f"/>
+      <stop offset="100%" stop-color="#1b222d"/>
+    </linearGradient>
+    <filter id="dm-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="220" rx="150" ry="120" fill="url(#dm-glow)"/>
+
+  <g filter="url(#dm-shadow)">
+    <!-- Base Felt Layer Mat (Perspective Trapezoid) -->
+    <polygon points="40,290 360,290 320,130 80,130" fill="url(#dm-felt)" stroke="#47556c" stroke-width="2"/>
+
+    <!-- Premium PU Leather Top Overlay (Dual-zone section) -->
+    <polygon points="120,290 360,290 320,130 160,130" fill="url(#dm-leather)" stroke="#2b384a" stroke-width="1.5"/>
+
+    <!-- Precision perimeter stitching line -->
+    <polygon points="46,284 354,284 316,136 86,136" fill="none" stroke="#5d6f8a" stroke-width="1" stroke-dasharray="4 3" opacity="0.65"/>
+    <line x1="126" y1="284" x2="166" y2="136" stroke="#C7F36B" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+    <!-- Magnetic Bronze/Zinc Cable Organizer Holder on left corner -->
+    <rect x="75" y="150" width="34" height="12" rx="4" fill="#a37648" stroke="#d49b60" stroke-width="1"/>
+    <circle cx="85" cy="156" r="3" fill="#202936"/>
+    <circle cx="99" cy="156" r="3" fill="#202936"/>
+
+    <!-- Minimalist Pen Groove Channel on top edge -->
+    <polygon points="175,142 270,142 265,136 178,136" fill="#080c12"/>
+    <!-- Matte Black Stylus Pen resting in groove -->
+    <polygon points="182,139 262,139 264,141 180,141" fill="#7588a3"/>
+    <circle cx="264" cy="140" r="1.5" fill="#C7F36B"/>
+
+    <!-- Clean Sleek Accessories (Keyboard and Mouse Silhouette on mat) -->
+    <!-- Keyboard outline -->
+    <polygon points="100,265 240,265 230,195 110,195" fill="#18212e" stroke="#2e3e54" stroke-width="1.2"/>
+    <rect x="115" y="202" width="100" height="10" rx="2" fill="#29374c" opacity="0.6"/>
+    <rect x="115" y="217" width="100" height="10" rx="2" fill="#29374c" opacity="0.6"/>
+    <rect x="115" y="232" width="100" height="10" rx="2" fill="#29374c" opacity="0.6"/>
+    <rect x="115" y="247" width="100" height="10" rx="2" fill="#29374c" opacity="0.6"/>
+
+    <!-- Ergonomic Wireless Mouse outline with neon sensor wheel -->
+    <g transform="translate(285, 225) rotate(-15)">
+      <ellipse cx="0" cy="0" rx="20" ry="34" fill="#131a26" stroke="#364964" stroke-width="1.5"/>
+      <line x1="0" y1="-26" x2="0" y2="-5" stroke="#222c3d" stroke-width="1.5"/>
+      <rect x="-3" y="-20" width="6" height="14" rx="3" fill="#090d14" stroke="#315CF5" stroke-width="1"/>
+      <circle cx="0" cy="-14" r="1.5" fill="#C7F36B"/>
+    </g>
+  </g>
+</svg>

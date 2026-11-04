@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="hp-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#315CF5" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00111c" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hp-band" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a324b"/>
+      <stop offset="50%" stop-color="#141926"/>
+      <stop offset="100%" stop-color="#0a0d14"/>
+    </linearGradient>
+    <linearGradient id="hp-metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8ba1cc"/>
+      <stop offset="50%" stop-color="#394867"/>
+      <stop offset="100%" stop-color="#192231"/>
+    </linearGradient>
+    <linearGradient id="hp-cup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2638"/>
+      <stop offset="40%" stop-color="#121824"/>
+      <stop offset="100%" stop-color="#070a10"/>
+    </linearGradient>
+    <linearGradient id="hp-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C7F36B"/>
+      <stop offset="100%" stop-color="#315CF5"/>
+    </linearGradient>
+    <filter id="hp-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="205" rx="140" ry="120" fill="url(#hp-glow)"/>
+
+  <!-- Headband arch -->
+  <g filter="url(#hp-shadow)">
+    <!-- Outer headband cushion -->
+    <path d="M 108 220 C 100 120, 140 70, 200 70 C 260 70, 300 120, 292 220" 
+          fill="none" stroke="url(#hp-band)" stroke-width="26" stroke-linecap="round"/>
+    <!-- Top inner cushion pad -->
+    <path d="M 132 170 C 138 105, 165 82, 200 82 C 235 82, 262 105, 268 170" 
+          fill="none" stroke="#0d111a" stroke-width="14" stroke-linecap="round"/>
+    <!-- Accent pinstripe -->
+    <path d="M 148 135 C 160 98, 178 88, 200 88 C 222 88, 240 98, 252 135" 
+          fill="none" stroke="url(#hp-accent)" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.8"/>
+
+    <!-- Left Fork / Hinge -->
+    <path d="M 112 210 L 112 245 L 124 248 L 124 210 Z" fill="url(#hp-metal)"/>
+    <circle cx="118" cy="236" r="4" fill="#C7F36B"/>
+
+    <!-- Right Fork / Hinge -->
+    <path d="M 288 210 L 288 245 L 276 248 L 276 210 Z" fill="url(#hp-metal)"/>
+    <circle cx="282" cy="236" r="4" fill="#C7F36B"/>
+
+    <!-- Left Ear Cup (Angled) -->
+    <g transform="rotate(12, 116, 256)">
+      <!-- Cushion ring -->
+      <ellipse cx="116" cy="256" rx="42" ry="58" fill="#080a0f" stroke="#1d2535" stroke-width="3"/>
+      <ellipse cx="116" cy="256" rx="32" ry="46" fill="#111724"/>
+      <!-- Outer metallic dome -->
+      <ellipse cx="112" cy="254" rx="28" ry="40" fill="url(#hp-cup)"/>
+      <ellipse cx="112" cy="254" rx="28" ry="40" fill="none" stroke="#315CF5" stroke-width="1.5" opacity="0.6"/>
+      <!-- ANC Mic slot -->
+      <rect x="110" y="235" width="4" height="10" rx="2" fill="#C7F36B" opacity="0.9"/>
+      <!-- Soft highlight reflection -->
+      <path d="M 96 230 C 102 220, 118 220, 126 230" fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.25"/>
+    </g>
+
+    <!-- Right Ear Cup (Angled) -->
+    <g transform="rotate(-12, 284, 256)">
+      <!-- Cushion ring -->
+      <ellipse cx="284" cy="256" rx="42" ry="58" fill="#080a0f" stroke="#1d2535" stroke-width="3"/>
+      <ellipse cx="284" cy="256" rx="32" ry="46" fill="#111724"/>
+      <!-- Outer metallic dome -->
+      <ellipse cx="288" cy="254" rx="28" ry="40" fill="url(#hp-cup)"/>
+      <ellipse cx="288" cy="254" rx="28" ry="40" fill="none" stroke="#315CF5" stroke-width="1.5" opacity="0.6"/>
+      <!-- Power LED status indicator -->
+      <circle cx="288" cy="272" r="3" fill="#C7F36B"/>
+      <!-- Soft highlight reflection -->
+      <path d="M 274 230 C 282 220, 298 220, 304 230" fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.25"/>
+    </g>
+  </g>
+
+  <!-- Ambient audio wave graphics around headset -->
+  <circle cx="200" cy="200" r="148" fill="none" stroke="#315CF5" stroke-width="1" stroke-dasharray="4 14" opacity="0.25"/>
+  <circle cx="200" cy="200" r="168" fill="none" stroke="#C7F36B" stroke-width="1" stroke-dasharray="3 20" opacity="0.2"/>
+</svg>

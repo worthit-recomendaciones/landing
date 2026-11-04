@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="od-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#315CF5" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#C7F36B" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="od-wood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b88352"/>
+      <stop offset="50%" stop-color="#8a5c32"/>
+      <stop offset="100%" stop-color="#5a381a"/>
+    </linearGradient>
+    <linearGradient id="od-wood-edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#734922"/>
+      <stop offset="100%" stop-color="#3f250e"/>
+    </linearGradient>
+    <linearGradient id="od-leg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a3547"/>
+      <stop offset="50%" stop-color="#141c28"/>
+      <stop offset="100%" stop-color="#0d121c"/>
+    </linearGradient>
+    <filter id="od-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="220" rx="140" ry="120" fill="url(#od-glow)"/>
+
+  <g filter="url(#od-shadow)">
+    <!-- Floor Feet Skids -->
+    <rect x="85" y="325" width="80" height="12" rx="5" fill="url(#od-leg)" stroke="#2b394f" stroke-width="1.5"/>
+    <rect x="235" y="325" width="80" height="12" rx="5" fill="url(#od-leg)" stroke="#2b394f" stroke-width="1.5"/>
+
+    <!-- Left Telescopic Motor Leg (3-stage columns) -->
+    <rect x="115" y="270" width="20" height="58" rx="2" fill="#1b2535"/>
+    <rect x="117" y="210" width="16" height="65" rx="2" fill="#243144"/>
+    <rect x="119" y="170" width="12" height="45" rx="2" fill="#32445e"/>
+
+    <!-- Right Telescopic Motor Leg (3-stage columns) -->
+    <rect x="265" y="270" width="20" height="58" rx="2" fill="#1b2535"/>
+    <rect x="267" y="210" width="16" height="65" rx="2" fill="#243144"/>
+    <rect x="269" y="170" width="12" height="45" rx="2" fill="#32445e"/>
+
+    <!-- Crossbar beam under desktop -->
+    <rect x="115" y="172" width="170" height="12" rx="3" fill="#121822"/>
+
+    <!-- Solid Oak Beveled Desktop Surface (Perspective Quad) -->
+    <polygon points="50,165 350,165 315,120 85,120" fill="url(#od-wood)" stroke="#cca074" stroke-width="1.5"/>
+
+    <!-- Desktop Front Thickness Apron -->
+    <polygon points="50,165 350,165 350,175 50,175" fill="url(#od-wood-edge)"/>
+
+    <!-- Wood grain subtle lines -->
+    <line x1="90" y1="138" x2="310" y2="138" stroke="#cca074" stroke-width="1" opacity="0.3"/>
+    <line x1="75" y1="152" x2="325" y2="152" stroke="#68421c" stroke-width="1" opacity="0.4"/>
+
+    <!-- Digital Height Controller Keypad on Right Under-lip -->
+    <rect x="280" y="175" width="46" height="15" rx="3" fill="#080c14" stroke="#315CF5" stroke-width="1.2"/>
+    <!-- LED Height Indicator Display (Showing 74.5 cm) -->
+    <text x="294" y="186" font-family="monospace" font-size="8" font-weight="bold" fill="#C7F36B">74.5</text>
+    <circle cx="316" cy="182" r="1.8" fill="#315CF5"/>
+    <circle cx="321" cy="182" r="1.8" fill="#C7F36B"/>
+
+    <!-- Minimalist Desktop Setup Outline (Laptop and Plant Silhouette) -->
+    <polygon points="170,145 230,145 225,130 175,130" fill="#2c3a52" opacity="0.75"/>
+    <rect x="178" y="112" width="44" height="20" rx="2" fill="#131c2b" stroke="#315CF5" stroke-width="1" opacity="0.8"/>
+  </g>
+</svg>

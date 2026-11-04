@@ -1,0 +1,882 @@
+﻿<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorthIT • Hot Sale 2026 | Hasta 70% OFF en Ofertas Curadas</title>
+  <meta name="description" content="Descubrí las mejores ofertas curadas de Hot Sale en Tecnología, Home Office y Café de Especialidad. Hasta 70% OFF y cuotas sin interés por tiempo limitado. Recomendaciones con criterio.">
+  <link rel="icon" type="image/svg+xml" href="logo-worthit.svg">
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Luces Ambientales y Grillas de Puntos -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-top-right"></div>
+  <div class="ambient-glow glow-center"></div>
+
+  <!-- Barra Superior de Anuncios -->
+  <div class="top-announcement">
+    <div class="container announcement-content">
+      <span class="badge-accent">HOT SALE EN VIVO</span>
+      <p class="announcement-text">
+        ⚡ <strong>¡EL HOT SALE YA ARRANCÓ!</strong> Hasta <strong>70% OFF</strong> en Tecnología, Home Office y Café. <strong>¡Envío Gratis a todo el país!</strong>
+      </p>
+      <div class="announcement-code">
+        Cupón extra: <strong>HOTSALE2026</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Encabezado / Navegación -->
+  <header class="site-header" id="siteHeader">
+    <!-- Barra de progreso de lectura / scroll suave -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <div class="container header-container">
+      <a href="#" class="brand-logo" aria-label="WorthIT Inicio">
+        <img src="logo-worthit.svg" alt="Logo de WorthIT" class="logo-img">
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Inicio</a></li>
+          <li><a href="#deals" class="nav-link">Hot Sale</a></li>
+          <li><a href="#deals" data-filter="technology" class="nav-link">Tecnología</a></li>
+          <li><a href="#deals" data-filter="home-office" class="nav-link">Home Office</a></li>
+          <li><a href="#deals" data-filter="coffee" class="nav-link">Café</a></li>
+          <li><a href="#spotlight" class="nav-link">Destacado</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Buscador Rápido -->
+        <div class="search-box-mini">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="headerSearchInput" placeholder="Buscar 15 ofertas..." aria-label="Buscar productos">
+        </div>
+
+        <!-- Botón del Carrito -->
+        <button class="cart-trigger" id="cartTrigger" aria-label="Ver carrito de compras">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count" id="cartCountBadge">0</span>
+        </button>
+
+        <!-- CTA Ver Ofertas -->
+        <a href="#deals" class="btn btn-accent btn-sm">
+          <span>Ver Ofertas</span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menú Lateral Móvil -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <div class="drawer-header">
+      <img src="logo-worthit.svg" alt="Logo de WorthIT" style="height: 28px;">
+      <button class="drawer-close" id="mobileCloseBtn" aria-label="Cerrar menú">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-link">Inicio</a></li>
+      <li><a href="#deals" class="mobile-link" data-filter="all">Todas las Ofertas (15)</a></li>
+      <li><a href="#deals" class="mobile-link" data-filter="technology">Tecnología</a></li>
+      <li><a href="#deals" class="mobile-link" data-filter="home-office">Home Office</a></li>
+      <li><a href="#deals" class="mobile-link" data-filter="coffee">Café de Especialidad</a></li>
+      <li><a href="#spotlight" class="mobile-link">Destacado de Audio</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="#deals" class="btn btn-primary btn-block">Comprar Hot Sale Ahora</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECCIÓN HERO (Inspirada en Referencia 1) -->
+    <section class="hero-section" id="hero">
+      <!-- Elementos Decorativos -->
+      <div class="dot-matrix dot-matrix-tl"></div>
+      <div class="dot-matrix dot-matrix-tr"></div>
+      <div class="floating-triangle triangle-pink"></div>
+      <div class="floating-triangle triangle-cyan"></div>
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      <div class="floating-orb orb-3"></div>
+
+      <div class="container hero-container">
+        <!-- Columna de Texto y Contador -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>WORTHIT • RECOMENDACIONES CON CRITERIO</span>
+          </div>
+
+          <h1 class="hero-title">
+            ENCONTRÁ&nbsp; <br>
+            <span class="highlight-accent">BUENAS COMPRAS</span> SIN PERDER EL TIEMPO!
+          </h1>
+
+          <p class="hero-subtitle">
+            Seleccionamos productos por precio, cuotas, envío y utilidad real. Productos testeados exhaustivamente, con cuotas sin interés y envío gratis a todo el país.
+          </p>
+
+          <!-- CONTADOR EN TIEMPO REAL (4 TARJETAS SPLIT COMO EN REFERENCIA 1) -->
+          <div class="countdown-wrapper">
+            <div class="countdown-header">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>EL EVENTO TERMINA EN:</span>
+            </div>
+
+            <div class="countdown-timer" id="countdownTimer">
+              <!-- Días -->
+              <div class="countdown-block">
+                <div class="countdown-card">
+                  <span class="countdown-num" id="timerDays">09</span>
+                  <div class="card-split"></div>
+                </div>
+                <span class="countdown-label">DÍAS</span>
+              </div>
+
+              <!-- Horas -->
+              <div class="countdown-block">
+                <div class="countdown-card">
+                  <span class="countdown-num" id="timerHours">14</span>
+                  <div class="card-split"></div>
+                </div>
+                <span class="countdown-label">HORAS</span>
+              </div>
+
+              <!-- Minutos -->
+              <div class="countdown-block">
+                <div class="countdown-card">
+                  <span class="countdown-num" id="timerMinutes">38</span>
+                  <div class="card-split"></div>
+                </div>
+                <span class="countdown-label">MINUTOS</span>
+              </div>
+
+              <!-- Segundos -->
+              <div class="countdown-block">
+                <div class="countdown-card">
+                  <span class="countdown-num" id="timerSeconds">52</span>
+                  <div class="card-split"></div>
+                </div>
+                <span class="countdown-label">SEGUNDOS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="hero-buttons">
+            <a href="#deals" class="btn btn-primary btn-lg">
+              <span>Ver Recomendados</span>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#deals" data-filter="technology" class="btn btn-glass btn-lg">
+              <span>Especial Tecnología</span>
+            </a>
+          </div>
+
+          <!-- Sellos de Confianza -->
+          <div class="hero-trust">
+            <div class="trust-item">
+              <svg class="icon-sm text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>100% Originales</span>
+            </div>
+            <div class="trust-item">
+              <svg class="icon-sm text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              <span>Envío Gratis a todo el país</span>
+            </div>
+            <div class="trust-item">
+              <svg class="icon-sm text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Mejor precio en cuotas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Muestra 3D Flotante (Referencia 1) -->
+        <div class="hero-showcase">
+          <div class="showcase-glow-circle"></div>
+
+          <!-- Tarjeta Flotante 1: Visor VR -->
+          <div class="floating-card card-vr" data-tilt onclick="window.openQuickView('tech-3')">
+            <div class="floating-badge">-30%</div>
+            <div class="card-img-wrap">
+              <img src="images/products/tech-vr-headset.svg" alt="Visor VR CyberVision" loading="lazy">
+            </div>
+            <div class="floating-info">
+              <span class="floating-cat">Tecnología</span>
+              <h4 class="floating-name">CyberVision X VR</h4>
+              <div class="floating-price">
+                <span class="price-old">$499.000</span>
+                <span class="price-new">$349.000</span>
+              </div>
+              <span class="hero-free-shipping">🚚 Envío Gratis</span>
+            </div>
+          </div>
+
+          <!-- Tarjeta Flotante 2: Smartphone de Titanio -->
+          <div class="floating-card card-phone" data-tilt onclick="window.openQuickView('tech-5')">
+            <div class="floating-badge">-20%</div>
+            <div class="card-img-wrap">
+              <img src="images/products/tech-smartphone.svg" alt="Smartphone Vortex 15 Pro" loading="lazy">
+            </div>
+            <div class="floating-info">
+              <span class="floating-cat">Tecnología</span>
+              <h4 class="floating-name">Vortex 15 Pro</h4>
+              <div class="floating-price">
+                <span class="price-old">$999.000</span>
+                <span class="price-new">$799.000</span>
+              </div>
+              <span class="hero-free-shipping">🚚 Envío Gratis</span>
+            </div>
+          </div>
+
+          <!-- Tarjeta Flotante 3: Auriculares ANC -->
+          <div class="floating-card card-audio" data-tilt onclick="window.openQuickView('tech-1')">
+            <div class="floating-badge">-28%</div>
+            <div class="card-img-wrap">
+              <img src="images/products/tech-headphones.svg" alt="Auriculares AeroSound ANC" loading="lazy">
+            </div>
+            <div class="floating-info">
+              <span class="floating-cat">Tecnología</span>
+              <h4 class="floating-name">AeroSound Pro ANC</h4>
+              <div class="floating-price">
+                <span class="price-old">$249.000</span>
+                <span class="price-new">$179.000</span>
+              </div>
+              <span class="hero-free-shipping">🚚 Envío Gratis</span>
+            </div>
+          </div>
+
+          <!-- Tarjeta Flotante 4: Cafetera Espresso -->
+          <div class="floating-card card-espresso" data-tilt onclick="window.openQuickView('coffee-1')">
+            <div class="floating-badge">-31%</div>
+            <div class="card-img-wrap">
+              <img src="images/products/coffee-espresso.svg" alt="Cafetera BaristaCraft Espresso" loading="lazy">
+            </div>
+            <div class="floating-info">
+              <span class="floating-cat">Café de Especialidad</span>
+              <h4 class="floating-name">BaristaCraft Touch</h4>
+              <div class="floating-price">
+                <span class="price-old">$799.000</span>
+                <span class="price-new">$549.000</span>
+              </div>
+              <span class="hero-free-shipping">🚚 Envío Gratis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BANNER DESTACADO DEL DÍA (Referencia 1) -->
+      <div class="container hero-spotlight-container" id="spotlight">
+        <div class="spotlight-banner fade-in-scroll">
+          <div class="spotlight-left">
+            <span class="spotlight-pill">OFERTA DESTACADA DEL DÍA</span>
+            <h3 class="spotlight-title">Audio y Acústica de Estudio con Sonido Envolvente</h3>
+            <p class="spotlight-subtitle">Desde 20% hasta 70% de descuento en parlantes inteligentes y acústica de alta gama.</p>
+            <div class="spotlight-installments-pill">
+              💳 6 cuotas sin interés de <strong>$16.500</strong> • 🚚 <strong>Envío Gratis a todo el país</strong>
+            </div>
+            <div class="spotlight-cta">
+              <button class="btn btn-accent btn-buy-spotlight" data-product-id="tech-4">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                </svg>
+                <span>COMPRAR AHORA • $99.000</span>
+              </button>
+              <span class="spotlight-saving">Ahorrás $80.000 hoy</span>
+            </div>
+          </div>
+          <div class="spotlight-right">
+            <div class="sound-wave wave-1"></div>
+            <div class="sound-wave wave-2"></div>
+            <div class="sound-wave wave-3"></div>
+            <img src="images/products/tech-speaker.svg" alt="Parlante Inteligente AcousticPulse 360" class="spotlight-speaker-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE PRODUCTOS (Inspirado en Referencia 2) -->
+    <section class="deals-section" id="deals">
+      <div class="dot-matrix dot-matrix-deals-left"></div>
+      <div class="dot-matrix dot-matrix-deals-right"></div>
+
+      <div class="container">
+        <!-- Encabezado de Sección -->
+        <div class="section-header text-center fade-in-scroll">
+          <div class="section-tag">
+            <span class="tag-glow"></span>
+            RECOMENDACIONES CON CRITERIO • ARGENTINA
+          </div>
+          <h2 class="section-title">
+            OFERTAS HOT SALE <span class="highlight-accent">CON DESCUENTOS BRUTALES</span>
+          </h2>
+          <p class="section-desc">
+            15 productos seleccionados a mano en Tecnología, Home Office y Café de Especialidad. Todos con <strong>cuotas sin interés</strong> y <strong>Envío Gratis</strong>.
+          </p>
+        </div>
+
+        <!-- Pestañas de Categoría y Controles de Filtro -->
+        <div class="deals-controls-bar">
+          <div class="category-tabs" id="categoryTabs" role="tablist">
+            <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">
+              <span>Todas las Categorías</span>
+              <span class="tab-count">15</span>
+            </button>
+            <button class="tab-btn" data-category="technology" role="tab" aria-selected="false">
+              <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Tecnología</span>
+              <span class="tab-count">5</span>
+            </button>
+            <button class="tab-btn" data-category="home-office" role="tab" aria-selected="false">
+              <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Home Office</span>
+              <span class="tab-count">5</span>
+            </button>
+            <button class="tab-btn" data-category="coffee" role="tab" aria-selected="false">
+              <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+              <span>Café</span>
+              <span class="tab-count">5</span>
+            </button>
+          </div>
+
+          <!-- Buscador y Ordenador -->
+          <div class="filter-tools">
+            <div class="search-input-wrap">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="productFilterInput" placeholder="Filtrar por nombre..." aria-label="Filtrar productos">
+              <button class="clear-search-btn" id="clearSearchBtn" title="Limpiar búsqueda">&times;</button>
+            </div>
+
+            <div class="sort-wrap">
+              <label for="sortSelect">Ordenar:</label>
+              <select id="sortSelect" aria-label="Ordenar productos">
+                <option value="featured">Destacados</option>
+                <option value="discount">Mayor Descuento</option>
+                <option value="price-asc">Menor Precio</option>
+                <option value="price-desc">Mayor Precio</option>
+                <option value="rating">Mejor Calificación</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subencabezado de Categoría Activa -->
+        <div class="active-category-header" id="activeCategoryHeader">
+          <div class="cat-title-group">
+            <h3 id="currentCategoryTitle">Todas las Ofertas</h3>
+            <span class="cat-counter" id="currentCategoryCount">Mostrando 15 Productos</span>
+          </div>
+          <div class="cat-subtitle" id="currentCategoryDesc">
+            Explorá el catálogo completo del Hot Sale con cuotas sin interés y envío gratis a todo el país.
+          </div>
+        </div>
+
+        <!-- GRILLA DE 15 PRODUCTOS -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Inyectado dinámicamente con script.js -->
+        </div>
+
+        <!-- Mensaje sin resultados -->
+        <div class="no-results" id="noResultsMsg" style="display: none;">
+          <svg class="icon-lg text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <h3>No se encontraron ofertas coincidentes</h3>
+          <p>Probá buscando con otros términos o restablecé los filtros.</p>
+          <button class="btn btn-primary" id="resetFiltersBtn">Restablecer Filtros</button>
+        </div>
+
+        <!-- Paginación / Botón Ver Todos (Referencia 2) -->
+        <div class="deals-footer-bar">
+          <div class="pagination-dots" id="paginationDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <button class="btn btn-outline-pill" id="showAllBtn">
+            <span>Ver los 15 Productos</span>
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRÍO DE CATEGORÍAS DESTACADAS -->
+    <section class="category-showcase-section">
+      <div class="container">
+        <div class="category-cards-trio">
+          <!-- Tarjeta 1: Tecnología -->
+          <div class="category-feature-card fade-in-scroll stagger-1" data-cat-target="technology">
+            <div class="cat-feature-badge">5 OFERTAS ACTIVAS</div>
+            <div class="cat-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Tecnología de Punta</h3>
+            <p>Auriculares con cancelación de ruido, smartwatches AMOLED, visores VR 4K y smartphones de titanio con cuotas sin interés.</p>
+            <span class="cat-feature-link">
+              <span>Ver 5 Ofertas de Tecnología</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+
+          <!-- Tarjeta 2: Home Office -->
+          <div class="category-feature-card fade-in-scroll stagger-2" data-cat-target="home-office">
+            <div class="cat-feature-badge">5 OFERTAS ACTIVAS</div>
+            <div class="cat-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3>Home Office y Escritorios</h3>
+            <p>Escritorios elevables de doble motor, sillas ergonómicas de alta densidad, barras de luz antifatiga y pads de cuero.</p>
+            <span class="cat-feature-link">
+              <span>Ver 5 Ofertas de Home Office</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+
+          <!-- Tarjeta 3: Café -->
+          <div class="category-feature-card fade-in-scroll stagger-3" data-cat-target="coffee">
+            <div class="cat-feature-badge">5 OFERTAS ACTIVAS</div>
+            <div class="cat-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <h3>Café de Especialidad</h3>
+            <p>Cafeteras espresso con pantalla táctil, molinillos cónicos de precisión, pavas cuello de cisne y granos de origen único.</p>
+            <span class="cat-feature-link">
+              <span>Ver 5 Ofertas de Café</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER Y CUPÓN VIP -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-box fade-in-scroll">
+          <div class="newsletter-content">
+            <span class="badge-accent">CUPÓN EXTRA DE $20.000</span>
+            <h2>Sumate al Club VIP de WorthIT</h2>
+            <p>Recibí alertas de caídas de precio antes que nadie, cupones sorpresa y nuestras guías expertas de compra para Argentina.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Ingresá tu correo electrónico..." required aria-label="Correo para el Club VIP">
+              <button type="submit" class="btn btn-accent">Reclamar Cupón</button>
+            </form>
+            <span class="form-disclaimer">El código de descuento se mostrará en pantalla al instante. Podés desuscribirte cuando quieras.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#" class="footer-logo">
+            <img src="logo-worthit.svg" alt="Logo de WorthIT">
+          </a>
+          <p class="footer-bio">
+            Recomendaciones con criterio. Evaluamos y testeamos rigurosamente cada producto para asegurar la mejor calidad, durabilidad y verdadero valor por tu dinero en Argentina.
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter / X" class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#deals" data-filter="technology">Tecnología (5 Ofertas)</a></li>
+            <li><a href="#deals" data-filter="home-office">Home Office (5 Ofertas)</a></li>
+            <li><a href="#deals" data-filter="coffee">Café de Especialidad (5 Ofertas)</a></li>
+            <li><a href="#deals" data-filter="all">Ver las 15 Ofertas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Garantía WorthIT</h4>
+          <ul>
+            <li><a href="#">Estándares Editoriales</a></li>
+            <li><a href="#">Metodología de Pruebas</a></li>
+            <li><a href="#">Garantía de Mejor Precio</a></li>
+            <li><a href="#">Garantía Oficial y Reclamos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atención al Cliente</h4>
+          <ul>
+            <li><a href="#">Seguimiento de Envíos</a></li>
+            <li><a href="#">Cambios y Devoluciones</a></li>
+            <li><a href="#">Tiempos de Entrega</a></li>
+            <li><a href="https://wa.me/5492234565003" target="_blank" rel="noopener noreferrer">WhatsApp de Soporte (+54 9 223 456-5003)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 WorthIT Argentina. Todos los derechos reservados. Precios, cuotas y descuentos válidos durante el evento Hot Sale.</p>
+        <div class="payment-methods">
+          <span class="pay-badge">Mercado Pago</span>
+          <span class="pay-badge">Visa</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">Naranja X</span>
+          <span class="pay-badge">Transferencia Bancaria</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE VISTA RÁPIDA -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-container">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar ventana">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Generado dinámicamente con JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRITO DE COMPRAS DESPLEGABLE -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div class="cart-title-row">
+        <h3>Tu Carrito Hot Sale</h3>
+        <span class="cart-items-pill" id="cartItemsCountLabel">0 productos</span>
+      </div>
+      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Cerrar carrito">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <div class="cart-empty-state">
+        <svg class="icon-lg text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <h4>Tu carrito está vacío</h4>
+        <p>¡Aprovechá las 15 ofertas del Hot Sale antes de que se agoten!</p>
+        <a href="#deals" class="btn btn-primary btn-sm" id="cartStartShoppingBtn">Explorar Ofertas</a>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display: none;">
+      <div class="cart-summary-row">
+        <span>Precio Regular:</span>
+        <span class="summary-old-price" id="cartOriginalTotal">$0</span>
+      </div>
+      <div class="cart-summary-row highlight-row">
+        <span>Ahorro Hot Sale:</span>
+        <span class="summary-saving" id="cartSavingsTotal">-$0</span>
+      </div>
+      <div class="cart-summary-row total-row">
+        <span>Total a Pagar:</span>
+        <span class="summary-final-price" id="cartFinalTotal">$0</span>
+      </div>
+      <div class="cart-shipping-badge">
+        🚚 <strong>Envío Gratis</strong> a todo el país incluido
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
+        <span>Iniciar Compra Segura</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+      <div class="cart-guarantee-note">
+        🔒 Compra protegida con cifrado SSL • Devolución gratis en 30 días
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP (+54 9 223 456-5003) -->
+  <aside class="whatsapp-float-container" aria-label="Contacto por WhatsApp">
+    <div class="whatsapp-tooltip" id="whatsappTooltip">
+      <span class="tooltip-status"></span>
+      <span>¿Tenés dudas sobre las ofertas? <strong>¡Escribinos por WhatsApp!</strong></span>
+    </div>
+    <a href="https://wa.me/5492234565003?text=%C2%A1Hola!%20Vengo%20de%20la%20tienda%20WorthIT%20y%20quiero%20consultar%20por%20las%20ofertas%20del%20Hot%20Sale" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-float-btn" 
+       aria-label="Chatear con soporte de WorthIT por WhatsApp al +54 9 223 456-5003">
+      <div class="whatsapp-pulse"></div>
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+      <span class="whatsapp-badge-active"></span>
+    </a>
+  </aside>
+
+  <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+	
+<!-- OVERLAY BLOQUEANTE DE CONSENTIMIENTO -->
+  <div class="consent-blocking-overlay" id="consentOverlay"></div>
+
+  <!-- BANNER INFERIOR DE CONSENTIMIENTO LEGAL (BLOQUEANTE) -->
+  <aside class="consent-bottom-banner" id="consentBanner" role="dialog" aria-live="polite" aria-label="Consentimiento de Términos, Privacidad y Cookies">
+    <div class="container consent-container">
+      <button class="consent-close-btn" id="consentCloseAttemptBtn" title="Aceptar es requerido para continuar">&times;</button>
+      
+      <div class="consent-content-grid">
+        <div class="consent-shield-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+
+        <div class="consent-text-col">
+          <div class="consent-header-row">
+            <h4 class="consent-title">Bienvenido a WORTHIT.</h4>
+            <span class="badge-accent">ACUERDO DE NAVEGACIÓN</span>
+          </div>
+          <p class="consent-desc">
+            Para continuar navegando y acceder a nuestras ofertas de Hot Sale, es necesario que leas y aceptes nuestros 
+            <strong>Términos y Condiciones de Uso</strong>, la <strong>Política de Privacidad</strong> y el uso de <strong>Cookies</strong> estrictamente necesarias y analíticas conforme a la Ley 25.326.
+          </p>
+          <div class="consent-links-row">
+            <button class="consent-legal-link" data-open-legal="terms">Términos y Condiciones</button>
+            <span class="sep">•</span>
+            <button class="consent-legal-link" data-open-legal="privacy">Política de Privacidad</button>
+            <span class="sep">•</span>
+            <button class="consent-legal-link" data-open-legal="cookies">Política de Cookies</button>
+          </div>
+        </div>
+
+        <div class="consent-actions-col">
+          <button class="btn btn-accent btn-block btn-accept-consent" id="btnAcceptConsent">
+            <span>ACEPTAR Y CONTINUAR</span>
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+<!-- MODAL LECTOR DE DOCUMENTACIÓN LEGAL -->
+  <div class="legal-modal-overlay" id="legalModalOverlay">
+    <div class="legal-modal-container">
+      <div class="legal-modal-header">
+        <div class="legal-modal-title-group">
+          <svg class="icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          <h3>Centro Legal y Políticas — WORTHIT.</h3>
+        </div>
+        <button class="modal-close" id="legalModalCloseBtn" aria-label="Cerrar ventana legal">&times;</button>
+      </div>
+
+      <!-- Pestañas de Selección -->
+      <div class="legal-tabs-bar" id="legalTabsBar">
+        <button class="legal-tab-btn active" data-legal-tab="terms">1. T&eacute;rminos y Condiciones</button>
+        <button class="legal-tab-btn" data-legal-tab="privacy">2. Pol&iacute;tica de Privacidad</button>
+        <button class="legal-tab-btn" data-legal-tab="cookies">3. Pol&iacute;tica de Cookies</button>
+      </div>
+
+      <!-- Cuerpo Lector del Documento Legal -->
+      <div class="legal-modal-content" id="legalModalContent">
+        
+        <!-- PESTAÑA 1: TÉRMINOS Y CONDICIONES -->
+        <article class="legal-tab-pane active" id="pane-terms">
+          <h1 class="legal-doc-title">T&Eacute;RMINOS Y CONDICIONES DE USO</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. Identificaci&oacute;n</h2>
+          <p>WORTHIT. (en adelante, &laquo;WORTHIT.&raquo;) es un proyecto digital dedicado a la selecci&oacute;n, an&aacute;lisis, comparaci&oacute;n y recomendaci&oacute;n de productos de tecnolog&iacute;a, hogar, cocina y otras categor&iacute;as de consumo.</p>
+          <p>Titular o responsable del sitio: [NOMBRE Y APELLIDO / RAZ&Oacute;N SOCIAL].<br>
+          CUIT: [CUIT].<br>
+          Domicilio: [DOMICILIO LEGAL].<br>
+          Correo electr&oacute;nico de contacto: [EMAIL].<br>
+          Sitio web: [DOMINIO].</p>
+
+          <h2>2. Aceptaci&oacute;n de los t&eacute;rminos</h2>
+          <p>El acceso y la utilizaci&oacute;n de este sitio web implican el conocimiento de estos T&eacute;rminos y Condiciones. Si el usuario no est&aacute; de acuerdo con alguna de sus disposiciones, deber&aacute; abstenerse de utilizar el sitio.</p>
+
+          <h2>3. Naturaleza del servicio</h2>
+          <p>WORTHIT. es un medio digital independiente de recomendaciones y marketing de afiliados. Su actividad consiste en seleccionar, analizar, comparar y difundir informaci&oacute;n sobre productos comercializados por terceros, incluyendo enlaces que permiten acceder a las publicaciones de dichos productos en plataformas externas.</p>
+
+          <h2>4. Enlaces de afiliados y publicidad</h2>
+          <p>Algunos enlaces publicados en WORTHIT. son enlaces de afiliados. Esto significa que si un usuario accede a una plataforma y realiza una compra, WORTHIT. puede recibir una comisi&oacute;n sin costo adicional para el comprador.</p>
+
+          <h2>5. Informaci&oacute;n sobre productos y ofertas</h2>
+          <p>WORTHIT. procura ofrecer informaci&oacute;n clara y actualizada sobre precios, descuentos, cuotas y disponibilidad, los cuales pueden cambiar sin previo aviso por decisi&oacute;n del vendedor.</p>
+
+          <h2>6. Proceso de compra y responsabilidad del vendedor</h2>
+          <p>Las compras se realizan directamente en las plataformas comerciales externas a las que conducen los enlaces publicados. Cualquier reclamo, garant&iacute;a o devoluci&oacute;n debe gestionarse con el vendedor correspondiente.</p>
+
+          <h2>7. Independencia de las plataformas externas</h2>
+          <p>WORTHIT. no controla ni administra el funcionamiento o pol&iacute;ticas de sitios de terceros (como Mercado Libre y redes sociales).</p>
+
+          <h2>8. Propiedad intelectual</h2>
+          <p>Los contenidos originales publicados en WORTHIT. est&aacute;n protegidos por las normas de propiedad intelectual aplicables.</p>
+
+          <h2>9. Uso adecuado del sitio</h2>
+          <p>El usuario se compromete a utilizar el sitio de manera l&iacute;cita y abstenerse de realizar actividades fraudulentas.</p>
+
+          <h2>10. Modificaciones</h2>
+          <p>WORTHIT. podr&aacute; modificar estos t&eacute;rminos cuando resulte necesario indicando su fecha de actualizaci&oacute;n.</p>
+
+          <h2>11. Legislaci&oacute;n aplicable</h2>
+          <p>Estos t&eacute;rminos se interpretar&aacute;n conforme a las leyes de la Rep&uacute;blica Argentina.</p>
+
+          <h2>12. Contacto</h2>
+          <p>Para consultas relacionadas: [EMAIL] | [DOMINIO].</p>
+        </article>
+
+        <!-- PESTAÑA 2: POLÍTICA DE PRIVACIDAD -->
+        <article class="legal-tab-pane" id="pane-privacy">
+          <h1 class="legal-doc-title">POL&Iacute;TICA DE PRIVACIDAD</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. Responsable del tratamiento</h2>
+          <p>WORTHIT. Responsable: [NOMBRE Y APELLIDO / RAZ&Oacute;N SOCIAL], CUIT: [CUIT], Domicilio: [DOMICILIO LEGAL], Email: [EMAIL DE PRIVACIDAD].</p>
+
+          <h2>2. Alcance de esta pol&iacute;tica</h2>
+          <p>Tratamiento de datos personales de conformidad con la Ley 25.326 de Protecci&oacute;n de Datos Personales de la Rep&uacute;blica Argentina.</p>
+
+          <h2>3. Datos que podemos recopilar</h2>
+          <ul>
+            <li><strong>Datos de contacto:</strong> Nombre, email o tel&eacute;fono voluntario.</li>
+            <li><strong>Datos de interacci&oacute;n:</strong> Mensajes y preferencias.</li>
+            <li><strong>Datos t&eacute;cnicos:</strong> Direcci&oacute;n IP, dispositivo, navegador y cookies.</li>
+          </ul>
+
+          <h2>4. Finalidades del tratamiento</h2>
+          <p>Responder consultas, ofrecer recomendaciones y analizar estad&iacute;sticas de uso.</p>
+
+          <h2>5. Proveedores externos</h2>
+          <p>Podremos utilizar servicios como Canva, Manychat, Meta y WhatsApp Business.</p>
+
+          <h2>6. Derechos de los titulares</h2>
+          <p>Seg&uacute;n la Ley 25.326, pod&eacute;s acceder, rectificar o suprimir tus datos escribiendo a [EMAIL DE PRIVACIDAD]. Autoridad de control: AAIP (https://www.argentina.gob.ar/aaip).</p>
+        </article>
+
+        <!-- PESTAÑA 3: POLÍTICA DE COOKIES -->
+        <article class="legal-tab-pane" id="pane-cookies">
+          <h1 class="legal-doc-title">POL&Iacute;TICA DE COOKIES</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. &iquest;Qu&eacute; son las cookies?</h2>
+          <p>Peque&ntilde;os archivos de informaci&oacute;n almacenados en el dispositivo del usuario para recordar preferencias y analizar la navegaci&oacute;n.</p>
+
+          <h2>2. Tipos de cookies</h2>
+          <p>T&eacute;cnicas, de preferencias, anal&iacute;ticas y publicitarias o de afiliados.</p>
+
+          <h2>3. Administraci&oacute;n</h2>
+          <p>Pod&eacute;s configurar tu navegador para bloquearlas o eliminarlas en cualquier momento.</p>
+        </article>
+
+      </div>
+
+      <div class="legal-modal-footer">
+        <button class="btn btn-accent btn-sm" id="btnAcceptFromModal">
+          <span>Aceptar Condiciones y Continuar Navegando</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

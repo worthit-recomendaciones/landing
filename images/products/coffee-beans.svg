@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cb-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C7F36B" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#315CF5" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00111c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cb-bag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a3342"/>
+      <stop offset="45%" stop-color="#141a23"/>
+      <stop offset="100%" stop-color="#0a0d13"/>
+    </linearGradient>
+    <linearGradient id="cb-label" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3F5F7"/>
+      <stop offset="100%" stop-color="#d4dee8"/>
+    </linearGradient>
+    <filter id="cb-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="transparent"/>
+  <ellipse cx="200" cy="220" rx="140" ry="120" fill="url(#cb-glow)"/>
+
+  <g filter="url(#cb-shadow)">
+    <!-- Main Specialty Matte Black Coffee Pouch (Stand-up Gusset Bag) -->
+    <!-- Heat sealed top edge -->
+    <polygon points="120,95 280,95 275,115 125,115" fill="#080b10" stroke="#374861" stroke-width="1.5"/>
+    <!-- Tear notches -->
+    <polygon points="120,105 128,105 125,108" fill="#C7F36B"/>
+    <polygon points="280,105 272,105 275,108" fill="#C7F36B"/>
+
+    <!-- Pouch Body (Full volume with side creases) -->
+    <polygon points="125,115 275,115 295,310 105,310" fill="url(#cb-bag)" stroke="#3d4f6b" stroke-width="2"/>
+    <!-- Fold creases -->
+    <line x1="140" y1="115" x2="130" y2="310" stroke="#090c12" stroke-width="2"/>
+    <line x1="260" y1="115" x2="270" y2="310" stroke="#485c7b" stroke-width="1.5"/>
+
+    <!-- Degassing Aroma Valve (Top center) -->
+    <circle cx="200" cy="142" r="12" fill="#0c1118" stroke="#315CF5" stroke-width="2"/>
+    <circle cx="200" cy="142" r="3" fill="#C7F36B"/>
+    <!-- Tiny valve pinholes -->
+    <circle cx="196" cy="142" r="1" fill="#7d92b0"/>
+    <circle cx="204" cy="142" r="1" fill="#7d92b0"/>
+
+    <!-- Front Minimalist Product Label Card -->
+    <rect x="140" y="165" width="120" height="120" rx="6" fill="url(#cb-label)" stroke="#315CF5" stroke-width="1.5"/>
+
+    <!-- Label Brand Top Stripe -->
+    <rect x="140" y="165" width="120" height="8" rx="2" fill="#315CF5"/>
+    <rect x="140" y="173" width="120" height="3" fill="#C7F36B"/>
+
+    <!-- Label Typography & Badges -->
+    <text x="200" y="195" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="900" fill="#00111c" letter-spacing="1">ETHIOPIA YIRGACHEFFE</text>
+    <text x="200" y="206" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="bold" fill="#315CF5">SINGLE ORIGIN • GRADE 1</text>
+    
+    <!-- Tasting notes tags -->
+    <rect x="148" y="214" width="48" height="12" rx="3" fill="#00111c"/>
+    <text x="172" y="223" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="6.5" font-weight="bold" fill="#C7F36B">JASMINE</text>
+
+    <rect x="202" y="214" width="50" height="12" rx="3" fill="#00111c"/>
+    <text x="227" y="223" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="6.5" font-weight="bold" fill="#C7F36B">BERGAMOT</text>
+
+    <!-- Roast Profile Indicator Bar -->
+    <text x="148" y="242" font-family="'Segoe UI', sans-serif" font-size="6.5" font-weight="bold" fill="#44556b">LIGHT ROAST</text>
+    <rect x="148" y="247" width="104" height="4" rx="2" fill="#c3d2e3"/>
+    <rect x="148" y="247" width="38" height="4" rx="2" fill="#315CF5"/>
+
+    <!-- Net Weight & WorthIT Quality Seal -->
+    <text x="148" y="268" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="bold" fill="#00111c">NET WT 250G / 8.8 OZ</text>
+    <circle cx="242" cy="265" r="9" fill="#00111c"/>
+    <text x="242" y="268" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="6" font-weight="bold" fill="#C7F36B">100%</text>
+
+    <!-- Whole Roasted Arabica Beans scattered in foreground -->
+    <g transform="translate(100, 310)">
+      <!-- Bean 1 -->
+      <g transform="rotate(35, 20, 10)">
+        <ellipse cx="20" cy="10" rx="14" ry="9" fill="#361f0e" stroke="#1d0f06" stroke-width="1.5"/>
+        <path d="M 12 10 Q 20 13 28 10" fill="none" stroke="#633b1d" stroke-width="2"/>
+      </g>
+      <!-- Bean 2 -->
+      <g transform="rotate(-20, 60, 15)">
+        <ellipse cx="60" cy="15" rx="14" ry="9" fill="#422712" stroke="#1d0f06" stroke-width="1.5"/>
+        <path d="M 52 15 Q 60 12 68 15" fill="none" stroke="#704422" stroke-width="2"/>
+      </g>
+      <!-- Bean 3 -->
+      <g transform="rotate(15, 140, 14)">
+        <ellipse cx="140" cy="14" rx="14" ry="9" fill="#361f0e" stroke="#1d0f06" stroke-width="1.5"/>
+        <path d="M 132 14 Q 140 17 148 14" fill="none" stroke="#633b1d" stroke-width="2"/>
+      </g>
+      <!-- Bean 4 -->
+      <g transform="rotate(-40, 175, 10)">
+        <ellipse cx="175" cy="10" rx="14" ry="9" fill="#422712" stroke="#1d0f06" stroke-width="1.5"/>
+        <path d="M 167 10 Q 175 7 183 10" fill="none" stroke="#704422" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
