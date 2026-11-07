@@ -296,19 +296,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  async function loadProductsFromCMS() {
+async function loadProductsFromCMS() {
+    // Productos de respaldo por si el archivo JSON aún no fue creado en GitHub
+    const fallbackProducts = [
+      {
+        id: 'tech-2',
+        category: 'technology',
+        categoryName: 'Tecnología',
+        title: 'Smartwatch HUAWEI Watch Fit 4 Pro GPS',
+        shortDesc: 'Pantalla Retina OLED curva de alto brillo, GPS dual de precisión quirúrgica, sensor ECG y 5 días de batería real.',
+        originalPrice: 229000,
+        salePrice: 189000,
+        discount: 17,
+        installments: '6 cuotas sin interés de $31.500',
+        image: 'images/products/smartwatch2.png',
+        rating: 4.8,
+        reviews: 342,
+        featured: true,
+        affiliateUrl: 'https://meli.la/13CTiHx'
+      },
+      {
+        id: 'coffee-1',
+        category: 'coffee',
+        categoryName: 'Café',
+        title: 'Cafetera Espresso BaristaCraft Touch',
+        shortDesc: 'Bomba italiana de 15 bares, control térmico PID de alta precisión, pantalla táctil y lanceta de vapor profesional.',
+        originalPrice: 799000,
+        salePrice: 549000,
+        discount: 31,
+        installments: '12 cuotas sin interés de $45.750',
+        image: 'images/products/coffee-espresso.svg',
+        rating: 5.0,
+        reviews: 178,
+        featured: false,
+        affiliateUrl: 'https://meli.la/13CTiHx'
+      }
+    ];
+
     try {
       const response = await fetch('content/products.json?v=' + new Date().getTime());
       if (response.ok) {
         const data = await response.json();
-        if (data && Array.isArray(data.items)) {
+        if (data && Array.isArray(data.items) && data.items.length > 0) {
           products = data.items;
-        } else if (Array.isArray(data)) {
-          products = data;
+        } else {
+          products = fallbackProducts;
         }
+      } else {
+        products = fallbackProducts;
       }
     } catch (e) {
-      console.log('Cargando productos por defecto o CMS vacío', e);
+      console.log('Usando productos de respaldo mientras se genera el CMS', e);
+      products = fallbackProducts;
     }
     renderProducts();
   }
