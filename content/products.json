@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "id": "tech-1",
+      "category": "technology",
+      "categoryName": "Tecnología",
+      "title": "Auriculares AeroSound Pro ANC",
+      "shortDesc": "Cancelación activa de ruido híbrida, 40 horas de batería, audio espacial inmersivo y almohadillas viscoelásticas ultra suaves.",
+      "fullDesc": "Diseñados para audiófilos exigentes y jornadas de trabajo prolongadas.",
+      "originalPrice": 249000,
+      "salePrice": 179000,
+      "discount": 28,
+      "installments": "6 cuotas sin interés de $29.833",
+      "image": "/images/products/smartwatch.png",
+      "rating": 4.9,
+      "reviews": 218,
+      "featured": false,
+      "affiliateUrl": "https://meli.la/13CTiHx"
+    },
+    {
+      "id": "BV92HN-NCEV",
+      "category": "technology",
+      "categoryName": "Tecnología",
+      "title": "Smartwatch HUAWEI Watch Fit 4 Pro GPS",
+      "shortDesc": "Pantalla de zafiro, bisel de titanio, ECG y batería de hasta diez días.",
+      "fullDesc": "Material de la caja del smartwatch: Aluminio. Material del bisel: Aleación de titanio. Versión Sport. Pantalla AMOLED de 1.82 pulgadas protegida con cristal de zafiro.",
+      "originalPrice": 443999,
+      "salePrice": 269999,
+      "discount": 39,
+      "installments": "6 cuotas sin interés de $44.999",
+      "image": "/images/products/smartwatch2.png",
+      "rating": 4.9,
+      "reviews": 3968,
+      "featured": true,
+      "affiliateUrl": "https://meli.la/13CTiHx"
+    },
+    {
+      "id": "coffee-1",
+      "category": "coffee",
+      "categoryName": "Café",
+      "title": "Cafetera Espresso BaristaCraft Touch",
+      "shortDesc": "Bomba italiana de 15 bares, control térmico PID de alta precisión, pantalla táctil y lanceta de vapor profesional.",
+      "fullDesc": "Llevá la experiencia de una cafetería de especialidad a tu casa.",
+      "originalPrice": 799000,
+      "salePrice": 549000,
+      "discount": 31,
+      "installments": "12 cuotas sin interés de $45.750",
+      "image": "/images/products/coffee-espresso.svg",
+      "rating": 5,
+      "reviews": 178,
+      "featured": false,
+      "affiliateUrl": "https://meli.la/13CTiHx"
+    }
+  ]
+}
