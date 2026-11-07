@@ -1,11 +1,13 @@
 backend:
-  name: github
-  repo: tu-usuario-de-github/nombre-de-tu-repo # <--- Cambiá por tu usuario y repo real
+  name: git-gateway
   branch: main
 
-# Definición de carpetas y archivos que controlará el CMS
+# Ruta global obligatoria para guardar imágenes subidas desde el panel
+media_folder: "images/products"
+public_folder: "/images/products"
+
 collections:
-  # 1. COLECCIÓN DE PRODUCTOS (Grilla de 15 o más)
+  # 1. COLECCIÓN DE PRODUCTOS DE AFILIADOS
   - name: "products"
     label: "Productos de Afiliados"
     folder: "content/products"
@@ -22,7 +24,7 @@ collections:
       - {label: "Precio de Oferta ($)", name: "salePrice", widget: "number", value_type: "int"}
       - {label: "Descuento (%)", name: "discount", widget: "number", value_type: "int"}
       - {label: "Texto de Cuotas", name: "installments", widget: "string", default: "6 cuotas sin interés"}
-      - {label: "Imagen del Producto", name: "image", widget: "image", folder: "images/products"}
+      - {label: "Imagen del Producto", name: "image", widget: "image"}
       - {label: "Enlace de Afiliado (URL)", name: "affiliateUrl", widget: "string"}
       - {label: "Calificación (Ej: 4.9)", name: "rating", widget: "number", value_type: "float", default: 4.9}
       - {label: "Cantidad de Reseñas", name: "reviews", widget: "number", value_type: "int", default: 150}
@@ -60,7 +62,7 @@ collections:
               - {label: "Texto de Cuotas / Envíos", name: "installmentsText", widget: "string"}
               - {label: "Precio de Oferta", name: "price", widget: "string"}
               - {label: "Link de Afiliado del Spotlight", name: "affiliateUrl", widget: "string"}
-              - {label: "Imagen del Spotlight", name: "image", widget: "image", folder: "images/products"}
+              - {label: "Imagen del Spotlight", name: "image", widget: "image"}
 
           - label: "Club VIP / Newsletter"
             name: "newsletter"
@@ -75,4 +77,4 @@ collections:
             widget: "object"
             fields:
               - {label: "Texto de Biografía / Descripción", name: "bio", widget: "text"}
-              - {label: "Número de WhatsApp de Soporte (Ej: 549223...)", name: "whatsappNumber", widget: "string"}
+              - {label: "Número de WhatsApp de Soporte", name: "whatsappNumber", widget: "string"}
