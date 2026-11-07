@@ -19,6 +19,6 @@ installments: 6 cuotas sin interés de $44.999
 image: /images/products/smartwatch2.png
 affiliateUrl: https://meli.la/13CTiHx
 rating: 4.9
-reviews: 3967
+reviews: 3968
 featured: true
 ---
