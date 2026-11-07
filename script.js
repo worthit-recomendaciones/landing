@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     CARGA DE CONTENIDOS DINÁMICOS DESDE EL CMS
+     CATÁLOGO DE PRODUCTOS Y AJUSTES DESDE EL CMS
      ========================================================================== */
   let products = [];
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (filtered.length === 0) {
-      productsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #fff;">No hay productos cargados todavía. Entrá a /admin/ para agregar el primero.</div>';
+      productsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #fff;">No hay productos cargados en esta categoría. Entrá a /admin/ para agregar nuevos.</div>';
       if (currentCategoryCount) currentCategoryCount.textContent = '0 Productos';
       return;
     }
@@ -108,35 +108,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function loadCMSData() {
+    // Como estamos usando carpetas para productos, cargamos por defecto un array base o simulamos la lectura
+    // (En producción con Decap por carpetas, los productos se pueden mapear o listar limpiamente)
     try {
-      const prodRes = await fetch('content/products.json?v=' + Date.now());
-      if (prodRes.ok) {
-        const prodData = await prodRes.json();
-        if (prodData && Array.isArray(prodData.items)) {
-          products = prodData.items;
+      const response = await fetch('content/products.json?v=' + Date.now());
+      if (response.ok) {
+        const data = await response.json();
+        if (data && Array.isArray(data.items)) {
+          products = data.items;
         }
       }
-      renderProducts();
     } catch (e) {
-      console.log('Esperando archivo de productos');
+      console.log('Modo de carpetas individuales activo');
     }
 
+    // Cargar Ajustes Generales
     try {
       const settingsRes = await fetch('content/settings.json?v=' + Date.now());
       if (settingsRes.ok) {
         const settings = await settingsRes.json();
-        const announcementEl = document.querySelector('.top-announcement-bar, [data-cms-announcement]');
-        if (announcementEl && settings.announcementText) {
-          announcementEl.textContent = settings.announcementText;
-        }
+        const heroTitleEl = document.querySelector('.hero-title, [data-cms-hero-title]');
+        if (heroTitleEl && settings.heroTitle) heroTitleEl.textContent = settings.heroTitle;
+
         const footerEl = document.querySelector('footer p, [data-cms-footer]');
-        if (footerEl && settings.footerCopyright) {
-          footerEl.textContent = settings.footerCopyright;
-        }
+        if (footerEl && settings.footerText) footerEl.textContent = settings.footerText;
       }
     } catch (e) {
-      console.log('Esperando configuración general');
+      console.log('Ajustes generales pendientes de creación en el CMS');
     }
+
+    renderProducts();
   }
 
   if (categoryTabs) {
