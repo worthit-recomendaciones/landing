@@ -8,38 +8,22 @@ public_folder: "/images/products"
 collections:
   - name: "products"
     label: "Productos de Afiliados"
-    file: "content/products.json"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
     fields:
-      - label: "Listado de Productos"
-        name: "items"
-        widget: "list"
-        fields:
-          - {label: "ID del Producto", name: "id", widget: "string"}
-          - {label: "Título del Producto", name: "title", widget: "string"}
-          - {label: "Categoría", name: "category", widget: "select", options: ["technology", "home-office", "coffee"]}
-          - {label: "Nombre de Categoría (Visible)", name: "categoryName", widget: "select", options: ["Tecnología", "Home Office", "Café"]}
-          - {label: "Descripción Corta", name: "shortDesc", widget: "text"}
-          - {label: "Descripción Completa", name: "fullDesc", widget: "text", required: false}
-          - {label: "Precio Anterior ($)", name: "originalPrice", widget: "number", value_type: "int", required: false}
-          - {label: "Precio de Oferta ($)", name: "salePrice", widget: "number", value_type: "int"}
-          - {label: "Descuento (%)", name: "discount", widget: "number", value_type: "int", required: false}
-          - {label: "Texto de Cuotas", name: "installments", widget: "string", default: "6 cuotas sin interés", required: false}
-          - {label: "Imagen del Producto", name: "image", widget: "image"}
-          - {label: "Enlace de Afiliado (URL)", name: "affiliateUrl", widget: "string"}
-          - {label: "Calificación (Ej: 4.9)", name: "rating", widget: "number", value_type: "float", default: 4.9, required: false}
-          - {label: "Cantidad de Reseñas", name: "reviews", widget: "number", value_type: "int", default: 150, required: false}
-          - {label: "¿Es producto Destacado?", name: "featured", widget: "boolean", default: false, required: false}
-
-  - name: "settings"
-    label: "Configuración Global"
-    files:
-      - name: "general"
-        label: "Textos y Ajustes Generales"
-        file: "content/settings.json"
-        fields:
-          - label: "Barra Superior de Anuncios"
-            name: "announcement"
-            widget: "object"
-            fields:
-              - {label: "Texto Principal del Anuncio", name: "text", widget: "string"}
-              - {label: "Código de Cupón", name: "coupon", widget: "string"}
+      - {label: "ID del Producto", name: "id", widget: "string"}
+      - {label: "Título del Producto", name: "title", widget: "string"}
+      - {label: "Categoría", name: "category", widget: "select", options: ["technology", "home-office", "coffee"]}
+      - {label: "Nombre de Categoría (Visible)", name: "categoryName", widget: "select", options: ["Tecnología", "Home Office", "Café"]}
+      - {label: "Descripción Corta", name: "shortDesc", widget: "text"}
+      - {label: "Descripción Completa", name: "fullDesc", widget: "text", required: false}
+      - {label: "Precio Anterior ($)", name: "originalPrice", widget: "number", value_type: "int", required: false}
+      - {label: "Precio de Oferta ($)", name: "salePrice", widget: "number", value_type: "int"}
+      - {label: "Descuento (%)", name: "discount", widget: "number", value_type: "int", required: false}
+      - {label: "Texto de Cuotas", name: "installments", widget: "string", default: "6 cuotas sin interés", required: false}
+      - {label: "Imagen del Producto", name: "image", widget: "image"}
+      - {label: "Enlace de Afiliado (URL)", name: "affiliateUrl", widget: "string"}
+      - {label: "Calificación (Ej: 4.9)", name: "rating", widget: "number", value_type: "float", default: 4.9, required: false}
+      - {label: "Cantidad de Reseñas", name: "reviews", widget: "number", value_type: "int", default: 150, required: false}
+      - {label: "¿Es producto Destacado?", name: "featured", widget: "boolean", default: false, required: false}
