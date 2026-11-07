@@ -242,6 +242,60 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showAll) showAll.textContent = `Ver los ${counts.all} Productos`;
   }
 
+  function applyCountdownSettings(settings) {
+    const wrapper = document.querySelector('.countdown-wrapper');
+    if (!wrapper) return;
+    const enabled = settings.countdownEnabled === true;
+    const date = String(settings.countdownEndDate || '').trim();
+    const time = String(settings.countdownEndTime || '23:59').trim();
+    const eventName = String(settings.countdownEventName || '').trim();
+    const endAt = new Date(date + 'T' + time + ':00');
+    if (!enabled || !date || Number.isNaN(endAt.getTime())) {
+      wrapper.hidden = true;
+      return;
+    }
+    wrapper.hidden = false;
+    const heading = wrapper.querySelector('.countdown-header span');
+    const timer = document.getElementById('countdownTimer');
+    if (!timer) return;
+    if (heading) heading.textContent = eventName
+      ? eventName.toUpperCase() + ' TERMINA EN:'
+      : (settings.countdownHeader || 'EL EVENTO TERMINA EN:');
+    let expiredMessage = wrapper.querySelector('.countdown-expired-message');
+    if (!expiredMessage) {
+      expiredMessage = document.createElement('p');
+      expiredMessage.className = 'countdown-expired-message';
+      timer.insertAdjacentElement('afterend', expiredMessage);
+    }
+    const pad = value => String(value).padStart(2, '0');
+    let intervalId;
+    const update = () => {
+      const remaining = endAt.getTime() - Date.now();
+      if (remaining <= 0) {
+        timer.hidden = true;
+        expiredMessage.hidden = false;
+        expiredMessage.textContent = settings.countdownExpiredMessage || '¡Esta promoción ha finalizado!';
+        window.clearInterval(intervalId);
+        return;
+      }
+      expiredMessage.hidden = true;
+      timer.hidden = false;
+      const seconds = Math.floor(remaining / 1000);
+      const values = {
+        timerDays: Math.floor(seconds / 86400),
+        timerHours: Math.floor((seconds % 86400) / 3600),
+        timerMinutes: Math.floor((seconds % 3600) / 60),
+        timerSeconds: seconds % 60
+      };
+      Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = pad(value);
+      });
+    };
+    update();
+    intervalId = window.setInterval(update, 1000);
+  }
+
   function applySiteSettings(settings) {
     const setText = (selector, value) => {
       const element = document.querySelector(selector);
@@ -253,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hero.innerHTML = `${escapeHTML(settings.heroTitleLine1 || 'ENCONTRÁ')}<br><span class="highlight-accent">${escapeHTML(settings.heroTitleHighlight || 'BUENAS COMPRAS')}</span> ${escapeHTML(settings.heroTitleSuffix || 'SIN PERDER EL TIEMPO!')}`;
     }
     setText('.hero-subtitle', settings.heroSubtitle);
+    applyCountdownSettings(settings);
     setText('.top-announcement .badge-accent', settings.announcementBadge);
     setText('.announcement-text', settings.announcementText);
     setText('.announcement-code strong', settings.announcementCoupon);
