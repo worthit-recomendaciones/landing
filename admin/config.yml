@@ -2,35 +2,34 @@ backend:
   name: git-gateway
   branch: main
 
-# Ruta global obligatoria para guardar imágenes subidas desde el panel
 media_folder: "images/products"
 public_folder: "/images/products"
 
 collections:
-  # 1. COLECCIÓN DE PRODUCTOS DE AFILIADOS
   - name: "products"
     label: "Productos de Afiliados"
-    folder: "content/products"
-    create: true
-    slug: "{{slug}}"
+    file: "content/products.json"
     fields:
-      - {label: "ID del Producto", name: "id", widget: "string"}
-      - {label: "Título del Producto", name: "title", widget: "string"}
-      - {label: "Categoría", name: "category", widget: "select", options: ["technology", "home-office", "coffee"]}
-      - {label: "Nombre de Categoría (Visible)", name: "categoryName", widget: "select", options: ["Tecnología", "Home Office", "Café"]}
-      - {label: "Descripción Corta", name: "shortDesc", widget: "text"}
-      - {label: "Descripción Completa", name: "fullDesc", widget: "text"}
-      - {label: "Precio Anterior ($)", name: "originalPrice", widget: "number", value_type: "int"}
-      - {label: "Precio de Oferta ($)", name: "salePrice", widget: "number", value_type: "int"}
-      - {label: "Descuento (%)", name: "discount", widget: "number", value_type: "int"}
-      - {label: "Texto de Cuotas", name: "installments", widget: "string", default: "6 cuotas sin interés"}
-      - {label: "Imagen del Producto", name: "image", widget: "image"}
-      - {label: "Enlace de Afiliado (URL)", name: "affiliateUrl", widget: "string"}
-      - {label: "Calificación (Ej: 4.9)", name: "rating", widget: "number", value_type: "float", default: 4.9}
-      - {label: "Cantidad de Reseñas", name: "reviews", widget: "number", value_type: "int", default: 150}
-      - {label: "¿Es producto Destacado con borde neón?", name: "featured", widget: "boolean", default: false}
+      - label: "Listado de Productos"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "ID del Producto", name: "id", widget: "string"}
+          - {label: "Título del Producto", name: "title", widget: "string"}
+          - {label: "Categoría", name: "category", widget: "select", options: ["technology", "home-office", "coffee"]}
+          - {label: "Nombre de Categoría (Visible)", name: "categoryName", widget: "select", options: ["Tecnología", "Home Office", "Café"]}
+          - {label: "Descripción Corta", name: "shortDesc", widget: "text"}
+          - {label: "Descripción Completa", name: "fullDesc", widget: "text", required: false}
+          - {label: "Precio Anterior ($)", name: "originalPrice", widget: "number", value_type: "int", required: false}
+          - {label: "Precio de Oferta ($)", name: "salePrice", widget: "number", value_type: "int"}
+          - {label: "Descuento (%)", name: "discount", widget: "number", value_type: "int", required: false}
+          - {label: "Texto de Cuotas", name: "installments", widget: "string", default: "6 cuotas sin interés", required: false}
+          - {label: "Imagen del Producto", name: "image", widget: "image"}
+          - {label: "Enlace de Afiliado (URL)", name: "affiliateUrl", widget: "string"}
+          - {label: "Calificación (Ej: 4.9)", name: "rating", widget: "number", value_type: "float", default: 4.9, required: false}
+          - {label: "Cantidad de Reseñas", name: "reviews", widget: "number", value_type: "int", default: 150, required: false}
+          - {label: "¿Es producto Destacado?", name: "featured", widget: "boolean", default: false, required: false}
 
-  # 2. CONFIGURACIÓN GLOBAL DEL SITIO
   - name: "settings"
     label: "Configuración Global"
     files:
@@ -44,37 +43,3 @@ collections:
             fields:
               - {label: "Texto Principal del Anuncio", name: "text", widget: "string"}
               - {label: "Código de Cupón", name: "coupon", widget: "string"}
-
-          - label: "Sección Hero (Principal)"
-            name: "hero"
-            widget: "object"
-            fields:
-              - {label: "Título Principal", name: "title", widget: "string"}
-              - {label: "Subtítulo / Bajada", name: "subtitle", widget: "text"}
-
-          - label: "Banner Destacado del Día (Spotlight)"
-            name: "spotlight"
-            widget: "object"
-            fields:
-              - {label: "Habilitar / Mostrar Banner", name: "enabled", widget: "boolean", default: true}
-              - {label: "Título del Banner", name: "title", widget: "string"}
-              - {label: "Descripción", name: "desc", widget: "text"}
-              - {label: "Texto de Cuotas / Envíos", name: "installmentsText", widget: "string"}
-              - {label: "Precio de Oferta", name: "price", widget: "string"}
-              - {label: "Link de Afiliado del Spotlight", name: "affiliateUrl", widget: "string"}
-              - {label: "Imagen del Spotlight", name: "image", widget: "image"}
-
-          - label: "Club VIP / Newsletter"
-            name: "newsletter"
-            widget: "object"
-            fields:
-              - {label: "Título de la Sección", name: "title", widget: "string"}
-              - {label: "Descripción", name: "desc", widget: "text"}
-              - {label: "Código de Cupón VIP a Otorgar", name: "code", widget: "string"}
-
-          - label: "Pie de Página (Footer)"
-            name: "footer"
-            widget: "object"
-            fields:
-              - {label: "Texto de Biografía / Descripción", name: "bio", widget: "text"}
-              - {label: "Número de WhatsApp de Soporte", name: "whatsappNumber", widget: "string"}
