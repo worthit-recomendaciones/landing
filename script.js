@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAcceptFromModal = document.getElementById('btnAcceptFromModal');
   const legalTabsBar = document.getElementById('legalTabsBar');
 
-  const CONSENT_KEY = 'worthit_legal_consent_accepted';
+  const CONSENT_KEY = 'worthit_legal_consent_v3';
 
   // 1. Verificar si ya aceptÛ previamente
   function checkLegalConsent() {
@@ -178,16 +178,17 @@ document.addEventListener('DOMContentLoaded', () => {
       discount: 28,
       installments: '6 cuotas sin inter√©s de $29.833',
       freeShipping: true,
-      image: 'images/products/tech-headphones.svg',
+      image: 'images/products/smartwatch.png',
       rating: 4.9,
       reviews: 218,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://meli.la/13CTiHx' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'tech-2',
       category: 'technology',
       categoryName: 'Tecnolog√≠a',
-      title: 'Smartwatch Apex Titan Series 2',
+      title: 'Smartwatch HUAWEI Watch Fit 4 Pro GPS',
       shortDesc: 'Pantalla Retina OLED curva de alto brillo, GPS dual de precisi√≥n quir√∫rgica, sensor ECG y 5 d√≠as de bater√≠a real.',
       fullDesc: 'Chasis de titanio de grado aeroespacial resistente a golpes y rayones. Medici√≥n continua de frecuencia card√≠aca, saturaci√≥n SpO2, fases de sue√±o y m√°s de 100 modos deportivos.',
       specs: [
@@ -201,10 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
       discount: 17,
       installments: '6 cuotas sin inter√©s de $31.500',
       freeShipping: true,
-      image: 'images/products/tech-smartwatch.svg',
+      image: 'images/products/smartwatch2.png',
       rating: 4.8,
       reviews: 342,
-      featured: true // Destacado con reborde ne√≥n brillante (como en Referencia 2)
+      featured: true, // Destacado con reborde ne√≥n brillante (como en Referencia 2)
+	  affiliateUrl: 'https://meli.la/13CTiHx' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'tech-3',
@@ -227,7 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/tech-vr-headset.svg',
       rating: 4.9,
       reviews: 124,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'tech-4',
@@ -250,7 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/tech-speaker.svg',
       rating: 4.7,
       reviews: 189,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'tech-5',
@@ -273,7 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/tech-smartphone.svg',
       rating: 5.0,
       reviews: 512,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
 
     // --- HOME OFFICE (5 Productos) ---
@@ -298,7 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/office-chair.svg',
       rating: 4.9,
       reviews: 265,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'office-2',
@@ -321,7 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/office-desk.svg',
       rating: 4.9,
       reviews: 198,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'office-3',
@@ -344,7 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/office-lightbar.svg',
       rating: 4.8,
       reviews: 310,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'office-4',
@@ -367,7 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/office-laptop-stand.svg',
       rating: 4.7,
       reviews: 142,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'office-5',
@@ -390,7 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/office-deskmat.svg',
       rating: 4.8,
       reviews: 215,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
 
     // --- CAF√â DE ESPECIALIDAD (5 Productos) ---
@@ -415,7 +425,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/coffee-espresso.svg',
       rating: 5.0,
       reviews: 178,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'coffee-2',
@@ -438,7 +449,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/coffee-grinder.svg',
       rating: 4.9,
       reviews: 240,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'coffee-3',
@@ -461,7 +473,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/coffee-kettle.svg',
       rating: 4.9,
       reviews: 388,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'coffee-4',
@@ -484,7 +497,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/coffee-pourover.svg',
       rating: 4.8,
       reviews: 195,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     },
     {
       id: 'coffee-5',
@@ -507,7 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'images/products/coffee-beans.svg',
       rating: 5.0,
       reviews: 422,
-      featured: false
+      featured: false,
+	  affiliateUrl: 'https://mercadolibre.com/tu-link-de-afiliado-aqui' // <--- °Ac· peg·s tu enlace de afiliado real!
     }
   ];
 
@@ -671,26 +686,14 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const id = btn.getAttribute('data-product-id');
-        addToCart(id);
-
-        btn.classList.add('added');
-        btn.innerHTML = `
-          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>¬°AGREGADO!</span>
-        `;
-        setTimeout(() => {
-          btn.classList.remove('added');
-          btn.innerHTML = `
-            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <span>COMPRAR AHORA</span>
-          `;
-        }, 1400);
+        const product = products.find(p => p.id === id);
+        
+        if (product && product.affiliateUrl) {
+          // Abre la oferta en una pestaÒa nueva con seguridad de afiliados
+          window.open(product.affiliateUrl, '_blank', 'noopener,noreferrer');
+        } else {
+          alert('Pronto habilitaremos el enlace directo para este producto.');
+        }
       });
     });
   }
@@ -992,14 +995,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
 
   // Bot√≥n compra en banner destacado
-  const spotlightBuyBtn = document.querySelector('.btn-buy-spotlight');
+  /*const spotlightBuyBtn = document.querySelector('.btn-buy-spotlight');
   if (spotlightBuyBtn) {
     spotlightBuyBtn.addEventListener('click', () => {
       const pid = spotlightBuyBtn.getAttribute('data-product-id') || 'tech-4';
       addToCart(pid);
       openCart();
     });
-  }
+  }*/
 
   // Checkout
   if (checkoutBtn) {
@@ -1047,13 +1050,14 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div style="display: flex; gap: 12px; margin-top: 14px;">
-            <button class="btn btn-primary btn-block btn-lg" id="modalBuyBtn">
+            <a href="${product.affiliateUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-lg" style="text-decoration: none;">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              <span>Agregar al Carrito ‚Ä¢ ${formatARS(product.salePrice)}</span>
-            </button>
+              <span>Ver Oferta Oficial ï ${formatARS(product.salePrice)}</span>
+            </a>
           </div>
         </div>
       </div>
@@ -1210,10 +1214,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  }, { passive: true });
+  }, { passive: true }); 
 
   /* ==========================================================================
      15. INICIALIZACI√ìN
      ========================================================================== */
-  renderProducts();
+  renderProducts(); 
 });

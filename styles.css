@@ -3701,4 +3701,9 @@ body.consent-locked .whatsapp-float-container {
   }
 }
 
+/* Ocultar el ícono del carrito para convertirlo en sitio de afiliados puro */
+.cart-trigger {
+  display: none !important;
+}
+
 
