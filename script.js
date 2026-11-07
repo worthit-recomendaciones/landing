@@ -22,17 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     CARGA DE CONTENIDOS DINÁMICOS DESDE EL CMS (Productos + Settings)
+     CARGA DE CONTENIDOS DINÁMICOS DESDE EL CMS
      ========================================================================== */
   let products = [];
 
   const productsGrid = document.getElementById('productsGrid');
   const categoryTabs = document.getElementById('categoryTabs');
   const productFilterInput = document.getElementById('productFilterInput');
-  const clearSearchBtn = document.getElementById('clearSearchBtn');
-  const currentCategoryTitle = document.getElementById('currentCategoryTitle');
   const currentCategoryCount = document.getElementById('currentCategoryCount');
-  const currentCategoryDesc = document.getElementById('currentCategoryDesc');
 
   let currentCategory = 'all';
   let searchQuery = '';
@@ -110,10 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cargar datos del CMS (Productos y Ajustes Generales)
   async function loadCMSData() {
     try {
-      // 1. Cargar Productos
       const prodRes = await fetch('content/products.json?v=' + Date.now());
       if (prodRes.ok) {
         const prodData = await prodRes.json();
@@ -123,32 +118,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       renderProducts();
     } catch (e) {
-      console.log('Esperando archivo de productos del CMS');
+      console.log('Esperando archivo de productos');
     }
 
     try {
-      // 2. Cargar Configuración / Footer / Anuncios
       const settingsRes = await fetch('content/settings.json?v=' + Date.now());
       if (settingsRes.ok) {
         const settings = await settingsRes.json();
-        
-        // Actualizar textos globales si existen en el HTML
         const announcementEl = document.querySelector('.top-announcement-bar, [data-cms-announcement]');
         if (announcementEl && settings.announcementText) {
           announcementEl.textContent = settings.announcementText;
         }
-
         const footerEl = document.querySelector('footer p, [data-cms-footer]');
         if (footerEl && settings.footerCopyright) {
           footerEl.textContent = settings.footerCopyright;
         }
       }
     } catch (e) {
-      console.log('Esperando archivo de configuración del CMS');
+      console.log('Esperando configuración general');
     }
   }
 
-  // Pestañas de categorías
   if (categoryTabs) {
     categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
