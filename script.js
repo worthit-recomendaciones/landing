@@ -5,90 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const consentBanner = document.getElementById('consentBanner');
   const consentOverlay = document.getElementById('consentOverlay');
   const btnAcceptConsent = document.getElementById('btnAcceptConsent');
-  const consentCloseAttemptBtn = document.getElementById('consentCloseAttemptBtn');
-  
-  const legalModalOverlay = document.getElementById('legalModalOverlay');
-  const legalModalCloseBtn = document.getElementById('legalModalCloseBtn');
-  const btnAcceptFromModal = document.getElementById('btnAcceptFromModal');
-  const legalTabsBar = document.getElementById('legalTabsBar');
-
   const CONSENT_KEY = 'worthit_legal_consent_v3';
 
-  function checkLegalConsent() {
-    const accepted = localStorage.getItem(CONSENT_KEY);
-    if (!accepted) {
-      document.body.classList.add('consent-locked');
-      if (consentBanner) consentBanner.classList.add('visible');
-      if (consentOverlay) consentOverlay.classList.add('visible');
-    }
+  if (!localStorage.getItem(CONSENT_KEY)) {
+    if (consentBanner) consentBanner.classList.add('visible');
+    if (consentOverlay) consentOverlay.classList.add('visible');
   }
 
-  function acceptLegalConsent() {
-    localStorage.setItem(CONSENT_KEY, 'true');
-    document.body.classList.remove('consent-locked');
-    if (consentBanner) consentBanner.classList.remove('visible');
-    if (consentOverlay) consentOverlay.classList.remove('visible');
-    closeLegalModal();
-  }
-
-  function triggerBannerShake() {
-    if (consentBanner) {
-      consentBanner.classList.remove('shake');
-      void consentBanner.offsetWidth;
-      consentBanner.classList.add('shake');
-    }
-  }
-
-  if (btnAcceptConsent) btnAcceptConsent.onclick = (e) => { e.preventDefault(); acceptLegalConsent(); };
-  if (btnAcceptFromModal) btnAcceptFromModal.onclick = (e) => { e.preventDefault(); acceptLegalConsent(); };
-  if (consentCloseAttemptBtn) consentCloseAttemptBtn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); triggerBannerShake(); };
-  if (consentOverlay) consentOverlay.onclick = () => triggerBannerShake();
-
-  window.openLegalModal = function(tabName = 'terms') {
-    if (legalModalOverlay) {
-      legalModalOverlay.classList.add('open');
-      switchLegalTab(tabName);
-    }
-  };
-
-  window.closeLegalModal = function() {
-    if (legalModalOverlay) legalModalOverlay.classList.remove('open');
-  };
-
-  function switchLegalTab(tabName) {
-    if (!legalTabsBar) return;
-    legalTabsBar.querySelectorAll('.legal-tab-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-legal-tab') === tabName);
-    });
-    document.querySelectorAll('.legal-tab-pane').forEach(pane => pane.classList.remove('active'));
-    const activePane = document.getElementById(`pane-${tabName}`);
-    if (activePane) activePane.classList.add('active');
-  }
-
-  document.querySelectorAll('[data-open-legal]').forEach(btn => {
-    btn.onclick = (e) => {
+  if (btnAcceptConsent) {
+    btnAcceptConsent.onclick = (e) => {
       e.preventDefault();
-      e.stopPropagation();
-      window.openLegalModal(btn.getAttribute('data-open-legal'));
+      localStorage.setItem(CONSENT_KEY, 'true');
+      if (consentBanner) consentBanner.classList.remove('visible');
+      if (consentOverlay) consentOverlay.classList.remove('visible');
     };
-  });
-
-  if (legalTabsBar) {
-    legalTabsBar.querySelectorAll('.legal-tab-btn').forEach(btn => {
-      btn.onclick = (e) => {
-        e.preventDefault();
-        switchLegalTab(btn.getAttribute('data-legal-tab'));
-      };
-    });
   }
-
-  if (legalModalCloseBtn) legalModalCloseBtn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); window.closeLegalModal(); };
-  if (legalModalOverlay) legalModalOverlay.onclick = (e) => { if (e.target === legalModalOverlay) window.closeLegalModal(); };
-
-  checkLegalConsent();
 
   /* ==========================================================================
-     2. CATÁLOGO BASE DE PRODUCTOS
+     2. CATÁLOGO BASE Y PRODUCTOS DINÁMICOS
      ========================================================================== */
   const defaultProducts = [
     {
@@ -155,19 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const productsGrid = document.getElementById('productsGrid');
   const categoryTabs = document.getElementById('categoryTabs');
   const productFilterInput = document.getElementById('productFilterInput');
-  const clearSearchBtn = document.getElementById('clearSearchBtn');
-  const headerSearchInput = document.getElementById('headerSearchInput');
-  const sortSelect = document.getElementById('sortSelect');
-  const noResultsMsg = document.getElementById('noResultsMsg');
-  const resetFiltersBtn = document.getElementById('resetFiltersBtn');
-  const showAllBtn = document.getElementById('showAllBtn');
-  const currentCategoryTitle = document.getElementById('currentCategoryTitle');
   const currentCategoryCount = document.getElementById('currentCategoryCount');
-  const currentCategoryDesc = document.getElementById('currentCategoryDesc');
 
   let currentCategory = 'all';
   let searchQuery = '';
-  let currentSort = 'featured';
 
   function formatARS(amount) {
     return '$' + Number(amount || 0).toLocaleString('es-AR');
@@ -218,37 +143,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function getFilteredProducts() {
-    return products.filter(product => {
+  function renderProducts() {
+    if (!productsGrid) return;
+    const filtered = products.filter(product => {
       const matchesCategory = (currentCategory === 'all') || (product.category === currentCategory);
       const query = searchQuery.trim().toLowerCase();
       const matchesSearch = !query || 
         (product.title && product.title.toLowerCase().includes(query)) ||
         (product.shortDesc && product.shortDesc.toLowerCase().includes(query));
       return matchesCategory && matchesSearch;
-    }).sort((a, b) => {
-      if (currentSort === 'discount') return (b.discount || 0) - (a.discount || 0);
-      if (currentSort === 'price-asc') return (a.salePrice || 0) - (b.salePrice || 0);
-      if (currentSort === 'price-desc') return (b.salePrice || 0) - (a.salePrice || 0);
-      if (currentSort === 'rating') return (b.rating || 0) - (a.rating || 0);
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return 0;
     });
-  }
-
-  function renderProducts() {
-    if (!productsGrid) return;
-    const filtered = getFilteredProducts();
 
     if (filtered.length === 0) {
-      productsGrid.innerHTML = '';
-      if (noResultsMsg) noResultsMsg.style.display = 'flex';
+      productsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #fff;">No hay productos en esta categoría.</div>';
       if (currentCategoryCount) currentCategoryCount.textContent = '0 Productos';
       return;
     }
 
-    if (noResultsMsg) noResultsMsg.style.display = 'none';
     if (currentCategoryCount) currentCategoryCount.textContent = `Mostrando ${filtered.length} Producto${filtered.length === 1 ? '' : 's'}`;
 
     productsGrid.innerHTML = filtered.map((product) => `
@@ -302,25 +213,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     4. LECTURA DE ARCHIVOS CREADOS POR DECAP CMS
+     4. SINCRONIZACIÓN CON EL CMS (PRODUCTS.JSON & SETTINGS.JSON)
      ========================================================================== */
-  async function syncCMSProducts() {
+  async function loadCMSData() {
     try {
-      // Intenta obtener el índice o el archivo compilado si existe
-      const response = await fetch('content/products.json?v=' + Date.now());
-      if (response.ok) {
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          products = data;
-          renderProducts();
+      const prodRes = await fetch('content/products.json?v=' + Date.now());
+      if (prodRes.ok) {
+        const data = await prodRes.json();
+        if (data && Array.isArray(data.items) && data.items.length > 0) {
+          products = data.items;
         }
       }
     } catch (e) {
-      console.log('Manteniendo catálogo base activo');
+      console.log('Usando catálogo base de respaldo');
     }
+
+    try {
+      const settingsRes = await fetch('content/settings.json?v=' + Date.now());
+      if (settingsRes.ok) {
+        const settings = await settingsRes.json();
+        const heroTitleEl = document.querySelector('.hero-title, [data-cms-hero-title]');
+        if (heroTitleEl && settings.heroTitle) heroTitleEl.textContent = settings.heroTitle;
+
+        const footerEl = document.querySelector('footer p, [data-cms-footer]');
+        if (footerEl && settings.footerText) footerEl.textContent = settings.footerText;
+      }
+    } catch (e) {
+      console.log('Ajustes generales pendientes');
+    }
+
+    renderProducts();
   }
 
-  // Pestañas
   if (categoryTabs) {
     categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -338,6 +262,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  renderProducts();
-  syncCMSProducts();
+  loadCMSData();
 });
