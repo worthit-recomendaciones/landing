@@ -3712,3 +3712,9 @@ body.consent-locked .whatsapp-float-container {
 }
 
 
+
+
+/* WorthIT: el hero prioriza el mensaje y el catálogo real vigente */
+.hero-container { grid-template-columns: 1fr; }
+.hero-content { max-width: 900px; }
+.hero-showcase { display: none !important; }
