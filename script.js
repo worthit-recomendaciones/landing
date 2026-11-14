@@ -864,6 +864,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const heading = document.getElementById('countdownHeading');
       const expired = document.getElementById('countdownExpired');
       if (heading && PROMO_COUNTDOWN.eventName) heading.textContent = PROMO_COUNTDOWN.eventName;
+      let promoInterval = null;
       const updatePromoCountdown = () => {
         const remaining = endAt.getTime() - Date.now();
         if (remaining <= 0) {
@@ -885,7 +886,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       };
       updatePromoCountdown();
-      const promoInterval = window.setInterval(updatePromoCountdown, 1000);
+      promoInterval = window.setInterval(updatePromoCountdown, 1000);
     }
   }
 
