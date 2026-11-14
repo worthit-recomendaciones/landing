@@ -105,341 +105,277 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      2. CATÁLOGO DE PRODUCTOS (15 Productos: 5 Tecnología, 5 Home Office, 5 Café)
      ========================================================================== */
-  const products = [
-    // --- TECNOLOGÍA (5 Productos) ---
+  const products =   [
     {
-      id: 'tech-1',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Auriculares AeroSound Pro ANC',
-      shortDesc: 'Cancelación activa de ruido híbrida, 40 horas de batería, audio espacial inmersivo y almohadillas viscoelásticas ultra suaves.',
-      fullDesc: 'Diseñados para audiófilos exigentes y jornadas de trabajo prolongadas. Cuentan con cancelación de ruido híbrida de 3 niveles, diafragmas de berilio y conexión multipunto Bluetooth 5.3.',
-      specs: [
-        'Drivers acústicos de Berilio de 40mm',
-        'Cancelación Activa de Ruido Híbrida (-42dB)',
-        'Hasta 40 horas de reproducción ininterrumpida',
-        'Conexión Multipoint Bluetooth 5.3 y micrófono HD'
-      ],
-      originalPrice: 249000,
-      salePrice: 179000,
-      discount: 28,
-      installments: '6 cuotas sin interés de $29.833',
+      id: "BV92HN-FP8C",
+      category: "technology",
+      categoryName: "Tecnología",
+      title: "Freidora de aire Suono 12 L con pantalla digital",
+      shortDesc: "Una freidora de aire de gran capacidad, con 12 litros y controles digitales para preparar distintas comidas en casa.",
+      fullDesc: "La Suono ofrece una capacidad de 12 litros y una interfaz digital. Una alternativa para quienes buscan cocinar porciones abundantes con freidora de aire. Confirmá en la publicación las funciones, accesorios y medidas incluidas.",
+      salePrice: 149459,
+      installments: "2 cuotas de $74.730",
       freeShipping: true,
-      image: 'images/products/tech-headphones.svg',
+      image: "images/products/air-fryer.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/2gGkHuK",
+      specs: [
+        "Capacidad declarada: 12 litros",
+        "Pantalla y controles digitales"
+      ]
     },
     {
-      id: 'tech-2',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Smartwatch HUAWEI Watch Fit 4 Pro GPS',
-      shortDesc: 'Pantalla Retina OLED curva de alto brillo, GPS dual de precisión quirúrgica, sensor ECG y 5 días de batería real.',
-      fullDesc: 'Chasis de titanio de grado aeroespacial resistente a golpes y rayones. Medición continua de frecuencia cardíaca, saturación SpO2, fases de sueño y más de 100 modos deportivos.',
-      specs: [
-        'Pantalla Retina OLED de 1.92" curva (1000 nits)',
-        'Caja forjada en aleación de titanio aeroespacial',
-        'Sensor óptico ECG + oximetría SpO2 en tiempo real',
-        'Resistencia al agua 5 ATM (sumergible 50 metros)'
-      ],
-      originalPrice: 229000,
-      salePrice: 189000,
-      discount: 17,
-      installments: '6 cuotas sin interés de $31.500',
+      id: "BV92HN-MY02",
+      category: "technology",
+      categoryName: "Tecnología",
+      title: "Smartwatch Smartbit W1 Pro sumergible",
+      shortDesc: "Reloj inteligente Smartbit W1 Pro, una opción para acompañar la actividad cotidiana desde la muñeca.",
+      fullDesc: "El Smartbit W1 Pro combina formato de reloj inteligente con resistencia al agua indicada en su denominación comercial. Antes de usarlo en agua, revisá en la publicación el nivel de protección y las condiciones de uso.",
+      salePrice: 82500,
+      installments: "3 cuotas de $27.500",
       freeShipping: true,
-      image: 'images/products/smartwatch2.png',
-      featured: true, // Destacado con reborde neón brillante (como en Referencia 2)
-	  affiliateUrl: 'https://meli.la/13CTiHx' // Enlace provisto para el producto destacado.
+      image: "images/products/smartwatch.png",
+      featured: false,
+      affiliateUrl: "https://meli.la/2zoZ2Pa",
+      specs: [
+        "Modelo: W1 Pro",
+        "Resistencia al agua indicada por el vendedor; verificar alcance y condiciones"
+      ]
     },
     {
-      id: 'tech-3',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Visor VR CyberVision X Reality',
-      shortDesc: 'Lentes ópticos duales 4K Pancake, tracking espacial submilimétrico sin cables y diadema ergonómica ultraliviana.',
-      fullDesc: 'Experimentá mundos virtuales y productividad espacial en resolución 4K real. Frecuencia de 120Hz fluida, cámaras de seguimiento de baja latencia y audio binaural integrado.',
-      specs: [
-        'Doble pantalla Micro-OLED 4K (2160x2160 por ojo)',
-        'Campo de visión ultra amplio de 110 grados',
-        'Seguimiento espacial 6-DoF de adentro hacia afuera',
-        'Latencia ultra baja movimiento-a-fotón de 12ms'
-      ],
-      originalPrice: 499000,
-      salePrice: 349000,
-      discount: 30,
-      installments: '12 cuotas sin interés de $29.083',
+      id: "BV92HN-NCEV",
+      category: "technology",
+      categoryName: "Tecnología",
+      title: "Smartwatch HUAWEI Watch Fit 4 Pro GPS",
+      shortDesc: "Un reloj inteligente HUAWEI con GPS integrado, pensado para registrar actividad y acompañar entrenamientos.",
+      fullDesc: "El Watch Fit 4 Pro es la alternativa destacada de esta selección. Su GPS integrado permite registrar recorridos sin depender exclusivamente del teléfono. Consultá en la publicación la compatibilidad y el detalle de sensores y funciones disponibles.",
+      salePrice: 299999,
+      installments: "6 cuotas de $50.000",
       freeShipping: true,
-      image: 'images/products/tech-vr-headset.svg',
-      featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      image: "images/products/smartwatch2.png",
+      featured: true,
+      affiliateUrl: "https://meli.la/13CTiHx",
+      specs: [
+        "GPS integrado",
+        "Consultar compatibilidad y funciones específicas en la publicación"
+      ]
     },
     {
-      id: 'tech-4',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Parlante Acústico Pulse 360°',
-      shortDesc: 'Sonido envolvente 360 grados de alta fidelidad, radiadores pasivos de graves profundos y aro táctil iluminado.',
-      fullDesc: 'Potencia acústica que llena cualquier habitación. Certificación impermeable IPX7 para usar en interiores o al aire libre, y emparejamiento estéreo True Wireless.',
-      specs: [
-        'Dispersión acústica omnidireccional en 360°',
-        'Doble radiador de neodimio para bajos profundos',
-        'Certificación IPX7 resistente a inmersión en agua',
-        'Dial táctil superior con anillo LED inteligente'
-      ],
-      originalPrice: 179000,
-      salePrice: 99000,
-      discount: 45,
-      installments: '6 cuotas sin interés de $16.500',
+      id: "BV92HN-P85N",
+      category: "technology",
+      categoryName: "Tecnología",
+      title: "Auriculares JBL Live 780 Bluetooth",
+      shortDesc: "Auriculares inalámbricos JBL de la línea Live, para escuchar música, contenidos y atender llamadas mediante Bluetooth.",
+      fullDesc: "Una opción de audio inalámbrico de JBL. Revisá en la publicación las características exactas de conectividad, autonomía, micrófono y accesorios incluidos para esta versión.",
+      salePrice: 309999,
+      installments: "6 cuotas de $51.666",
       freeShipping: true,
-      image: 'images/products/tech-speaker.svg',
+      image: "images/products/headphones-jbl.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/2bgiQ1i",
+      specs: [
+        "Conectividad Bluetooth",
+        "Línea JBL Live; verificar especificaciones de la versión publicada"
+      ]
     },
     {
-      id: 'tech-5',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Smartphone Vortex 15 Pro 256GB',
-      shortDesc: 'Estructura de titanio azul medianoche, pantalla Super AMOLED 120Hz, triple cámara pro de 48MP y batería para todo el día.',
-      fullDesc: 'Diseño insignia con bordes biselados de titanio grado 5. Sensor fotográfico computacional de última generación, zoom periscópico óptico y carga ultra rápida de 45W.',
-      specs: [
-        'Pantalla 6.7" Super AMOLED 120Hz adaptativa',
-        'Triple cámara pro con sensor principal de 48MP',
-        'Borde de titanio grado 5 y vidrio esmerilado mate',
-        'Batería para todo el día con carga rápida 45W'
-      ],
-      originalPrice: 999000,
-      salePrice: 799000,
-      discount: 20,
-      installments: '12 cuotas sin interés de $66.583',
+      id: "BV92HN-X7L4",
+      category: "technology",
+      categoryName: "Tecnología",
+      title: "Auriculares Anker Soundcore P30i con cancelación de ruido",
+      shortDesc: "Auriculares Soundcore P30i con cancelación de ruido, una opción compacta para escuchar audio en movimiento.",
+      fullDesc: "Los Soundcore P30i se presentan con cancelación de ruido. Una alternativa para quienes buscan auriculares portátiles para uso diario. Consultá en el vendedor los detalles de autonomía, controles y compatibilidad.",
+      salePrice: 68321,
+      installments: "2 cuotas de $34.160",
       freeShipping: true,
-      image: 'images/products/tech-smartphone.svg',
+      image: "images/products/headphones-anker-soundcore.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
-    },
-
-    // --- HOME OFFICE (5 Productos) ---
-    {
-      id: 'office-1',
-      category: 'home-office',
-      categoryName: 'Home Office',
-      title: 'Silla Ergonómica ErgoFlex Pro',
-      shortDesc: 'Soporte lumbar dinámico autorregulable, malla transpirable antitranspirante y apoyabrazos 4D regulables.',
-      fullDesc: 'Diseñada para jornadas intensivas de más de 12 horas. Se amolda con precisión a la curvatura natural de la columna vertebral y disipa el calor corporal de manera constante.',
+      affiliateUrl: "https://meli.la/2mtnn8t",
       specs: [
-        'Soporte lumbar adaptativo a los movimientos del cuerpo',
-        'Malla técnica de alta densidad y respirabilidad',
-        'Apoyabrazos 4D multidireccionales acolchados',
-        'Pistón de gas reforzado Clase 4 certificado BIFMA'
-      ],
-      originalPrice: 420000,
-      salePrice: 289000,
-      discount: 31,
-      installments: '6 cuotas sin interés de $48.166',
-      freeShipping: true,
-      image: 'images/products/office-chair.svg',
-      featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+        "Modelo: Soundcore P30i",
+        "Cancelación de ruido indicada en la publicación"
+      ]
     },
     {
-      id: 'office-2',
-      category: 'home-office',
-      categoryName: 'Home Office',
-      title: 'Escritorio Elevable ApexLift Dual-Motor',
-      shortDesc: 'Sistema eléctrico de doble motor ultra silencioso, tapa de roble macizo biselado (160x80cm) y panel LED con 4 memorias.',
-      fullDesc: 'Mejorá tu salud y postura alternando entre trabajar de pie y sentado. Motores duales sincronizados con sensor anti-colisión, canaleta organizadora y tablero de madera premium.',
-      specs: [
-        'Doble motor eléctrico sincronizado (<45dB)',
-        'Rango de elevación de 62cm a 128cm con sensor anti-choque',
-        'Tablero de roble macizo con bordes biselados (160x80cm)',
-        'Panel digital táctil con 4 alturas memorizables'
-      ],
-      originalPrice: 650000,
-      salePrice: 469000,
-      discount: 28,
-      installments: '12 cuotas sin interés de $39.083',
+      id: "BV92HN-8Q92",
+      category: "home-office",
+      categoryName: "Home Office",
+      title: "Silla de oficina Celta giratoria negra",
+      shortDesc: "Silla giratoria de oficina en color negro, para equipar un espacio de trabajo o estudio.",
+      fullDesc: "Una silla de oficina de formato giratorio y terminación negra. Revisá en la publicación las dimensiones, materiales, regulación y capacidad de carga antes de elegirla.",
+      salePrice: 84764,
+      installments: "9 cuotas de $9.418",
       freeShipping: true,
-      image: 'images/products/office-desk.svg',
+      image: "images/products/silla.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/29J9i9N",
+      specs: [
+        "Formato giratorio",
+        "Color negro",
+        "Verificar medidas y regulaciones en la publicación"
+      ]
     },
     {
-      id: 'office-3',
-      category: 'home-office',
-      categoryName: 'Home Office',
-      title: 'Barra de Luz Monitor LuminaScreen',
-      shortDesc: 'Óptica asimétrica anti-reflejo en pantalla, sensor de luz ambiente inteligente y control dial inalámbrico de escritorio.',
-      fullDesc: 'Protegé tu vista en horas de trabajo nocturno. Se monta directamente sobre cualquier monitor curvo o plano sin ocupar espacio en el escritorio, proyectando luz homogénea sin reflejos.',
-      specs: [
-        'Diseño óptico asimétrico que no refleja en la pantalla',
-        'Puck dial inalámbrico rotatorio de 2.4GHz',
-        'Temperatura de color ajustable de 2700K a 6500K',
-        'Sensor frontal de auto-atenuación según la luz ambiente'
-      ],
-      originalPrice: 129000,
-      salePrice: 79000,
-      discount: 39,
-      installments: '3 cuotas sin interés de $26.333',
+      id: "BV92HN-VT5S",
+      category: "home-office",
+      categoryName: "Home Office",
+      title: "Impresora multifunción HP Smart Tank 580",
+      shortDesc: "Multifunción HP Smart Tank 580 para imprimir y resolver tareas habituales de estudio y trabajo.",
+      fullDesc: "La HP Smart Tank 580 reúne funciones de impresión y multifunción en un equipo de la línea Smart Tank. Consultá en la publicación los métodos de conexión, funciones de escaneo y copia, y contenido de la caja.",
+      salePrice: 444347,
+      installments: "9 cuotas de $49.372",
       freeShipping: true,
-      image: 'images/products/office-lightbar.svg',
+      image: "images/products/impresora-hp.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/2DRrxWv",
+      specs: [
+        "Modelo: HP Smart Tank 580",
+        "Funciones multifunción; confirmar conectividad y accesorios incluidos"
+      ]
     },
     {
-      id: 'office-4',
-      category: 'home-office',
-      categoryName: 'Home Office',
-      title: 'Soporte Articulado de Aluminio Stratos',
-      shortDesc: 'Aluminio mecanizado CNC de grado espacial con doble eje articulado, calados de ventilación y pads de silicona.',
-      fullDesc: 'Elevá la pantalla de tu notebook a la altura ergonómica ideal de tus ojos. Resiste laptops de hasta 17 pulgadas con bisagras reforzadas de alta fricción que no ceden.',
-      specs: [
-        'Estructura de aleación de aluminio mecanizado CNC',
-        'Bisagras dobles de alta tensión con capacidad de 10 kg',
-        'Ventilación hexagonal para refrigeración pasiva de la notebook',
-        'Protectores de silicona anti-deslizantes y anti-rayas'
-      ],
-      originalPrice: 89000,
-      salePrice: 49000,
-      discount: 45,
-      installments: '3 cuotas sin interés de $16.333',
+      id: "BV92HN-PJ2J",
+      category: "home-office",
+      categoryName: "Home Office",
+      title: "Escritorio funcional con cajones y estantes",
+      shortDesc: "Escritorio con espacio de guardado integrado, una solución práctica para organizar el área de trabajo.",
+      fullDesc: "Este escritorio combina superficie de trabajo con cajones y estantes. Puede ayudar a mantener a mano útiles y accesorios sin sumar muebles adicionales. Verificá medidas, materiales y distribución en la publicación.",
+      salePrice: 138999,
+      installments: "6 cuotas de $23.166",
       freeShipping: true,
-      image: 'images/products/office-laptop-stand.svg',
+      image: "images/products/escritorio.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/1skvE6U",
+      specs: [
+        "Cajones y estantes integrados",
+        "Consultar dimensiones y materiales"
+      ]
     },
     {
-      id: 'office-5',
-      category: 'home-office',
-      categoryName: 'Home Office',
-      title: 'Desk Mat Minimalista Fieltro y Cuero',
-      shortDesc: 'Superficie combinada de fieltro suave y cuero vegano impermeable (90x40cm) con organizador magnético de cables.',
-      fullDesc: 'Transformá la estética de tu setup de trabajo. Base antideslizante con tratamiento hidrófugo ante derrames accidentales y soporte magnético imantado para cables de carga.',
-      specs: [
-        'Zona dual: fieltro de lana gris + cuero vegano suave',
-        'Medidas amplias de 90cm x 40cm para teclado y mouse',
-        'Nano-recubrimiento resistente a manchas y líquidos',
-        'Incluye pasacables magnético de bronce anodizado'
-      ],
-      originalPrice: 60000,
-      salePrice: 34000,
-      discount: 43,
-      installments: '3 cuotas sin interés de $11.333',
+      id: "BV92HN-C5JH",
+      category: "home-office",
+      categoryName: "Home Office",
+      title: "Escritorio eléctrico Gadnic 120 × 60 cm",
+      shortDesc: "Escritorio eléctrico Gadnic de 120 × 60 cm para adaptar la altura de la superficie de trabajo.",
+      fullDesc: "Una alternativa de escritorio regulable eléctricamente, con superficie de 120 × 60 cm. Antes de comprar, revisá en la publicación el rango de altura, capacidad de carga y sistema de regulación.",
+      salePrice: 449999,
+      installments: "3 cuotas de $150.000",
       freeShipping: true,
-      image: 'images/products/office-deskmat.svg',
+      image: "images/products/escritorio-gadnic-electrico.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
-    },
-
-    // --- CAFÉ DE ESPECIALIDAD (5 Productos) ---
-    {
-      id: 'coffee-1',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Cafetera Espresso BaristaCraft Touch',
-      shortDesc: 'Bomba italiana de 15 bares, control térmico PID de alta precisión, pantalla táctil y lanceta de vapor profesional.',
-      fullDesc: 'Llevá la experiencia de una cafetería de especialidad a tu casa. Elegí con un toque en la pantalla entre Espresso, Flat White, Capuccino o personalizá la receta de tu café favorito.',
+      affiliateUrl: "https://meli.la/2BNX2tU",
       specs: [
-        'Portafiltro comercial de acero inoxidable de 58mm',
-        'Bomba italiana de 15 bares con pre-infusión suave',
-        'Control digital de temperatura PID (estabilidad ±1°C)',
-        'Lanceta de vapor profesional para microespuma sedosa'
-      ],
-      originalPrice: 799000,
-      salePrice: 549000,
-      discount: 31,
-      installments: '12 cuotas sin interés de $45.750',
-      freeShipping: true,
-      image: 'images/products/coffee-espresso.svg',
-      featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+        "Superficie: 120 × 60 cm",
+        "Regulación eléctrica de altura; verificar rango y carga máxima"
+      ]
     },
     {
-      id: 'coffee-2',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Molinillo Cónico ApexGrind Gen-2',
-      shortDesc: '31 niveles de molienda desde Espresso hasta Cold Brew con conducto antiestático de retención cero.',
-      fullDesc: 'Consistencia de molienda insuperable que resalta las notas más sutiles del grano. Muelas planas de acero inoxidable de 64mm, ionizador estático y vaso receptor magnético.',
-      specs: [
-        'Muelas planas profesionales de 64mm de acero templado',
-        '31 puntos de molienda con micro-ajuste gradual',
-        'Sistema antiestático con retención casi nula (<0.1g)',
-        'Vaso receptor con acople magnético de precisión'
-      ],
-      originalPrice: 240000,
-      salePrice: 169000,
-      discount: 30,
-      installments: '6 cuotas sin interés de $28.166',
-      freeShipping: true,
-      image: 'images/products/coffee-grinder.svg',
+      id: "BV92HN-UF6D",
+      category: "home-office",
+      categoryName: "Home Office",
+      title: "Lámpara de escritorio Gadnic LEDMax",
+      shortDesc: "Lámpara LED de escritorio Gadnic LEDMax para sumar iluminación puntual al espacio de trabajo.",
+      fullDesc: "Una lámpara de escritorio con iluminación LED. La publicación del vendedor permite confirmar niveles de intensidad, temperatura de color, alimentación y accesorios incluidos.",
+      salePrice: 32799,
+      installments: "9 cuotas de $3.644",
+      freeShipping: false,
+      image: "images/products/lampara-led-gadnic.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/1avicxD",
+      specs: [
+        "Iluminación LED",
+        "Envío gratis no informado para esta selección; revisar condiciones del vendedor"
+      ]
     },
     {
-      id: 'coffee-3',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Pava Cuello de Cisne StaggFlow',
-      shortDesc: 'Capacidad de 1.0L con pico vertedor de flujo exacto, pantalla LCD digital y función de mantenimiento térmico 60 min.',
-      fullDesc: 'La herramienta definitiva para los amantes del café filtrado. Su mango contrapesado ergonómico te da un control milimétrico del vertido, logrando extracciones perfectas.',
-      specs: [
-        'Pico vertedor cuello de cisne para caudal constante',
-        'Base digital LCD con selector grado a grado (40° a 100°C)',
-        'Función Hold: mantiene la temperatura exacta por 60 min',
-        'Mango ergonómico con contrapeso de apoyo para el pulgar'
-      ],
-      originalPrice: 165000,
-      salePrice: 115000,
-      discount: 30,
-      installments: '6 cuotas sin interés de $19.166',
+      id: "BV92HN-492V",
+      category: "coffee",
+      categoryName: "Café",
+      title: "Cafetera de filtro Oster DCS121B de 12 tazas",
+      shortDesc: "Cafetera de filtro Oster con capacidad declarada para preparar hasta 12 tazas.",
+      fullDesc: "Una cafetera de filtro para preparar varias tazas en una misma tanda. Su capacidad de 12 tazas la vuelve práctica para el hogar o para compartir. Consultá en la publicación las dimensiones y funciones adicionales.",
+      salePrice: 69133,
+      installments: "2 cuotas de $34.566",
       freeShipping: true,
-      image: 'images/products/coffee-kettle.svg',
+      image: "images/products/coffee.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/2yB92ov",
+      specs: [
+        "Capacidad declarada: 12 tazas",
+        "Sistema de preparación por filtro"
+      ]
     },
     {
-      id: 'coffee-4',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Cafetera de Vidrio PureDrip 8 Tazas',
-      shortDesc: 'Jarra de vidrio borosilicato artesanal con collar de madera pulida aislante y lazo de cuero genuino.',
-      fullDesc: 'Extracción limpia y cristalina que conserva todos los aceites esenciales del café. Vidrio resistente a choques térmicos que no absorbe olores ni deja residuos químicos.',
-      specs: [
-        'Capacidad para 8 tazas (1.2 Litros)',
-        'Vidrio borosilicato de laboratorio ultra transparente',
-        'Collar de madera natural pulida con lazo de cuero',
-        'Compatible con filtros cónicos de papel y reutilizables'
-      ],
-      originalPrice: 65000,
-      salePrice: 42000,
-      discount: 35,
-      installments: '3 cuotas sin interés de $14.000',
+      id: "BV92HN-4TVL",
+      category: "coffee",
+      categoryName: "Café",
+      title: "Cafetera express Atma Pro Cappuccino 1,6 L",
+      shortDesc: "Cafetera express Atma Pro Cappuccino con depósito de 1,6 litros.",
+      fullDesc: "Una cafetera express de la línea Pro Cappuccino, con capacidad declarada de 1,6 litros. Revisá en la publicación la presión, accesorios y preparación de bebidas disponibles para esta versión.",
+      salePrice: 139999,
+      installments: "6 cuotas de $23.333",
       freeShipping: true,
-      image: 'images/products/coffee-pourover.svg',
+      image: "images/products/Cafetera.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/21qUHrZ",
+      specs: [
+        "Capacidad declarada: 1,6 litros",
+        "Modelo: Atma Pro Cappuccino"
+      ]
     },
     {
-      id: 'coffee-5',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Trío de Cafés Especiales Highland (3x250g)',
-      shortDesc: 'Granos recién tostados en Argentina: Etiopía Yirgacheffe, Colombia Geisha y Sumatra Mandheling en bolsas con válvula desgasificadora.',
-      fullDesc: 'Una selección de los orígenes más aclamados del mundo. Tostados semanalmente en lotes pequeños para garantizar máxima frescura, notas florales, frutales y a chocolate amargo.',
-      specs: [
-        'Trío: Etiopía Yirgacheffe, Colombia Geisha, Sumatra',
-        'Granos 100% Arábica con puntaje SCA 86+',
-        'Envases de 250g con válvula aromática y cierre zipper',
-        'Notas de cata: Jazmín, Bergamota, Cacao Fino y Frutas de Carozo'
-      ],
-      originalPrice: 54000,
-      salePrice: 36000,
-      discount: 33,
-      installments: '3 cuotas sin interés de $12.000',
+      id: "BV92HN-CCPY",
+      category: "coffee",
+      categoryName: "Café",
+      title: "Molinillo de café Ultracomb MO8100A",
+      shortDesc: "Molinillo Ultracomb MO8100A para moler café en casa antes de prepararlo.",
+      fullDesc: "Un molinillo de café de uso doméstico, pensado para sumar molienda al momento de preparar la bebida. Consultá en la publicación el tipo de cuchillas o muelas, capacidad y ajustes disponibles.",
+      salePrice: 39999,
+      installments: "",
       freeShipping: true,
-      image: 'images/products/coffee-beans.svg',
+      image: "images/products/molinillo-cafe-ultracomb.png",
       featured: false,
-	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
+      affiliateUrl: "https://meli.la/1ywMbkT",
+      specs: [
+        "Modelo: Ultracomb MO8100A",
+        "Verificar capacidad y sistema de molienda en la publicación"
+      ]
+    },
+    {
+      id: "BV92HN-NSFD",
+      category: "coffee",
+      categoryName: "Café",
+      title: "Cafetera express Yelmo CE5107 de 19 bares",
+      shortDesc: "Cafetera express Yelmo CE5107 con presión declarada de 19 bares.",
+      fullDesc: "Una cafetera express para preparar café en casa, con presión de 19 bares indicada en el modelo seleccionado. Revisá en la publicación los accesorios incluidos y las recomendaciones de uso y mantenimiento.",
+      salePrice: 166350,
+      installments: "3 cuotas de $55.450",
+      freeShipping: true,
+      image: "images/products/cafetera-yelmo.png",
+      featured: false,
+      affiliateUrl: "https://meli.la/214y3s8",
+      specs: [
+        "Presión declarada: 19 bares",
+        "Modelo: Yelmo CE5107"
+      ]
+    },
+    {
+      id: "BV92HN-CYQ7",
+      category: "coffee",
+      categoryName: "Café",
+      title: "Molinillo Hamilton Beach de muelas con 18 funciones",
+      shortDesc: "Molinillo Hamilton Beach de muelas con 18 ajustes de molienda indicados para adaptar el café a distintas preparaciones.",
+      fullDesc: "Este molinillo utiliza muelas y ofrece 18 ajustes de molienda según la denominación del producto. Una opción para ajustar el resultado según el método de preparación. Verificá en la publicación la capacidad y limpieza del equipo.",
+      salePrice: 65399,
+      installments: "2 cuotas de $32.700",
+      freeShipping: true,
+      image: "images/products/molinillo-hamilton-beach.png",
+      featured: false,
+      affiliateUrl: "https://meli.la/2Ck4KVF",
+      specs: [
+        "Sistema de muelas",
+        "18 ajustes de molienda indicados"
+      ]
     }
   ];
 
@@ -513,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return matchesCategory && matchesSearch;
     }).sort((a, b) => {
-      if (currentSort === 'discount') return b.discount - a.discount;
+      if (currentSort === 'discount') return Number(b.featured) - Number(a.featured);
       if (currentSort === 'price-asc') return a.salePrice - b.salePrice;
       if (currentSort === 'price-desc') return b.salePrice - a.salePrice;
       // Por defecto: producto destacado primero
@@ -542,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <article class="product-card ${isCardFeatured}" data-product-id="${product.id}" style="--card-delay: ${cardDelay}s" tabindex="0">
           <div class="card-top-badges">
-            <span class="badge-discount">-${product.discount}%</span>
+            
             <span class="badge-tag">${product.categoryName}</span>
           </div>
 
@@ -555,9 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div class="product-info">
             <!-- Badge destacado de Envío Gratis -->
-            <div class="badge-free-shipping">
-              🚚 Envío Gratis
-            </div>
+            ${product.freeShipping ? '<div class="badge-free-shipping">🚚 Envío Gratis</div>' : '<div class="badge-free-shipping">Consultar envío</div>'}
 
             <span class="product-category-label">${product.categoryName}</span>
             <h3 class="product-title" onclick="window.openQuickView('${product.id}')">${product.title}</h3>
@@ -565,14 +499,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Breve descripción (Requisito explícito) -->
             <p class="product-description">${product.shortDesc}</p>
             <div class="product-price-box">
-              <span class="product-price-old">${formatARS(product.originalPrice)}</span>
+              
               <span class="product-price-current">${formatARS(product.salePrice)}</span>
             </div>
 
             <!-- Cantidad de cuotas disponibles para pago con tarjeta -->
-            <div class="product-installments">
-              💳 <span>${product.installments}</span>
-            </div>
+            ${product.installments ? `<div class="product-installments">💳 <span>${product.installments}</span></div>` : '<div class="product-installments">Consultar medios de pago</div>'}
 
             <!-- Botón COMPRAR AHORA (#315CF5 como fue solicitado) -->
             <button class="btn-buy-product" data-product-id="${product.id}" type="button">
@@ -603,20 +535,20 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const categoryMeta = {
     all: {
-      title: 'Todas las Ofertas Hot Sale',
-      desc: 'Explorá el catálogo completo con 15 productos destacados en Tecnología, Home Office y Café con cuotas sin interés y envío gratis a todo el país.'
+      title: 'Selección WorthIT',
+      desc: '15 productos seleccionados en Tecnología, Home Office y Café. Compará características, precio y condiciones antes de comprar.'
     },
     technology: {
-      title: 'Tecnología Hot Sale',
-      desc: 'Auriculares inalámbricos con cancelación activa de ruido, smartwatches de titanio, visores VR 4K, parlantes inteligentes y smartphones premium.'
+      title: 'Tecnología',
+      desc: 'Dispositivos y accesorios para uso cotidiano, trabajo y entretenimiento.'
     },
     'home-office': {
-      title: 'Home Office y Escritorios Hot Sale',
-      desc: 'Sillas ergonómicas de alta densidad, escritorios elevables de doble motor, barras de luz antifatiga visual, soportes de aluminio y desk mats.'
+      title: 'Home Office',
+      desc: 'Equipamiento para organizar y mejorar tu espacio de trabajo.'
     },
     coffee: {
-      title: 'Café de Especialidad Hot Sale',
-      desc: 'Cafeteras espresso comerciales con pantalla táctil, molinillos cónicos con retención cero, pavas cuello de cisne y granos de origen único.'
+      title: 'Café',
+      desc: 'Cafeteras y molinillos para preparar café en casa.'
     }
   };
 
@@ -775,25 +707,21 @@ document.addEventListener('DOMContentLoaded', () => {
           <img src="${product.image}" alt="${product.title}">
         </div>
         <div class="modal-info">
-          <div class="badge-free-shipping">
-            🚚 Envío Gratis a todo el país
-          </div>
-          <span class="modal-tag">${product.categoryName} • OFERTA HOT SALE</span>
+          <div class="badge-free-shipping">${product.freeShipping ? "🚚 Envío Gratis" : "Consultar envío"}</div>
+          <span class="modal-tag">${product.categoryName}</span>
           <h2 class="modal-title">${product.title}</h2>
           <p class="modal-desc">${product.fullDesc}</p>
 
-          <ul class="modal-specs-list">
-            ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
-          </ul>
+          ${product.specs.length ? `<ul class="modal-specs-list">${product.specs.map(spec => `<li>${spec}</li>`).join('')}</ul>` : ""}
 
           <div class="modal-price-row">
-            <span class="modal-old-price">${formatARS(product.originalPrice)}</span>
+            
             <span class="modal-sale-price">${formatARS(product.salePrice)}</span>
-            <span class="badge-discount">AHORRÁS ${product.discount}%</span>
+            
           </div>
 
           <div class="product-installments" style="margin-bottom: 16px;">
-            💳 <strong>${product.installments}</strong> con tarjetas bancarias
+            ${product.installments ? `💳 <strong>${product.installments}</strong>` : "Consultar medios de pago"}
           </div>
 
           <div style="display: flex; gap: 12px; margin-top: 14px;">
