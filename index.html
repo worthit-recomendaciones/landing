@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-AR">
 <head>
   <meta charset="UTF-8">
@@ -60,20 +60,9 @@
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="headerSearchInput" placeholder="Buscar 15 ofertas..." aria-label="Buscar productos">
+          <input type="text" id="headerSearchInput" placeholder="Buscar productos..." aria-label="Buscar productos">
         </div>
-
-        <!-- Botón del Carrito -->
-        <button class="cart-trigger" id="cartTrigger" aria-label="Ver carrito de compras">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-          </svg>
-          <span class="cart-count" id="cartCountBadge">0</span>
-        </button>
-
-        <!-- CTA Ver Ofertas -->
+<!-- CTA Ver Ofertas -->
         <a href="#deals" class="btn btn-accent btn-sm">
           <span>Ver Ofertas</span>
           <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -311,15 +300,15 @@
             <h3 class="spotlight-title">Smartwatch HUAWEI Watch Fit 4 Pro GPS</h3>
             <p class="spotlight-subtitle">Pantalla zafiro, bisel titanio ECG y batería de diez días.</p>
             <div class="spotlight-installments-pill">
-              💳 6 cuotas sin interés de <strong>$43.333</strong> • 🚚 <strong>Envío Gratis a todo el país</strong>
+              💳 6 cuotas sin interés de <strong>$31.500</strong> • 🚚 <strong>Envío Gratis a todo el país</strong>
             </div>
             <div class="spotlight-cta">
-              <a href="https://meli.la/13CTiHx" class="btn btn-accent btn-buy-spotlight" data-product-id="tech-4">
+              <a href="https://meli.la/13CTiHx" class="btn btn-accent btn-buy-spotlight" data-product-id="tech-2" target="_blank" rel="sponsored nofollow noopener noreferrer">
                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 5px;">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
                 </svg>
-                <span style="padding-right: 5px;">COMPRAR AHORA • $259.999 </span>
+                <span style="padding-right: 5px;">COMPRAR AHORA • $189.000 </span>
               </a>
               <span class="spotlight-saving">Ahorrás $184.000 hoy</span>
             </div>
@@ -328,7 +317,7 @@
             <div class="sound-wave wave-1"></div>
             <div class="sound-wave wave-2"></div>
             <div class="sound-wave wave-3"></div>
-            <img src="images/products/smartwatch2.png" alt="Parlante Inteligente AcousticPulse 360" class="spotlight-speaker-img">
+            <img src="images/products/smartwatch2.png" alt="Smartwatch HUAWEI Watch Fit 4 Pro GPS" class="spotlight-speaker-img">
           </div>
         </div>
       </div>
@@ -350,7 +339,7 @@
             OFERTAS CYBER MONDAY<br> <span class="highlight-accent">CON DESCUENTOS BRUTALES</span>
           </h2>
           <p class="section-desc">
-            15 productos seleccionados a mano en Tecnología, Home Office y Café de Especialidad. Todos con <strong>cuotas sin interés</strong> y <strong>Envío Gratis</strong>.
+            15 recomendaciones para explorar en Tecnología, Home Office y Café de Especialidad. <strong>Precios, cuotas, envío y disponibilidad sujetos a confirmación en Mercado Libre.</strong>
           </p>
         </div>
 
@@ -537,14 +526,11 @@
       <div class="container">
         <div class="newsletter-box fade-in-scroll">
           <div class="newsletter-content">
-            <span class="badge-accent">CUPÓN EXTRA DE $20.000</span>
+            <span class="badge-accent">COMUNIDAD WORTHIT</span>
             <h2>Sumate al Club VIP de WorthIT</h2>
-            <p>Recibí alertas de caídas de precio antes que nadie, cupones sorpresa y nuestras guías expertas de compra para Argentina.</p>
-            <form class="newsletter-form" id="newsletterForm">
-              <input type="email" placeholder="Ingresá tu correo electrónico..." required aria-label="Correo para el Club VIP">
-              <button type="submit" class="btn btn-accent"><span style="padding: 14px 15px">Reclamar Cupón</span></button>
-            </form>
-            <span class="form-disclaimer">El código de descuento se mostrará en pantalla al instante. Podés desuscribirte cuando quieras.</span>
+            <p>Recibí recomendaciones, novedades y oportunidades seleccionadas. Escribinos por WhatsApp para sumarte a la comunidad.</p>
+            <a class="btn btn-accent" href="https://wa.me/5492234565003?text=Hola%2C%20quiero%20sumarme%20a%20la%20comunidad%20WorthIT" target="_blank" rel="noopener noreferrer">Sumarme por WhatsApp</a>
+            <span class="form-disclaimer">Contacto directo por WhatsApp. No almacenamos datos desde esta landing.</span>
           </div>
         </div>
       </div>
@@ -629,58 +615,6 @@
     </div>
   </div>
 
-  <!-- CARRITO DE COMPRAS DESPLEGABLE -->
-  <div class="cart-drawer-overlay" id="cartOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-header">
-      <div class="cart-title-row">
-        <h3>Tu Carrito Hot Sale</h3>
-        <span class="cart-items-pill" id="cartItemsCountLabel">0 productos</span>
-      </div>
-      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Cerrar carrito">&times;</button>
-    </div>
-
-    <div class="cart-drawer-body" id="cartDrawerBody">
-      <div class="cart-empty-state">
-        <svg class="icon-lg text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <h4>Tu carrito está vacío</h4>
-        <p>¡Aprovechá las 15 ofertas del Hot Sale antes de que se agoten!</p>
-        <a href="#deals" class="btn btn-primary btn-sm" id="cartStartShoppingBtn">Explorar Ofertas</a>
-      </div>
-    </div>
-
-    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display: none;">
-      <div class="cart-summary-row">
-        <span>Precio Regular:</span>
-        <span class="summary-old-price" id="cartOriginalTotal">$0</span>
-      </div>
-      <div class="cart-summary-row highlight-row">
-        <span>Ahorro Hot Sale:</span>
-        <span class="summary-saving" id="cartSavingsTotal">-$0</span>
-      </div>
-      <div class="cart-summary-row total-row">
-        <span>Total a Pagar:</span>
-        <span class="summary-final-price" id="cartFinalTotal">$0</span>
-      </div>
-      <div class="cart-shipping-badge">
-        🚚 <strong>Envío Gratis</strong> a todo el país incluido
-      </div>
-      <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
-        <span>Iniciar Compra Segura</span>
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
-      <div class="cart-guarantee-note">
-        🔒 Compra protegida con cifrado SSL • Devolución gratis en 30 días
-      </div>
-    </div>
-  </div>
 
   <!-- BOTÓN FLOTANTE DE WHATSAPP (+54 9 223 456-5003) -->
   <aside class="whatsapp-float-container" aria-label="Contacto por WhatsApp">
