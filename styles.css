@@ -3951,16 +3951,61 @@ body.legal-modal-open { overflow:hidden !important; }
 }
 
 
-/* Ajustes WorthIT: catálogo editorial sin campaña temporal ni productos ficticios */
-.countdown-wrapper,
-.hero-showcase {
-  display: none !important;
-}
+/* Ajustes WorthIT: catálogo editorial sin campañas ficticias */
 .hero-container {
-  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr) !important;
+  gap: 34px;
 }
 .hero-content {
-  max-width: 900px;
+  max-width: 790px;
+}
+.hero-title {
+  max-width: 760px;
+}
+.hero-showcase {
+  display: flex !important;
+  min-width: 0;
+  height: 480px;
+}
+.countdown-wrapper[hidden] {
+  display: none !important;
+}
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .hero-content {
+    max-width: 760px;
+  }
+  .hero-showcase {
+    width: 100%;
+    max-width: 560px;
+    margin: 12px auto 0;
+    height: 430px;
+  }
+}
+@media (max-width: 560px) {
+  .hero-showcase {
+    height: 390px;
+    transform: scale(.92);
+    transform-origin: top center;
+    margin-bottom: -24px;
+  }
+  .hero-title {
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
+  }
+  .countdown-wrapper {
+    padding: 16px 12px;
+  }
+  .countdown-timer {
+    gap: 7px;
+  }
+  .countdown-card {
+    height: 64px;
+  }
+  .countdown-num {
+    font-size: 1.7rem;
+  }
 }
 .product-price-old,
 .modal-old-price,
