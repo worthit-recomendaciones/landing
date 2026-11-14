@@ -3707,3 +3707,100 @@ body.consent-locked .whatsapp-float-container {
 }
 
 
+
+
+/* ==========================================================================
+   AJUSTES DE PRESENTACIÓN — WORTHIT PRODUCCIÓN
+   ========================================================================== */
+
+/* Barra superior: una sola línea, breve y ordenada */
+.top-announcement {
+  padding: 7px 0;
+}
+.announcement-content {
+  flex-wrap: nowrap;
+  min-width: 0;
+  gap: 18px;
+}
+.announcement-text {
+  min-width: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+.announcement-code {
+  flex-shrink: 0;
+  font-size: 0.76rem;
+}
+
+/* CTA de producto: nunca partir el texto en dos líneas */
+.btn-buy-product {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  min-width: 0;
+  padding: 9px 8px;
+  gap: 6px;
+  font-size: clamp(0.68rem, 0.78vw, 0.82rem);
+  letter-spacing: -0.01em;
+}
+.btn-buy-product svg,
+.btn-buy-product .icon-sm {
+  flex: 0 0 auto;
+}
+
+/* Disclosure discreto y navegación legal en formato de banda */
+.footer-disclosure {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: #71869b;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+}
+.footer-legal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 13px 16px;
+  margin: 0 0 18px;
+  border: 1px solid rgba(199,243,107,0.14);
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(10,25,43,0.92), rgba(15,34,56,0.92));
+}
+.footer-legal-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 14px;
+  border: 1px solid rgba(199,243,107,0.24);
+  border-radius: 999px;
+  color: #d8e2ec;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.footer-legal-nav a:hover {
+  color: #07111d;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+@media (max-width: 768px) {
+  .announcement-content { gap: 10px; }
+  .announcement-code { display: none; }
+  .announcement-text { text-align: right; font-size: 0.72rem; }
+  .btn-buy-product { font-size: 0.68rem; padding: 9px 6px; gap: 4px; }
+  .footer-legal-nav { gap: 7px; padding: 11px 8px; }
+  .footer-legal-nav a { font-size: 0.7rem; padding: 7px 10px; }
+}
+@media (max-width: 420px) {
+  .announcement-text { font-size: 0.66rem; }
+  .btn-buy-product { font-size: 0.64rem; letter-spacing: -0.025em; }
+}
