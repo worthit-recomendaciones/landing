@@ -3804,3 +3804,24 @@ body.consent-locked .whatsapp-float-container {
   .announcement-text { font-size: 0.66rem; }
   .btn-buy-product { font-size: 0.64rem; letter-spacing: -0.025em; }
 }
+
+
+/* Consentimiento: asegurar que el banner inferior prevalezca sobre el fondo */
+body.consent-locked { overflow: hidden !important; }
+body.consent-locked main,
+body.consent-locked header,
+body.consent-locked footer,
+body.consent-locked .whatsapp-float-container {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+.consent-blocking-overlay,
+.consent-bottom-banner { pointer-events: auto !important; }
+.consent-legal-link { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) {
+  .consent-bottom-banner { max-height: 88vh; overflow-y: auto; padding: 20px 0; }
+  .consent-content-grid { grid-template-columns: 1fr; gap: 14px; }
+  .consent-shield-icon { display: none; }
+  .consent-actions-col { min-width: 0; width: 100%; }
+  .consent-close-btn { top: -10px; right: 0; }
+}
