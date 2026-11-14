@@ -9,7 +9,7 @@
       "fullDesc": "",
       "salePrice": 149459,
       "installments": "2 cuotas de $74.730",
-      "image": "https://drive.google.com/uc?export=view&id=1m5R0DGbGRTHamYVbNEHXRmHs95YAZuq4",
+      "image": "images/products/air-fryer.png",
       "affiliateUrl": "https://meli.la/2gGkHuK",
       "shippingFree": true,
       "featured": false
@@ -23,7 +23,7 @@
       "fullDesc": "",
       "salePrice": 82500,
       "installments": "3 cuotas de $27.500",
-      "image": "https://drive.google.com/uc?export=view&id=1sO0Ow2L10LU4UdeOtTXRgbjegqoMMc9-",
+      "image": "images/products/smartwatch.png",
       "affiliateUrl": "https://meli.la/2zoZ2Pa",
       "shippingFree": true,
       "featured": false
@@ -37,10 +37,10 @@
       "fullDesc": "",
       "salePrice": 299999,
       "installments": "6 cuotas de $50.000",
-      "image": "https://drive.google.com/uc?export=view&id=1OkcQY8Rj-kNfc8n_QV-Ehwt9nS6dkaUr",
+      "image": "images/products/smartwatch2.png",
       "affiliateUrl": "https://meli.la/13CTiHx",
       "shippingFree": true,
-      "featured": false
+      "featured": true
     },
     {
       "id": "BV92HN-P85N",
@@ -51,7 +51,7 @@
       "fullDesc": "",
       "salePrice": 309999,
       "installments": "6 cuotas de $51.666",
-      "image": "https://drive.google.com/uc?export=view&id=1l9MZ-a3j8SDRXJ09Zslv-2mwYqMLX66B",
+      "image": "images/products/headphones-jbl.png",
       "affiliateUrl": "https://meli.la/2bgiQ1i",
       "shippingFree": true,
       "featured": false
@@ -65,7 +65,7 @@
       "fullDesc": "",
       "salePrice": 68321,
       "installments": "2 cuotas de $34.160",
-      "image": "https://drive.google.com/uc?export=view&id=1Weum9A5IPrcinhUhXB5T3o5V2c6CHZ6I",
+      "image": "images/products/headphones-anker-soundcore.png",
       "affiliateUrl": "https://meli.la/2mtnn8t",
       "shippingFree": true,
       "featured": false
@@ -79,7 +79,7 @@
       "fullDesc": "",
       "salePrice": 84764,
       "installments": "9 cuotas de $9.418",
-      "image": "https://drive.google.com/uc?export=view&id=1bKkjVh7xemDJ0sjksAv6fVrpBi46ASOe",
+      "image": "images/products/silla.png",
       "affiliateUrl": "https://meli.la/29J9i9N",
       "shippingFree": true,
       "featured": false
@@ -93,7 +93,7 @@
       "fullDesc": "",
       "salePrice": 444347,
       "installments": "9 cuotas de $49.372",
-      "image": "https://drive.google.com/uc?export=view&id=1WosFJ-IZrpQ4CrGCDVWLcvsruN6SxnBt",
+      "image": "images/products/impresora-hp.png",
       "affiliateUrl": "https://meli.la/2DRrxWv",
       "shippingFree": true,
       "featured": false
@@ -107,7 +107,7 @@
       "fullDesc": "",
       "salePrice": 138999,
       "installments": "6 cuotas de $23.166",
-      "image": "https://drive.google.com/uc?export=view&id=1tL_YcA3SZdH0wkaS_VoJiQlAVqxxRnhU",
+      "image": "images/products/escritorio.png",
       "affiliateUrl": "https://meli.la/1skvE6U",
       "shippingFree": true,
       "featured": false
@@ -121,7 +121,7 @@
       "fullDesc": "",
       "salePrice": 449999,
       "installments": "3 cuotas de $150.000",
-      "image": "https://drive.google.com/uc?export=view&id=1ktCK0JWs4GxwfhtUyiPywmGXp32Torjb",
+      "image": "images/products/escritorio-gadnic-electrico.png",
       "affiliateUrl": "https://meli.la/2BNX2tU",
       "shippingFree": true,
       "featured": false
@@ -135,7 +135,7 @@
       "fullDesc": "",
       "salePrice": 32799,
       "installments": "9 cuotas de $3.644",
-      "image": "https://drive.google.com/uc?export=view&id=1GBq9t6voP8D3ZEN3dPMk_Aa6ZQwa2pX0",
+      "image": "images/products/lampara-led-gadnic.png",
       "affiliateUrl": "https://meli.la/1avicxD",
       "shippingFree": false,
       "featured": false
@@ -149,7 +149,7 @@
       "fullDesc": "",
       "salePrice": 69133,
       "installments": "2 cuotas de $34.566",
-      "image": "https://drive.google.com/uc?export=view&id=1PCBViSB5XFlVwzyCPzPI5pL1hiuUM8YX",
+      "image": "images/products/coffee.png",
       "affiliateUrl": "https://meli.la/2yB92ov",
       "shippingFree": true,
       "featured": false
@@ -163,7 +163,7 @@
       "fullDesc": "",
       "salePrice": 139999,
       "installments": "6 cuotas de $23.333",
-      "image": "https://drive.google.com/uc?export=view&id=1p8-OpahJg5BUFNbVw7Q_F9540s_ajmE_",
+      "image": "images/products/Cafetera.png",
       "affiliateUrl": "https://meli.la/21qUHrZ",
       "shippingFree": true,
       "featured": false
@@ -177,7 +177,7 @@
       "fullDesc": "",
       "salePrice": 39999,
       "installments": "",
-      "image": "https://drive.google.com/uc?export=view&id=138owc5Se8XP0HaS23qSkUjtUqFY25qmU",
+      "image": "images/products/molinillo-cafe-ultracomb.png",
       "affiliateUrl": "https://meli.la/1ywMbkT",
       "shippingFree": true,
       "featured": false
@@ -191,7 +191,7 @@
       "fullDesc": "",
       "salePrice": 166350,
       "installments": "3 cuotas de $55.450",
-      "image": "https://drive.google.com/uc?export=view&id=1u6KmZEOGGE6MZquJHGae0K6ilKtAoSmA",
+      "image": "images/products/cafetera-yelmo.png",
       "affiliateUrl": "https://meli.la/214y3s8",
       "shippingFree": true,
       "featured": false
@@ -205,7 +205,7 @@
       "fullDesc": "",
       "salePrice": 65399,
       "installments": "2 cuotas de $32.700",
-      "image": "https://drive.google.com/uc?export=view&id=11P_-26RnfZpoebEQ7zx9NYIN84LoR3yG",
+      "image": "images/products/molinillo-hamilton-beach.png",
       "affiliateUrl": "https://meli.la/2Ck4KVF",
       "shippingFree": true,
       "featured": false
