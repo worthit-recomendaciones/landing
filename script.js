@@ -7,7 +7,47 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
-     1. CATÁLOGO DE PRODUCTOS (15 Productos: 5 Tecnología, 5 Home Office, 5 Café)
+     1. CONSENTIMIENTO LEGAL BLOQUEANTE — BANNER INFERIOR ORIGINAL
+     ========================================================================== */
+  const consentBanner = document.getElementById('consentBanner');
+  const consentOverlay = document.getElementById('consentOverlay');
+  const btnAcceptConsent = document.getElementById('btnAcceptConsent');
+  const closeConsentAttempt = document.getElementById('consentCloseAttemptBtn');
+  const CONSENT_KEY = 'worthit_navigation_consent_v4';
+
+  const showConsent = () => {
+    if (!consentBanner || !consentOverlay) return;
+    consentBanner.classList.add('visible');
+    consentOverlay.classList.add('visible');
+    consentOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('consent-locked');
+  };
+
+  const hideConsent = () => {
+    if (!consentBanner || !consentOverlay) return;
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    consentBanner.classList.remove('visible', 'shake');
+    consentOverlay.classList.remove('visible');
+    consentOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('consent-locked');
+  };
+
+  if (!localStorage.getItem(CONSENT_KEY)) showConsent();
+
+  if (btnAcceptConsent) btnAcceptConsent.addEventListener('click', hideConsent);
+
+  const remindConsent = (event) => {
+    if (event) event.preventDefault();
+    if (!consentBanner) return;
+    consentBanner.classList.remove('shake');
+    void consentBanner.offsetWidth;
+    consentBanner.classList.add('shake');
+  };
+  if (closeConsentAttempt) closeConsentAttempt.addEventListener('click', remindConsent);
+  if (consentOverlay) consentOverlay.addEventListener('click', remindConsent);
+
+  /* ==========================================================================
+     2. CATÁLOGO DE PRODUCTOS (15 Productos: 5 Tecnología, 5 Home Office, 5 Café)
      ========================================================================== */
   const products = [
     // --- TECNOLOGÍA (5 Productos) ---
@@ -485,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
               </svg>
-              <span>${product.affiliateUrl ? 'COMPRAR AHORA' : 'VER EN MERCADO LIBRE'}</span>
+              <span>${product.affiliateUrl ? 'Comprar ahora' : 'Ver en Mercado Libre'}</span>
             </button>
           </div>
         </article>
