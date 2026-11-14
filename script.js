@@ -46,6 +46,62 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeConsentAttempt) closeConsentAttempt.addEventListener('click', remindConsent);
   if (consentOverlay) consentOverlay.addEventListener('click', remindConsent);
 
+
+  /* Lector legal en modal: mantiene al visitante dentro de WorthIT */
+  const legalModal = document.getElementById('legalModalOverlay');
+  const legalModalContent = document.getElementById('legalModalContent');
+  const legalModalCloseBtn = document.getElementById('legalModalCloseBtn');
+  const btnAcceptFromModal = document.getElementById('btnAcceptFromModal');
+  const legalTabButtons = document.querySelectorAll('[data-legal-tab]');
+  const legalOpenButtons = document.querySelectorAll('[data-open-legal]');
+
+  function openLegalModal(tabName) {
+    if (!legalModal) return;
+    legalModal.classList.add('open');
+    legalModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('legal-modal-open');
+    switchLegalTab(tabName || 'terms');
+    if (legalModalCloseBtn) legalModalCloseBtn.focus();
+  }
+
+  function closeLegalModal() {
+    if (!legalModal) return;
+    legalModal.classList.remove('open');
+    legalModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('legal-modal-open');
+  }
+
+  function switchLegalTab(tabName) {
+    const validTab = ['terms', 'privacy', 'cookies'].includes(tabName) ? tabName : 'terms';
+    document.querySelectorAll('.legal-tab-pane').forEach(pane => {
+      pane.classList.toggle('active', pane.id === 'pane-' + validTab);
+    });
+    legalTabButtons.forEach(button => {
+      const active = button.dataset.legalTab === validTab;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
+    if (legalModalContent) legalModalContent.scrollTop = 0;
+  }
+
+  legalOpenButtons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      openLegalModal(button.dataset.openLegal);
+    });
+  });
+  legalTabButtons.forEach(button => {
+    button.addEventListener('click', () => switchLegalTab(button.dataset.legalTab));
+  });
+  if (legalModalCloseBtn) legalModalCloseBtn.addEventListener('click', closeLegalModal);
+  if (btnAcceptFromModal) btnAcceptFromModal.addEventListener('click', closeLegalModal);
+  if (legalModal) legalModal.addEventListener('click', event => {
+    if (event.target === legalModal) closeLegalModal();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && legalModal && legalModal.classList.contains('open')) closeLegalModal();
+  });
+
   /* ==========================================================================
      2. CATÁLOGO DE PRODUCTOS (15 Productos: 5 Tecnología, 5 Home Office, 5 Café)
      ========================================================================== */
