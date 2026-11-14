@@ -14,6 +14,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAcceptConsent = document.getElementById('btnAcceptConsent');
   const closeConsentAttempt = document.getElementById('consentCloseAttemptBtn');
   const CONSENT_KEY = 'worthit_navigation_consent_v4';
+  const CONSENT_COOKIE = 'worthit_navigation_consent_v4=accepted';
+
+  // Algunos navegadores integrados (por ejemplo, el de Instagram) pueden
+  // restringir el almacenamiento. La interfaz nunca debe depender de él
+  // para responder al toque del usuario.
+  const hasAcceptedConsent = () => {
+    try {
+      if (window.localStorage && window.localStorage.getItem(CONSENT_KEY) === 'accepted') return true;
+    } catch (error) {
+      // Se consulta la cookie como alternativa.
+    }
+    try {
+      return document.cookie.split(';').some(cookie => cookie.trim() === CONSENT_COOKIE);
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const saveConsent = () => {
+    try {
+      window.localStorage.setItem(CONSENT_KEY, 'accepted');
+    } catch (error) {
+      // El cierre del banner no debe depender de localStorage.
+    }
+    try {
+      document.cookie = CONSENT_COOKIE + '; Max-Age=31536000; Path=/; SameSite=Lax; Secure';
+    } catch (error) {
+      // Si también se bloquean las cookies, el banner igual se cierra en esta visita.
+    }
+  };
 
   const showConsent = () => {
     if (!consentBanner || !consentOverlay) return;
@@ -25,14 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hideConsent = () => {
     if (!consentBanner || !consentOverlay) return;
-    localStorage.setItem(CONSENT_KEY, 'accepted');
+    // Ocultar primero: un error de almacenamiento no puede dejar bloqueada la página.
     consentBanner.classList.remove('visible', 'shake');
     consentOverlay.classList.remove('visible');
     consentOverlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('consent-locked');
+    saveConsent();
   };
 
-  if (!localStorage.getItem(CONSENT_KEY)) showConsent();
+  if (!hasAcceptedConsent()) showConsent();
 
   if (btnAcceptConsent) btnAcceptConsent.addEventListener('click', hideConsent);
 
