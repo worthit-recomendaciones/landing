@@ -453,14 +453,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Helper de formato en Pesos Argentinos
   function formatARS(amount) {
-    return '$' + amount.toLocaleString('es-AR');
+    return '$' + Number(amount).toLocaleString('es-AR');
+  }
+
+  // Escapa contenido del catálogo antes de insertarlo en plantillas HTML.
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+  }
+
+  function safeProductImage(path) {
+    const value = String(path || '');
+    return /^images\/products\/[a-z0-9._-]+\.(?:png|jpe?g|webp|avif)$/i.test(value)
+      ? escapeHTML(value)
+      : '';
   }
 
   // Prioriza el enlace de afiliado validado. Si falta, abre una búsqueda normal
   // en Mercado Libre, sin atribuir esa visita como afiliada.
   function getProductUrl(product) {
     const affiliateUrl = (product.affiliateUrl || '').trim();
-    if (/^https:\/\//i.test(affiliateUrl) && !/tu-link-de-afiliado|placeholder/i.test(affiliateUrl)) return affiliateUrl;
+    try {
+      const parsed = new URL(affiliateUrl);
+      const allowedHosts = ['meli.la', 'www.mercadolibre.com.ar', 'mercadolibre.com.ar'];
+      if (parsed.protocol === 'https:' && allowedHosts.includes(parsed.hostname.toLowerCase()) &&
+          !/tu-link-de-afiliado|placeholder/i.test(affiliateUrl)) return parsed.href;
+    } catch (error) {
+      // Ante un enlace inválido, se usa una búsqueda segura en Mercado Libre.
+    }
     return `https://listado.mercadolibre.com.ar/${encodeURIComponent(product.title)}`;
   }
 
@@ -541,15 +562,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCardFeatured = product.featured ? 'featured-card' : '';
       const cardDelay = (index * 0.04).toFixed(2);
       return `
-        <article class="product-card ${isCardFeatured}" data-product-id="${product.id}" style="--card-delay: ${cardDelay}s" tabindex="0">
+        <article class="product-card ${isCardFeatured}" data-product-id="${escapeHTML(product.id)}" style="--card-delay: ${cardDelay}s" tabindex="0">
           <div class="card-top-badges">
             
-            <span class="badge-tag">${product.categoryName}</span>
+            <span class="badge-tag">${escapeHTML(product.categoryName)}</span>
           </div>
 
-          <div class="product-image-box" onclick="window.openQuickView('${product.id}')">
-            <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
-            <button class="quick-view-overlay-btn" type="button" aria-label="Vista rápida de ${product.title}">
+          <div class="product-image-box" data-quick-view="${escapeHTML(product.id)}">
+            <img src="${safeProductImage(product.image)}" alt="${escapeHTML(product.title)}" class="product-img" loading="lazy">
+            <button class="quick-view-overlay-btn" type="button" aria-label="Vista rápida de ${escapeHTML(product.title)}">
               Vista Rápida
             </button>
           </div>
@@ -558,21 +579,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Badge destacado de Envío Gratis -->
             ${product.freeShipping ? '<div class="badge-free-shipping">🚚 Envío Gratis</div>' : '<div class="badge-free-shipping">Consultar envío</div>'}
 
-            <span class="product-category-label">${product.categoryName}</span>
-            <h3 class="product-title" onclick="window.openQuickView('${product.id}')">${product.title}</h3>
+            <span class="product-category-label">${escapeHTML(product.categoryName)}</span>
+            <h3 class="product-title" data-quick-view="${escapeHTML(product.id)}">${escapeHTML(product.title)}</h3>
             
             <!-- Breve descripción (Requisito explícito) -->
-            <p class="product-description">${product.shortDesc}</p>
+            <p class="product-description">${escapeHTML(product.shortDesc)}</p>
             <div class="product-price-box">
               
               <span class="product-price-current">${formatARS(product.salePrice)}</span>
             </div>
 
             <!-- Cantidad de cuotas disponibles para pago con tarjeta -->
-            ${product.installments ? `<div class="product-installments">💳 <span>${product.installments}</span></div>` : '<div class="product-installments">Consultar medios de pago</div>'}
+            ${product.installments ? `<div class="product-installments">💳 <span>${escapeHTML(product.installments)}</span></div>` : '<div class="product-installments">Consultar medios de pago</div>'}
 
             <!-- CTA uniforme hacia la publicación de Mercado Libre -->
-            <button class="btn-buy-product" data-product-id="${product.id}" type="button">
+            <button class="btn-buy-product" data-product-id="${escapeHTML(product.id)}" type="button">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -585,14 +606,21 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }).join('');
 
-    // Compra directa: enlace afiliado validado o búsqueda de Mercado Libre.
-    productsGrid.querySelectorAll('.btn-buy-product').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const product = products.find(p => p.id === btn.getAttribute('data-product-id'));
-        openProductLink(product);
+    // Eventos delegados: evita handlers inline y listeners duplicados al filtrar.
+    if (!productsGrid.dataset.securityEventsBound) {
+      productsGrid.dataset.securityEventsBound = 'true';
+      productsGrid.addEventListener('click', event => {
+        const buyButton = event.target.closest('.btn-buy-product');
+        if (buyButton) {
+          event.stopPropagation();
+          const product = products.find(p => p.id === buyButton.getAttribute('data-product-id'));
+          openProductLink(product);
+          return;
+        }
+        const quickViewTarget = event.target.closest('[data-quick-view]');
+        if (quickViewTarget) window.openQuickView(quickViewTarget.getAttribute('data-quick-view'));
       });
-    });
+    }
   }
 
   /* ==========================================================================
@@ -742,15 +770,15 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBody.innerHTML = `
       <div class="modal-grid">
         <div class="modal-img-wrap">
-          <img src="${product.image}" alt="${product.title}">
+          <img src="${safeProductImage(product.image)}" alt="${escapeHTML(product.title)}">
         </div>
         <div class="modal-info">
           <div class="badge-free-shipping">${product.freeShipping ? "🚚 Envío Gratis" : "Consultar envío"}</div>
-          <span class="modal-tag">${product.categoryName}</span>
-          <h2 class="modal-title">${product.title}</h2>
-          <p class="modal-desc">${product.fullDesc}</p>
+          <span class="modal-tag">${escapeHTML(product.categoryName)}</span>
+          <h2 class="modal-title">${escapeHTML(product.title)}</h2>
+          <p class="modal-desc">${escapeHTML(product.fullDesc)}</p>
 
-          ${product.specs.length ? `<ul class="modal-specs-list">${product.specs.map(spec => `<li>${spec}</li>`).join('')}</ul>` : ""}
+          ${product.specs.length ? `<ul class="modal-specs-list">${product.specs.map(spec => `<li>${escapeHTML(spec)}</li>`).join('')}</ul>` : ""}
 
           <div class="modal-price-row">
             
@@ -759,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="product-installments" style="margin-bottom: 16px;">
-            ${product.installments ? `💳 <strong>${product.installments}</strong>` : "Consultar medios de pago"}
+            ${product.installments ? `💳 <strong>${escapeHTML(product.installments)}</strong>` : "Consultar medios de pago"}
           </div>
 
           <div style="display: flex; gap: 12px; margin-top: 14px;">
@@ -801,10 +829,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `
-      <div class="toast-icon">✓</div>
-      <div class="toast-message">${message}</div>
-    `;
+    const icon = document.createElement('div');
+    icon.className = 'toast-icon';
+    icon.textContent = '✓';
+    const text = document.createElement('div');
+    text.className = 'toast-message';
+    text.textContent = String(message ?? '');
+    toast.append(icon, text);
 
     toastContainer.appendChild(toast);
 
