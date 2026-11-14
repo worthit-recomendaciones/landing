@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const showConsent = () => {
     if (!consentBanner || !consentOverlay) return;
+    consentBanner.hidden = false;
+    consentOverlay.hidden = false;
     consentBanner.classList.add('visible');
     consentOverlay.classList.add('visible');
     consentOverlay.setAttribute('aria-hidden', 'false');
@@ -55,17 +57,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hideConsent = () => {
     if (!consentBanner || !consentOverlay) return;
-    // Ocultar primero: un error de almacenamiento no puede dejar bloqueada la página.
+    // Cierre inmediato y explícito: no depende de cookies ni de localStorage,
+    // y evita que Safari/iOS mantenga visible un elemento fixed tras la animación.
     consentBanner.classList.remove('visible', 'shake');
     consentOverlay.classList.remove('visible');
+    consentBanner.hidden = true;
+    consentOverlay.hidden = true;
     consentOverlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('consent-locked');
     saveConsent();
   };
 
-  if (!hasAcceptedConsent()) showConsent();
+  if (!hasAcceptedConsent()) {
+    showConsent();
+  } else {
+    if (consentBanner) consentBanner.hidden = true;
+    if (consentOverlay) consentOverlay.hidden = true;
+    document.body.classList.remove('consent-locked');
+  }
 
-  if (btnAcceptConsent) btnAcceptConsent.addEventListener('click', hideConsent);
+  if (btnAcceptConsent) {
+    // Click cubre mouse y la mayoría de los navegadores móviles.
+    btnAcceptConsent.addEventListener('click', event => {
+      event.preventDefault();
+      hideConsent();
+    });
+    // Respaldo para WebKit móvil y navegadores integrados.
+    btnAcceptConsent.addEventListener('pointerup', event => {
+      if (event.pointerType === 'touch') {
+        event.preventDefault();
+        hideConsent();
+      }
+    });
+  }
+
+  // Delegación en captura como respaldo si el botón se vuelve a renderizar.
+  document.addEventListener('click', event => {
+    const acceptButton = event.target && event.target.closest
+      ? event.target.closest('#btnAcceptConsent')
+      : null;
+    if (!acceptButton) return;
+    event.preventDefault();
+    hideConsent();
+  }, true);
 
   const remindConsent = (event) => {
     if (event) event.preventDefault();
