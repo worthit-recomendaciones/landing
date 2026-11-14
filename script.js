@@ -248,7 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
     applyCountdownSettings(settings);
     setText('.top-announcement .badge-accent', settings.announcementBadge);
     setText('.announcement-text', settings.announcementText);
-    setText('.announcement-code strong', settings.announcementCoupon);
+    const couponBox = document.querySelector('.announcement-code');
+    if (couponBox) {
+      const coupon = String(settings.announcementCoupon || '').trim();
+      couponBox.hidden = !coupon;
+      if (coupon) setText('.announcement-code strong', coupon);
+    }
     const eyebrow = document.querySelector('.section-tag');
     if (eyebrow && settings.catalogEyebrow) {
       eyebrow.textContent = settings.catalogEyebrow;
