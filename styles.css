@@ -3949,3 +3949,27 @@ body.legal-modal-open { overflow:hidden !important; }
   border-color: var(--color-accent);
   text-shadow: none;
 }
+
+
+/* Ajustes WorthIT: catálogo editorial sin campaña temporal ni productos ficticios */
+.countdown-wrapper,
+.hero-showcase {
+  display: none !important;
+}
+.hero-container {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.hero-content {
+  max-width: 900px;
+}
+.product-price-old,
+.modal-old-price,
+.badge-discount {
+  display: none !important;
+}
+.product-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
