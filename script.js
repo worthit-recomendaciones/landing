@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $29.833',
       freeShipping: true,
       image: 'images/products/tech-headphones.svg',
-      rating: 4.9,
-      reviews: 218,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -54,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $31.500',
       freeShipping: true,
       image: 'images/products/smartwatch2.png',
-      rating: 4.8,
-      reviews: 342,
       featured: true, // Destacado con reborde neón brillante (como en Referencia 2)
 	  affiliateUrl: 'https://meli.la/13CTiHx' // Enlace provisto para el producto destacado.
     },
@@ -78,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '12 cuotas sin interés de $29.083',
       freeShipping: true,
       image: 'images/products/tech-vr-headset.svg',
-      rating: 4.9,
-      reviews: 124,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -102,8 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $16.500',
       freeShipping: true,
       image: 'images/products/tech-speaker.svg',
-      rating: 4.7,
-      reviews: 189,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -126,8 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '12 cuotas sin interés de $66.583',
       freeShipping: true,
       image: 'images/products/tech-smartphone.svg',
-      rating: 5.0,
-      reviews: 512,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -152,8 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $48.166',
       freeShipping: true,
       image: 'images/products/office-chair.svg',
-      rating: 4.9,
-      reviews: 265,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -176,8 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '12 cuotas sin interés de $39.083',
       freeShipping: true,
       image: 'images/products/office-desk.svg',
-      rating: 4.9,
-      reviews: 198,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -200,8 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '3 cuotas sin interés de $26.333',
       freeShipping: true,
       image: 'images/products/office-lightbar.svg',
-      rating: 4.8,
-      reviews: 310,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -224,8 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '3 cuotas sin interés de $16.333',
       freeShipping: true,
       image: 'images/products/office-laptop-stand.svg',
-      rating: 4.7,
-      reviews: 142,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -248,8 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '3 cuotas sin interés de $11.333',
       freeShipping: true,
       image: 'images/products/office-deskmat.svg',
-      rating: 4.8,
-      reviews: 215,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -274,8 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '12 cuotas sin interés de $45.750',
       freeShipping: true,
       image: 'images/products/coffee-espresso.svg',
-      rating: 5.0,
-      reviews: 178,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -298,8 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $28.166',
       freeShipping: true,
       image: 'images/products/coffee-grinder.svg',
-      rating: 4.9,
-      reviews: 240,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -322,8 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '6 cuotas sin interés de $19.166',
       freeShipping: true,
       image: 'images/products/coffee-kettle.svg',
-      rating: 4.9,
-      reviews: 388,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -346,8 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '3 cuotas sin interés de $14.000',
       freeShipping: true,
       image: 'images/products/coffee-pourover.svg',
-      rating: 4.8,
-      reviews: 195,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     },
@@ -370,8 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
       installments: '3 cuotas sin interés de $12.000',
       freeShipping: true,
       image: 'images/products/coffee-beans.svg',
-      rating: 5.0,
-      reviews: 422,
       featured: false,
 	  affiliateUrl: '' // Agregá aquí el enlace de afiliado verificado de este producto.
     }
@@ -450,7 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentSort === 'discount') return b.discount - a.discount;
       if (currentSort === 'price-asc') return a.salePrice - b.salePrice;
       if (currentSort === 'price-desc') return b.salePrice - a.salePrice;
-      if (currentSort === 'rating') return b.rating - a.rating;
       // Por defecto: producto destacado primero
       if (a.featured && !b.featured) return -1;
       if (!a.featured && b.featured) return 1;
