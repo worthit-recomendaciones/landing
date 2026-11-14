@@ -668,56 +668,128 @@
     </div>
   </aside>
 
-<!-- LECTOR LEGAL MODAL: navegación en contexto, sin salir de la landing -->
-  <div class="legal-modal-overlay" id="legalModalOverlay" aria-hidden="true">
-    <div class="legal-modal-container" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+<!-- MODAL LECTOR DE DOCUMENTACIÓN LEGAL -->
+  <div class="legal-modal-overlay" id="legalModalOverlay">
+    <div class="legal-modal-container">
       <div class="legal-modal-header">
         <div class="legal-modal-title-group">
-          <svg class="icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg class="icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
           </svg>
-          <h3 id="legalModalTitle">Centro Legal y Políticas — WORTHIT.</h3>
+          <h3>Centro Legal y Políticas — WORTHIT.</h3>
         </div>
-        <button class="modal-close" id="legalModalCloseBtn" aria-label="Cerrar ventana legal" type="button">&times;</button>
+        <button class="modal-close" id="legalModalCloseBtn" aria-label="Cerrar ventana legal">&times;</button>
       </div>
-      <div class="legal-tabs-bar" id="legalTabsBar" role="tablist" aria-label="Documentos legales">
-        <button class="legal-tab-btn active" type="button" role="tab" aria-selected="true" data-legal-tab="terms">Términos y Condiciones</button>
-        <button class="legal-tab-btn" type="button" role="tab" aria-selected="false" data-legal-tab="privacy">Política de Privacidad</button>
-        <button class="legal-tab-btn" type="button" role="tab" aria-selected="false" data-legal-tab="cookies">Política de Cookies</button>
+
+      <!-- Pestañas de Selección -->
+      <div class="legal-tabs-bar" id="legalTabsBar">
+        <button class="legal-tab-btn active" data-legal-tab="terms">1. T&eacute;rminos y Condiciones</button>
+        <button class="legal-tab-btn" data-legal-tab="privacy">2. Pol&iacute;tica de Privacidad</button>
+        <button class="legal-tab-btn" data-legal-tab="cookies">3. Pol&iacute;tica de Cookies</button>
       </div>
+
+      <!-- Cuerpo Lector del Documento Legal -->
       <div class="legal-modal-content" id="legalModalContent">
+        
+        <!-- PESTAÑA 1: TÉRMINOS Y CONDICIONES -->
         <article class="legal-tab-pane active" id="pane-terms">
-          <h2>Términos y condiciones</h2>
-          <p>WorthIT es un sitio independiente de selección y recomendación de productos. Su función es presentar productos de terceros y facilitar el acceso a sus publicaciones comerciales.</p>
-          <h3>Enlaces y comisiones</h3>
-          <p>Algunos enlaces pueden ser enlaces de afiliados. Si una persona accede a una publicación y realiza una compra, WorthIT podría recibir una comisión, sin costo adicional para quien compra.</p>
-          <h3>Precios y compras</h3>
-          <p>La compra no se realiza en WorthIT. Los botones conducen a Mercado Libre o a la publicación correspondiente. El precio final, la disponibilidad, las cuotas, el envío, la garantía y las condiciones de compra son definidos por el vendedor y la plataforma, y pueden cambiar sin previo aviso.</p>
-          <h3>Contenido</h3>
-          <p>WorthIT procura presentar información clara y mantenerla actualizada, pero se recomienda verificar siempre los detalles vigentes en la publicación del vendedor antes de comprar.</p>
+          <h1 class="legal-doc-title">T&Eacute;RMINOS Y CONDICIONES DE USO</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. Identificaci&oacute;n</h2>
+          <p>WORTHIT. (en adelante, &laquo;WORTHIT.&raquo;) es un proyecto digital dedicado a la selecci&oacute;n, an&aacute;lisis, comparaci&oacute;n y recomendaci&oacute;n de productos de tecnolog&iacute;a, hogar, cocina y otras categor&iacute;as de consumo.</p>
+          <p>Titular o responsable del sitio: [NOMBRE Y APELLIDO / RAZ&Oacute;N SOCIAL].<br>
+          CUIT: [CUIT].<br>
+          Domicilio: [DOMICILIO LEGAL].<br>
+          Correo electr&oacute;nico de contacto: [EMAIL].<br>
+          Sitio web: [DOMINIO].</p>
+
+          <h2>2. Aceptaci&oacute;n de los t&eacute;rminos</h2>
+          <p>El acceso y la utilizaci&oacute;n de este sitio web implican el conocimiento de estos T&eacute;rminos y Condiciones. Si el usuario no est&aacute; de acuerdo con alguna de sus disposiciones, deber&aacute; abstenerse de utilizar el sitio.</p>
+
+          <h2>3. Naturaleza del servicio</h2>
+          <p>WORTHIT. es un medio digital independiente de recomendaciones y marketing de afiliados. Su actividad consiste en seleccionar, analizar, comparar y difundir informaci&oacute;n sobre productos comercializados por terceros, incluyendo enlaces que permiten acceder a las publicaciones de dichos productos en plataformas externas.</p>
+
+          <h2>4. Enlaces de afiliados y publicidad</h2>
+          <p>Algunos enlaces publicados en WORTHIT. son enlaces de afiliados. Esto significa que si un usuario accede a una plataforma y realiza una compra, WORTHIT. puede recibir una comisi&oacute;n sin costo adicional para el comprador.</p>
+
+          <h2>5. Informaci&oacute;n sobre productos y ofertas</h2>
+          <p>WORTHIT. procura ofrecer informaci&oacute;n clara y actualizada sobre precios, descuentos, cuotas y disponibilidad, los cuales pueden cambiar sin previo aviso por decisi&oacute;n del vendedor.</p>
+
+          <h2>6. Proceso de compra y responsabilidad del vendedor</h2>
+          <p>Las compras se realizan directamente en las plataformas comerciales externas a las que conducen los enlaces publicados. Cualquier reclamo, garant&iacute;a o devoluci&oacute;n debe gestionarse con el vendedor correspondiente.</p>
+
+          <h2>7. Independencia de las plataformas externas</h2>
+          <p>WORTHIT. no controla ni administra el funcionamiento o pol&iacute;ticas de sitios de terceros (como Mercado Libre y redes sociales).</p>
+
+          <h2>8. Propiedad intelectual</h2>
+          <p>Los contenidos originales publicados en WORTHIT. est&aacute;n protegidos por las normas de propiedad intelectual aplicables.</p>
+
+          <h2>9. Uso adecuado del sitio</h2>
+          <p>El usuario se compromete a utilizar el sitio de manera l&iacute;cita y abstenerse de realizar actividades fraudulentas.</p>
+
+          <h2>10. Modificaciones</h2>
+          <p>WORTHIT. podr&aacute; modificar estos t&eacute;rminos cuando resulte necesario indicando su fecha de actualizaci&oacute;n.</p>
+
+          <h2>11. Legislaci&oacute;n aplicable</h2>
+          <p>Estos t&eacute;rminos se interpretar&aacute;n conforme a las leyes de la Rep&uacute;blica Argentina.</p>
+
+          <h2>12. Contacto</h2>
+          <p>Para consultas relacionadas: [EMAIL] | [DOMINIO].</p>
         </article>
-<article class="legal-tab-pane" id="pane-privacy">
-          <h2>Política de privacidad</h2>
-          <p>Esta versión de la landing no incluye formularios de registro, newsletter ni carrito de compras, y no solicita datos personales directamente desde el sitio.</p>
-          <h3>Contacto voluntario</h3>
-          <p>Si elegís comunicarte con WorthIT mediante WhatsApp, la conversación se realiza en ese servicio externo y queda sujeta a sus propias condiciones y políticas de privacidad. Compartí únicamente la información necesaria para tu consulta.</p>
-          <h3>Enlaces a terceros</h3>
-          <p>Al abrir Mercado Libre u otros sitios externos, dejás de navegar dentro de WorthIT. Esos servicios pueden recopilar información y aplicar sus propias políticas. WorthIT no controla sus prácticas.</p>
-          <h3>Consultas</h3>
-          <p>Para consultas sobre el sitio, podés utilizar el canal de contacto publicado en la landing.</p>
+
+        <!-- PESTAÑA 2: POLÍTICA DE PRIVACIDAD -->
+        <article class="legal-tab-pane" id="pane-privacy">
+          <h1 class="legal-doc-title">POL&Iacute;TICA DE PRIVACIDAD</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. Responsable del tratamiento</h2>
+          <p>WORTHIT. Responsable: [NOMBRE Y APELLIDO / RAZ&Oacute;N SOCIAL], CUIT: [CUIT], Domicilio: [DOMICILIO LEGAL], Email: [EMAIL DE PRIVACIDAD].</p>
+
+          <h2>2. Alcance de esta pol&iacute;tica</h2>
+          <p>Tratamiento de datos personales de conformidad con la Ley 25.326 de Protecci&oacute;n de Datos Personales de la Rep&uacute;blica Argentina.</p>
+
+          <h2>3. Datos que podemos recopilar</h2>
+          <ul>
+            <li><strong>Datos de contacto:</strong> Nombre, email o tel&eacute;fono voluntario.</li>
+            <li><strong>Datos de interacci&oacute;n:</strong> Mensajes y preferencias.</li>
+            <li><strong>Datos t&eacute;cnicos:</strong> Direcci&oacute;n IP, dispositivo, navegador y cookies.</li>
+          </ul>
+
+          <h2>4. Finalidades del tratamiento</h2>
+          <p>Responder consultas, ofrecer recomendaciones y analizar estad&iacute;sticas de uso.</p>
+
+          <h2>5. Proveedores externos</h2>
+          <p>Podremos utilizar servicios como Canva, Manychat, Meta y WhatsApp Business.</p>
+
+          <h2>6. Derechos de los titulares</h2>
+          <p>Seg&uacute;n la Ley 25.326, pod&eacute;s acceder, rectificar o suprimir tus datos escribiendo a [EMAIL DE PRIVACIDAD]. Autoridad de control: AAIP (https://www.argentina.gob.ar/aaip).</p>
         </article>
-<article class="legal-tab-pane" id="pane-cookies">
-          <h2>Política de cookies</h2>
-          <p>La versión actual de WorthIT no incorpora herramientas propias de analítica ni código que instale cookies de seguimiento. El funcionamiento del sitio puede implicar recursos externos, como la carga de tipografías desde Google Fonts.</p>
-          <h3>Servicios externos</h3>
-          <p>Cuando seguís enlaces a Mercado Libre, WhatsApp u otros servicios, esos proveedores pueden utilizar cookies o tecnologías similares de acuerdo con sus propias políticas y configuraciones.</p>
-          <h3>Preferencias del navegador</h3>
-          <p>Podés revisar y administrar las cookies desde la configuración de tu navegador. Bloquear recursos externos puede modificar la forma en que algunos contenidos o servicios se muestran.</p>
+
+        <!-- PESTAÑA 3: POLÍTICA DE COOKIES -->
+        <article class="legal-tab-pane" id="pane-cookies">
+          <h1 class="legal-doc-title">POL&Iacute;TICA DE COOKIES</h1>
+          <span class="legal-doc-date">&Uacute;ltima actualizaci&oacute;n: 3 de noviembre de 2026</span>
+
+          <h2>1. &iquest;Qu&eacute; son las cookies?</h2>
+          <p>Peque&ntilde;os archivos de informaci&oacute;n almacenados en el dispositivo del usuario para recordar preferencias y analizar la navegaci&oacute;n.</p>
+
+          <h2>2. Tipos de cookies</h2>
+          <p>T&eacute;cnicas, de preferencias, anal&iacute;ticas y publicitarias o de afiliados.</p>
+
+          <h2>3. Administraci&oacute;n</h2>
+          <p>Pod&eacute;s configurar tu navegador para bloquearlas o eliminarlas en cualquier momento.</p>
         </article>
+
       </div>
+
       <div class="legal-modal-footer">
-        <button class="btn btn-accent btn-sm" id="btnAcceptFromModal" type="button"><span>Cerrar y continuar navegando</span></button>
+        <button class="btn btn-accent btn-sm" id="btnAcceptFromModal">
+          <span>Aceptar Condiciones y Continuar Navegando</span>
+        </button>
       </div>
     </div>
   </div>
