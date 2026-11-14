@@ -4018,3 +4018,27 @@ body.legal-modal-open { overflow:hidden !important; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+
+/* Tarjetas flotantes del hero: conservar estética de tarjeta, no de enlace */
+.hero-showcase a.floating-card,
+.hero-showcase a.floating-card:link,
+.hero-showcase a.floating-card:visited,
+.hero-showcase a.floating-card:hover,
+.hero-showcase a.floating-card:active,
+.hero-showcase a.floating-card:focus {
+  color: inherit;
+  text-decoration: none !important;
+}
+.hero-showcase .floating-card *,
+.hero-showcase .floating-card *:hover {
+  text-decoration: none !important;
+}
+.hero-showcase .floating-cat { color: #7b94b0; }
+.hero-showcase .floating-name { color: #ffffff; }
+.hero-showcase .price-new,
+.hero-showcase .hero-free-shipping { color: var(--color-accent); }
+.hero-showcase a.floating-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
