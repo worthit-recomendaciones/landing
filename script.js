@@ -571,14 +571,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Cantidad de cuotas disponibles para pago con tarjeta -->
             ${product.installments ? `<div class="product-installments">💳 <span>${product.installments}</span></div>` : '<div class="product-installments">Consultar medios de pago</div>'}
 
-            <!-- Botón COMPRAR AHORA (#315CF5 como fue solicitado) -->
+            <!-- CTA uniforme hacia la publicación de Mercado Libre -->
             <button class="btn-buy-product" data-product-id="${product.id}" type="button">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
               </svg>
-              <span>${product.affiliateUrl ? 'Comprar ahora' : 'Ver en Mercado Libre'}</span>
+              <span>Ver en Mercado Libre</span>
             </button>
           </div>
         </article>
@@ -769,7 +769,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              <span>${product.affiliateUrl ? 'Comprar en Mercado Libre' : 'Buscar en Mercado Libre'} • ${formatARS(product.salePrice)}</span>
+              <span>Ver en Mercado Libre</span>
             </a>
           </div>
         </div>
