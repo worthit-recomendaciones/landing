@@ -24,62 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      2. CATÁLOGO BASE Y PRODUCTOS DINÁMICOS
      ========================================================================== */
-  const defaultProducts = [
-    {
-      id: 'tech-1',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Auriculares AeroSound Pro ANC',
-      shortDesc: 'Cancelación activa de ruido híbrida, 40 horas de batería, audio espacial inmersivo y almohadillas viscoelásticas ultra suaves.',
-      fullDesc: 'Diseñados para audiófilos exigentes y jornadas de trabajo prolongadas.',
-      specs: ['Drivers acústicos de Berilio de 40mm', 'Cancelación Activa de Ruido Híbrida (-42dB)'],
-      originalPrice: 249000,
-      salePrice: 179000,
-      discount: 28,
-      installments: '6 cuotas sin interés de $29.833',
-      image: 'images/products/smartwatch.png',
-      rating: 4.9,
-      reviews: 218,
-      featured: false,
-      affiliateUrl: 'https://meli.la/13CTiHx'
-    },
-    {
-      id: 'tech-2',
-      category: 'technology',
-      categoryName: 'Tecnología',
-      title: 'Smartwatch HUAWEI Watch Fit 4 Pro GPS',
-      shortDesc: 'Pantalla zafiro, bisel titanio ECG y batería de diez días.',
-      fullDesc: 'Chasis de titanio de grado aeroespacial resistente a golpes y rayones.',
-      specs: ['Pantalla Retina OLED curva de 1.92"', 'Sensor óptico ECG + SpO2'],
-      originalPrice: 443999,
-      salePrice: 259999,
-      discount: 41,
-      installments: '6 cuotas sin interés de $43.333',
-      image: 'images/products/smartwatch2.png',
-      rating: 4.8,
-      reviews: 342,
-      featured: true,
-      affiliateUrl: 'https://meli.la/13CTiHx'
-    },
-    {
-      id: 'coffee-1',
-      category: 'coffee',
-      categoryName: 'Café',
-      title: 'Cafetera Espresso BaristaCraft Touch',
-      shortDesc: 'Bomba italiana de 15 bares, control térmico PID de alta precisión, pantalla táctil y lanceta de vapor profesional.',
-      fullDesc: 'Llevá la experiencia de una cafetería de especialidad a tu casa.',
-      specs: ['Portafiltro de 58mm', 'Bomba italiana de 15 bares'],
-      originalPrice: 799000,
-      salePrice: 549000,
-      discount: 31,
-      installments: '12 cuotas sin interés de $45.750',
-      image: 'images/products/coffee-espresso.svg',
-      rating: 5.0,
-      reviews: 178,
-      featured: false,
-      affiliateUrl: 'https://meli.la/13CTiHx'
-    }
-  ];
+  const defaultProducts = [];
 
   let products = [...defaultProducts];
 
@@ -170,36 +115,29 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCatalogCounts();
 
     productsGrid.innerHTML = filtered.map((product) => `
-      <article class="product-card ${product.featured ? 'featured-card' : ''}" data-product-id="${product.id}" tabindex="0">
+      <article class="product-card ${product.featured ? 'featured-card' : ''}" data-product-id="${escapeHTML(product.id)}" tabindex="0">
         <div class="card-top-badges">
-          <span class="badge-discount">-${product.discount || 0}%</span>
-          <span class="badge-tag">${product.categoryName || ''}</span>
+          <span class="badge-tag">${escapeHTML(product.categoryName || '')}</span>
         </div>
 
         <div class="product-image-box">
-          <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
+          <img src="${escapeHTML(product.image || '')}" alt="${escapeHTML(product.title || '')}" class="product-img" loading="lazy">
         </div>
 
         <div class="product-info">
-          <div class="badge-free-shipping">🚚 Envío Gratis</div>
-          <span class="product-category-label">${product.categoryName || ''}</span>
-          <h3 class="product-title">${product.title}</h3>
-          <p class="product-description">${product.shortDesc || ''}</p>
-
-          <div class="product-rating">
-            <span class="stars">★★★★★</span>
-            <span class="rating-num">${product.rating || 4.9}</span>
-            <span class="rating-count">(${product.reviews || 150})</span>
-          </div>
+          ${product.shippingFree ? '<div class="badge-free-shipping">🚚 Envío Gratis</div>' : ''}
+          <span class="product-category-label">${escapeHTML(product.categoryName || '')}</span>
+          <h3 class="product-title">${escapeHTML(product.title || '')}</h3>
+          ${product.shortDesc ? `<p class="product-description">${escapeHTML(product.shortDesc)}</p>` : ''}
 
           <div class="product-price-box">
-            <span class="product-price-old">${formatARS(product.originalPrice)}</span>
+            ${Number(product.originalPrice) > Number(product.salePrice) ? `<span class="product-price-old">${formatARS(product.originalPrice)}</span>` : ''}
             <span class="product-price-current">${formatARS(product.salePrice)}</span>
           </div>
 
-          <div class="product-installments">💳 <span>${product.installments || '6 cuotas sin interés'}</span></div>
+          ${product.installments ? `<div class="product-installments">💳 <span>${escapeHTML(product.installments)}</span></div>` : ''}
 
-          <button class="btn-buy-product" data-affiliate-url="${product.affiliateUrl || '#'}" type="button">
+          <button class="btn-buy-product" data-affiliate-url="${escapeHTML(product.affiliateUrl || '#')}" type="button">
             <span>COMPRAR AHORA</span>
           </button>
         </div>
