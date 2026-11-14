@@ -4042,3 +4042,12 @@ body.legal-modal-open { overflow:hidden !important; }
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
+
+
+/* Igualar los pasos de "Cómo funciona" al estilo de los enlaces del footer */
+.footer-how-it-works ul li {
+  color: #8da1b6;
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
