@@ -844,7 +844,53 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true }); 
 
   /* ==========================================================================
-     15. INICIALIZACIÓN
+     15. CUENTA REGRESIVA PROMOCIONAL REUTILIZABLE
+     Para activar una campaña futura, cambiar enabled a true y cargar la fecha
+     y hora reales de finalización en endsAt (hora local de Argentina).
+     Ejemplo de formato: "2026-12-01T23:59:00".
+     ==========================================================================
+  */
+  const PROMO_COUNTDOWN = {
+    enabled: false, // Se mantiene apagada hasta que exista una promoción vigente.
+    eventName: "EL EVENTO TERMINA EN:",
+    endsAt: "" // Fecha real: AAAA-MM-DDTHH:MM:SS
+  };
+
+  const promoCountdown = document.getElementById('promoCountdown');
+  if (promoCountdown && PROMO_COUNTDOWN.enabled && PROMO_COUNTDOWN.endsAt) {
+    const endAt = new Date(PROMO_COUNTDOWN.endsAt);
+    if (!Number.isNaN(endAt.getTime())) {
+      promoCountdown.hidden = false;
+      const heading = document.getElementById('countdownHeading');
+      const expired = document.getElementById('countdownExpired');
+      if (heading && PROMO_COUNTDOWN.eventName) heading.textContent = PROMO_COUNTDOWN.eventName;
+      const updatePromoCountdown = () => {
+        const remaining = endAt.getTime() - Date.now();
+        if (remaining <= 0) {
+          document.getElementById('countdownTimer').hidden = true;
+          if (expired) expired.hidden = false;
+          window.clearInterval(promoInterval);
+          return;
+        }
+        const totalSeconds = Math.floor(remaining / 1000);
+        const values = {
+          timerDays: Math.floor(totalSeconds / 86400),
+          timerHours: Math.floor((totalSeconds % 86400) / 3600),
+          timerMinutes: Math.floor((totalSeconds % 3600) / 60),
+          timerSeconds: totalSeconds % 60
+        };
+        Object.entries(values).forEach(([id, value]) => {
+          const node = document.getElementById(id);
+          if (node) node.textContent = String(value).padStart(2, '0');
+        });
+      };
+      updatePromoCountdown();
+      const promoInterval = window.setInterval(updatePromoCountdown, 1000);
+    }
+  }
+
+  /* ==========================================================================
+     16. INICIALIZACIÓN
      ========================================================================== */
   renderProducts(); 
 });
