@@ -3872,3 +3872,80 @@ body.legal-modal-open { overflow:hidden !important; }
  .footer-legal-nav { gap:7px; padding:11px 8px; }
  .footer-legal-nav button { font-size:.7rem; padding:7px 10px; }
 }
+
+
+/* Restauración fiel del estilo legal original de WorthIT */
+.consent-legal-link,
+.footer-legal-nav button {
+  background: transparent;
+  border: 0;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: .84rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+.consent-legal-link:hover,
+.footer-legal-nav button:hover {
+  color: #ffffff;
+  background: transparent;
+  text-shadow: 0 0 12px rgba(199,243,107,.25);
+}
+.legal-modal-content {
+  color: #cfddec;
+  font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+  font-size: .94rem;
+  line-height: 1.7;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.legal-doc-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+.legal-doc-date {
+  display: block;
+  color: var(--color-accent);
+  font-size: .82rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.legal-tab-pane h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.legal-tab-pane p { margin-bottom: 14px; }
+.legal-tab-pane ul {
+  margin: 10px 0 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.legal-tab-pane strong { color: #ffffff; }
+.legal-tab-btn { font-family: var(--font-display); }
+.footer-legal-nav button {
+  border: 1px solid rgba(199,243,107,.24);
+  border-radius: 999px;
+  padding: 7px 14px;
+  text-decoration: none;
+}
+.footer-legal-nav button:hover {
+  color: #07111d;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  text-shadow: none;
+}
