@@ -578,11 +578,6 @@
       </div>
 
       <p class="footer-disclosure">Algunos enlaces pueden generar una comisión para WorthIT, sin costo adicional para quien compra. La compra se realiza en Mercado Libre.</p>
-      <nav class="footer-legal-nav" aria-label="Información legal">
-        <a href="legal.html#terms">Términos y condiciones</a>
-        <a href="legal.html#privacy">Privacidad</a>
-        <a href="legal.html#cookies">Cookies</a>
-      </nav>
       <div class="footer-bottom">
         <p>&copy; 2026 WorthIT Argentina. Todos los derechos reservados.</p>
         <div class="payment-methods">
@@ -624,6 +619,48 @@
       </svg>
       <span class="whatsapp-badge-active"></span>
     </a>
+  </aside>
+
+  <div class="consent-blocking-overlay" id="consentOverlay" aria-hidden="true"></div>
+
+  <!-- Banner inferior de consentimiento legal bloqueante -->
+  <aside class="consent-bottom-banner" id="consentBanner" role="dialog" aria-modal="true" aria-live="polite" aria-label="Acuerdo de navegación">
+    <div class="container consent-container">
+      <button class="consent-close-btn" id="consentCloseAttemptBtn" type="button" aria-label="El consentimiento es necesario para continuar" title="Aceptar es requerido para continuar">&times;</button>
+      <div class="consent-content-grid">
+        <div class="consent-shield-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+        <div class="consent-text-col">
+          <div class="consent-header-row">
+            <h4 class="consent-title">Bienvenido a WORTHIT.</h4>
+            <span class="badge-accent">ACUERDO DE NAVEGACIÓN</span>
+          </div>
+          <p class="consent-desc">
+            Para continuar navegando y acceder a nuestras recomendaciones, es necesario que leas y aceptes nuestros
+            <strong>Términos y Condiciones de Uso</strong>, la <strong>Política de Privacidad</strong> y el uso de <strong>Cookies</strong>.
+          </p>
+          <div class="consent-links-row">
+            <a class="consent-legal-link" href="legal.html#terms">Términos y Condiciones</a>
+            <span class="sep">•</span>
+            <a class="consent-legal-link" href="legal.html#privacy">Política de Privacidad</a>
+            <span class="sep">•</span>
+            <a class="consent-legal-link" href="legal.html#cookies">Política de Cookies</a>
+          </div>
+        </div>
+        <div class="consent-actions-col">
+          <button class="btn btn-accent btn-block btn-accept-consent" id="btnAcceptConsent" type="button">
+            <span>Aceptar y continuar</span>
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
