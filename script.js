@@ -668,34 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     6. CONTADOR EN TIEMPO REAL
-     ========================================================================== */
-  const daysEl = document.getElementById('timerDays');
-  const hoursEl = document.getElementById('timerHours');
-  const minutesEl = document.getElementById('timerMinutes');
-  const secondsEl = document.getElementById('timerSeconds');
-
-  // FECHA DE FIN DE CAMPAÑA: modificar este valor al iniciar una nueva promoción.
-  const PROMO_END_DATE = '2026-11-30T23:59:59-03:00';
-  const countdownTarget = new Date(PROMO_END_DATE).getTime();
-
-  function updateCountdown() {
-    const distance = Math.max(0, countdownTarget - Date.now());
-    const days = Math.floor(distance / 86400000);
-    const hours = Math.floor((distance % 86400000) / 3600000);
-    const minutes = Math.floor((distance % 3600000) / 60000);
-    const seconds = Math.floor((distance % 60000) / 1000);
-    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  /* ==========================================================================
-     7. MODAL DE VISTA RÁPIDA (CON CUOTAS Y ENVÍO GRATIS)
+     6. MODAL DE VISTA RÁPIDA (CON CUOTAS Y ENVÍO GRATIS)
      ========================================================================== */
   window.openQuickView = function(productId) {
     const product = products.find(p => p.id === productId);
