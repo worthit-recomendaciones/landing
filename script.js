@@ -451,9 +451,545 @@ document.addEventListener('DOMContentLoaded', () => {
   let searchQuery = '';
   let currentSort = 'featured';
 
+  // Escapado de texto para interpolaciones HTML dinámicas.
+  // Evita que futuros datos del catálogo puedan convertirse en marcado ejecutable.
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+  }
+
+  function safeProductImage(path) {
+    const value = String(path || '');
+    return /^images\/products\/[a-z0-9._-]+\.(?:png|jpe?g|webp|avif)$/i.test(value)
+      ? escapeHTML(value)
+      : '';
+  }
+
   // Helper de formato en Pesos Argentinos
   function formatARS(amount) {
-    return '$' + amount.toLocaleString('es-AR');
+    return '
+
+  // Prioriza el enlace de afiliado validado. Si falta, abre una búsqueda normal
+  // en Mercado Libre, sin atribuir esa visita como afiliada.
+  function getProductUrl(product) {
+    const affiliateUrl = (product.affiliateUrl || '').trim();
+    try {
+      const parsed = new URL(affiliateUrl);
+      const allowedHosts = ['meli.la', 'www.mercadolibre.com.ar', 'mercadolibre.com.ar'];
+      if (parsed.protocol === 'https:' && allowedHosts.includes(parsed.hostname.toLowerCase()) &&
+          !/tu-link-de-afiliado|placeholder/i.test(affiliateUrl)) return parsed.href;
+    } catch (error) {
+      // Si el enlace no es válido, se usa una búsqueda segura en Mercado Libre.
+    }
+    return `https://listado.mercadolibre.com.ar/${encodeURIComponent(product.title)}`;
+  }
+
+  function openProductLink(product) {
+    if (product) window.open(getProductUrl(product), '_blank', 'noopener,noreferrer');
+  }
+
+
+  // Elementos del DOM
+  const productsGrid = document.getElementById('productsGrid');
+  const categoryTabs = document.getElementById('categoryTabs');
+  const productFilterInput = document.getElementById('productFilterInput');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  const headerSearchInput = document.getElementById('headerSearchInput');
+  const sortSelect = document.getElementById('sortSelect');
+  const noResultsMsg = document.getElementById('noResultsMsg');
+  const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+  const showAllBtn = document.getElementById('showAllBtn');
+  const currentCategoryTitle = document.getElementById('currentCategoryTitle');
+  const currentCategoryCount = document.getElementById('currentCategoryCount');
+  const currentCategoryDesc = document.getElementById('currentCategoryDesc');
+
+  // Elementos del Modal de Vista Rápida
+  const quickViewModal = document.getElementById('quickViewModal');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalBody = document.getElementById('modalBody');
+
+  // Elementos Menú Móvil
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+  // Contenedor Toast
+  const toastContainer = document.getElementById('toastContainer');
+
+  /* ==========================================================================
+     3. RENDERIZADO DE PRODUCTOS (Con Cuotas sin Interés y Envío Gratis)
+     ========================================================================== */
+  function getFilteredProducts() {
+    return products.filter(product => {
+      // Filtro por categoría
+      const matchesCategory = (currentCategory === 'all') || (product.category === currentCategory);
+
+      // Filtro por búsqueda
+      const query = searchQuery.trim().toLowerCase();
+      const matchesSearch = !query || 
+        product.title.toLowerCase().includes(query) ||
+        product.shortDesc.toLowerCase().includes(query) ||
+        product.categoryName.toLowerCase().includes(query);
+
+      return matchesCategory && matchesSearch;
+    }).sort((a, b) => {
+      if (currentSort === 'discount') return Number(b.featured) - Number(a.featured);
+      if (currentSort === 'price-asc') return a.salePrice - b.salePrice;
+      if (currentSort === 'price-desc') return b.salePrice - a.salePrice;
+      // Por defecto: producto destacado primero
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return 0;
+    });
+  }
+
+  function renderProducts() {
+    const filtered = getFilteredProducts();
+
+    if (filtered.length === 0) {
+      productsGrid.innerHTML = '';
+      noResultsMsg.style.display = 'flex';
+      currentCategoryCount.textContent = '0 Productos';
+      return;
+    }
+
+    noResultsMsg.style.display = 'none';
+    currentCategoryCount.textContent = `Mostrando ${filtered.length} Producto${filtered.length === 1 ? '' : 's'}`;
+
+    productsGrid.innerHTML = filtered.map((product, index) => {
+      const productId = escapeHTML(product.id);
+      const categoryName = escapeHTML(product.categoryName);
+      const title = escapeHTML(product.title);
+      const shortDesc = escapeHTML(product.shortDesc);
+      const image = safeProductImage(product.image);
+      const installments = escapeHTML(product.installments);
+      const isCardFeatured = product.featured ? 'featured-card' : '';
+      const cardDelay = (index * 0.04).toFixed(2);
+      return `
+        <article class="product-card ${isCardFeatured}" data-product-id="${productId}" style="--card-delay: ${cardDelay}s" tabindex="0">
+          <div class="card-top-badges">
+            <span class="badge-tag">${categoryName}</span>
+          </div>
+
+          <div class="product-image-box" data-quick-view="${productId}">
+            <img src="${image}" alt="${title}" class="product-img" loading="lazy">
+            <button class="quick-view-overlay-btn" type="button" aria-label="Vista rápida de ${title}">
+              Vista Rápida
+            </button>
+          </div>
+
+          <div class="product-info">
+            ${product.freeShipping ? '<div class="badge-free-shipping">🚚 Envío Gratis</div>' : '<div class="badge-free-shipping">Consultar envío</div>'}
+
+            <span class="product-category-label">${categoryName}</span>
+            <h3 class="product-title" data-quick-view="${productId}">${title}</h3>
+            <p class="product-description">${shortDesc}</p>
+            <div class="product-price-box">
+              <span class="product-price-current">${formatARS(product.salePrice)}</span>
+            </div>
+
+            ${installments ? `<div class="product-installments">💳 <span>${installments}</span></div>` : '<div class="product-installments">Consultar medios de pago</div>'}
+
+            <button class="btn-buy-product" data-product-id="${productId}" type="button">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <span>Ver en Mercado Libre</span>
+            </button>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  // Delegación de eventos: elimina handlers inline del HTML generado.
+  if (productsGrid) {
+    productsGrid.addEventListener('click', event => {
+      const buyButton = event.target.closest('.btn-buy-product');
+      if (buyButton) {
+        event.stopPropagation();
+        const product = products.find(item => item.id === buyButton.getAttribute('data-product-id'));
+        openProductLink(product);
+        return;
+      }
+
+      const quickViewTarget = event.target.closest('[data-quick-view]');
+      if (quickViewTarget) {
+        window.openQuickView(quickViewTarget.getAttribute('data-quick-view'));
+      }
+    });
+  }
+
+  /* ==========================================================================
+     4. CONTROL DE PESTAÑAS Y ENCABEZADOS DE CATEGORÍA
+     ========================================================================== */
+  const categoryMeta = {
+    all: {
+      title: 'Selección WorthIT',
+      desc: '15 productos seleccionados en Tecnología, Home Office y Café. Compará características, precio y condiciones antes de comprar.'
+    },
+    technology: {
+      title: 'Tecnología',
+      desc: 'Dispositivos y accesorios para uso cotidiano, trabajo y entretenimiento.'
+    },
+    'home-office': {
+      title: 'Home Office',
+      desc: 'Equipamiento para organizar y mejorar tu espacio de trabajo.'
+    },
+    coffee: {
+      title: 'Café',
+      desc: 'Cafeteras y molinillos para preparar café en casa.'
+    }
+  };
+
+  function setCategory(category) {
+    currentCategory = category;
+
+    // Actualizar botones de pestaña
+    categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
+      const match = btn.getAttribute('data-category') === category;
+      btn.classList.toggle('active', match);
+      btn.setAttribute('aria-selected', match ? 'true' : 'false');
+    });
+
+    // Actualizar encabezados
+    const meta = categoryMeta[category] || categoryMeta.all;
+    currentCategoryTitle.textContent = meta.title;
+    currentCategoryDesc.textContent = meta.desc;
+
+    // Renderizar
+    renderProducts();
+  }
+
+  categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-category');
+      setCategory(cat);
+    });
+  });
+
+  document.querySelectorAll('[data-filter]').forEach(link => {
+    link.addEventListener('click', () => {
+      const filter = link.getAttribute('data-filter');
+      if (filter) {
+        setCategory(filter);
+        closeMobileMenu();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-cat-target]').forEach(card => {
+    card.addEventListener('click', () => {
+      const targetCat = card.getAttribute('data-cat-target');
+      if (targetCat) {
+        setCategory(targetCat);
+        const dealsSec = document.getElementById('deals');
+        if (dealsSec) dealsSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      searchQuery = '';
+      if (productFilterInput) productFilterInput.value = '';
+      if (headerSearchInput) headerSearchInput.value = '';
+      if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+      setCategory('all');
+      const dealsSec = document.getElementById('deals');
+      if (dealsSec) dealsSec.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  /* ==========================================================================
+     5. CONTROLES DE BÚSQUEDA Y ORDENAMIENTO
+     ========================================================================== */
+  function handleSearch(val) {
+    searchQuery = val;
+    if (clearSearchBtn) {
+      clearSearchBtn.style.display = val.length > 0 ? 'block' : 'none';
+    }
+    renderProducts();
+  }
+
+  if (productFilterInput) {
+    productFilterInput.addEventListener('input', (e) => {
+      handleSearch(e.target.value);
+    });
+  }
+
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      if (productFilterInput) productFilterInput.value = '';
+      handleSearch('');
+      if (productFilterInput) productFilterInput.focus();
+    });
+  }
+
+  if (headerSearchInput) {
+    headerSearchInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (productFilterInput) productFilterInput.value = val;
+      handleSearch(val);
+      const dealsSec = document.getElementById('deals');
+      if (dealsSec && window.scrollY < dealsSec.offsetTop - 150) {
+        dealsSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      renderProducts();
+    });
+  }
+
+  if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', () => {
+      searchQuery = '';
+      currentSort = 'featured';
+      if (sortSelect) sortSelect.value = 'featured';
+      if (productFilterInput) productFilterInput.value = '';
+      if (headerSearchInput) headerSearchInput.value = '';
+      if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+      setCategory('all');
+    });
+  }
+
+  /* ==========================================================================
+     6. MODAL DE VISTA RÁPIDA (CON CUOTAS Y ENVÍO GRATIS)
+     ========================================================================== */
+  window.openQuickView = function(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    modalBody.innerHTML = `
+      <div class="modal-grid">
+        <div class="modal-img-wrap">
+          <img src="${safeProductImage(product.image)}" alt="${escapeHTML(product.title)}">
+        </div>
+        <div class="modal-info">
+          <div class="badge-free-shipping">${product.freeShipping ? "🚚 Envío Gratis" : "Consultar envío"}</div>
+          <span class="modal-tag">${escapeHTML(product.categoryName)}</span>
+          <h2 class="modal-title">${escapeHTML(product.title)}</h2>
+          <p class="modal-desc">${escapeHTML(product.fullDesc)}</p>
+
+          ${product.specs.length ? `<ul class="modal-specs-list">${product.specs.map(spec => `<li>${escapeHTML(spec)}</li>`).join('')}</ul>` : ""}
+
+          <div class="modal-price-row">
+            <span class="modal-sale-price">${formatARS(product.salePrice)}</span>
+          </div>
+
+          <div class="product-installments" style="margin-bottom: 16px;">
+            ${product.installments ? `💳 <strong>${escapeHTML(product.installments)}</strong>` : "Consultar medios de pago"}
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 14px;">
+            <a href="${escapeHTML(getProductUrl(product))}" target="_blank" rel="sponsored nofollow noopener noreferrer" class="btn btn-primary btn-block btn-lg" style="text-decoration: none;">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>Ver en Mercado Libre</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+
+    quickViewModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeQuickView() {
+    if (quickViewModal) quickViewModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeQuickView);
+  if (quickViewModal) {
+    quickViewModal.addEventListener('click', (e) => {
+      if (e.target === quickViewModal) closeQuickView();
+    });
+  }
+
+  /* ==========================================================================
+     9. SISTEMA TOAST
+     ========================================================================== */
+  function showToast(message) {
+    if (!toastContainer) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    const icon = document.createElement('div');
+    icon.className = 'toast-icon';
+    icon.textContent = '✓';
+    const text = document.createElement('div');
+    text.className = 'toast-message';
+    text.textContent = String(message ?? '');
+    toast.append(icon, text);
+
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => toast.classList.add('show'), 20);
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 4000);
+  }
+
+  /* ==========================================================================
+     10. MENÚ MÓVIL
+     ========================================================================== */
+  function openMobileMenu() {
+    if (mobileMenuDrawer) mobileMenuDrawer.classList.add('open');
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+  }
+
+  function closeMobileMenu() {
+    if (mobileMenuDrawer) mobileMenuDrawer.classList.remove('open');
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+  }
+
+  if (mobileToggle) mobileToggle.addEventListener('click', openMobileMenu);
+  if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMobileMenu);
+  if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  /* ==========================================================================
+     12. EFECTO DE NAVEGACIÓN FIJA (STICKY HEADER) & SCROLL PROGRESS
+     ========================================================================== */
+  const siteHeader = document.getElementById('siteHeader');
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+
+  function onScroll() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    // Header sticky con sombra
+    if (siteHeader) {
+      siteHeader.classList.toggle('scrolled', scrollY > 40);
+    }
+
+    // Barra de progreso de scroll suave
+    if (scrollProgressBar) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+      scrollProgressBar.style.width = `${scrollPercent}%`;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ==========================================================================
+     13. SCROLL REVEAL (INTERSECTION OBSERVER NATIVO ULTRA LIVIANO)
+     ========================================================================== */
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.12
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Dejar de observar para cero impacto en rendimiento
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in-scroll').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  /* ==========================================================================
+     14. SCROLLSPY (INDICADOR DE SECCIÓN ACTIVA EN EL MENÚ)
+     ========================================================================== */
+  const navSections = [
+    { id: 'hero', link: document.querySelector('.nav-link[href="#hero"]') },
+    { id: 'deals', link: document.querySelector('.nav-link[href="#deals"]') },
+    { id: 'spotlight', link: document.querySelector('.nav-link[href="#spotlight"]') }
+  ];
+
+  window.addEventListener('scroll', () => {
+    const currentPos = window.scrollY + 130;
+    navSections.forEach(item => {
+      const section = document.getElementById(item.id);
+      if (section && item.link) {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (currentPos >= top && currentPos < top + height) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          item.link.classList.add('active');
+        }
+      }
+    });
+  }, { passive: true }); 
+
+  /* ==========================================================================
+     15. CUENTA REGRESIVA PROMOCIONAL REUTILIZABLE
+     Para activar una campaña futura, cambiar enabled a true y cargar la fecha
+     y hora reales de finalización en endsAt (hora local de Argentina).
+     Ejemplo de formato: "2026-12-01T23:59:00".
+     ==========================================================================
+  */
+  const PROMO_COUNTDOWN = {
+    enabled: false, // Se mantiene apagada hasta que exista una promoción vigente.
+    eventName: "EL EVENTO TERMINA EN:",
+    endsAt: "" // Fecha real: AAAA-MM-DDTHH:MM:SS
+  };
+
+  const promoCountdown = document.getElementById('promoCountdown');
+  if (promoCountdown && PROMO_COUNTDOWN.enabled && PROMO_COUNTDOWN.endsAt) {
+    const endAt = new Date(PROMO_COUNTDOWN.endsAt);
+    if (!Number.isNaN(endAt.getTime())) {
+      promoCountdown.hidden = false;
+      const heading = document.getElementById('countdownHeading');
+      const expired = document.getElementById('countdownExpired');
+      if (heading && PROMO_COUNTDOWN.eventName) heading.textContent = PROMO_COUNTDOWN.eventName;
+      let promoInterval = null;
+      const updatePromoCountdown = () => {
+        const remaining = endAt.getTime() - Date.now();
+        if (remaining <= 0) {
+          document.getElementById('countdownTimer').hidden = true;
+          if (expired) expired.hidden = false;
+          window.clearInterval(promoInterval);
+          return;
+        }
+        const totalSeconds = Math.floor(remaining / 1000);
+        const values = {
+          timerDays: Math.floor(totalSeconds / 86400),
+          timerHours: Math.floor((totalSeconds % 86400) / 3600),
+          timerMinutes: Math.floor((totalSeconds % 3600) / 60),
+          timerSeconds: totalSeconds % 60
+        };
+        Object.entries(values).forEach(([id, value]) => {
+          const node = document.getElementById(id);
+          if (node) node.textContent = String(value).padStart(2, '0');
+        });
+      };
+      updatePromoCountdown();
+      promoInterval = window.setInterval(updatePromoCountdown, 1000);
+    }
+  }
+
+  /* ==========================================================================
+     16. INICIALIZACIÓN
+     ========================================================================== */
+  renderProducts(); 
+}); + Number(amount).toLocaleString('es-AR');
   }
 
   // Prioriza el enlace de afiliado validado. Si falta, abre una búsqueda normal
