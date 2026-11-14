@@ -7,155 +7,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
-     SISTEMA DE CONSENTIMIENTO Y MODAL LEGAL (CORREGIDO)
-     ========================================================================== */
-  const consentBanner = document.getElementById('consentBanner');
-  const consentOverlay = document.getElementById('consentOverlay');
-  const btnAcceptConsent = document.getElementById('btnAcceptConsent');
-  const consentCloseAttemptBtn = document.getElementById('consentCloseAttemptBtn');
-  
-  const legalModalOverlay = document.getElementById('legalModalOverlay');
-  const legalModalCloseBtn = document.getElementById('legalModalCloseBtn');
-  const btnAcceptFromModal = document.getElementById('btnAcceptFromModal');
-  const legalTabsBar = document.getElementById('legalTabsBar');
-
-  const CONSENT_KEY = 'worthit_legal_consent_v3';
-
-  // 1. Verificar si ya aceptó previamente
-  function checkLegalConsent() {
-    const accepted = localStorage.getItem(CONSENT_KEY);
-    if (!accepted) {
-      document.body.classList.add('consent-locked');
-      if (consentBanner) consentBanner.classList.add('visible');
-      if (consentOverlay) consentOverlay.classList.add('visible');
-    }
-  }
-
-  // 2. Aceptar y desbloquear todo
-  function acceptLegalConsent() {
-    localStorage.setItem(CONSENT_KEY, 'true');
-    document.body.classList.remove('consent-locked');
-    if (consentBanner) consentBanner.classList.remove('visible');
-    if (consentOverlay) consentOverlay.classList.remove('visible');
-    closeLegalModal();
-    
-    // Toast con entidad HTML limpia sin caracteres raros
-    if (typeof showToast === 'function') {
-      showToast('&iexcl;T&eacute;rminos y condiciones aceptados! Disfrut&aacute; de WorthIT.');
-    }
-  }
-
-  // 3. Efecto de aviso si presiona fuera
-  function triggerBannerShake() {
-    if (consentBanner) {
-      consentBanner.classList.remove('shake');
-      void consentBanner.offsetWidth;
-      consentBanner.classList.add('shake');
-    }
-  }
-
-  // Event Listeners de Botones de Aceptación
-  if (btnAcceptConsent) {
-    btnAcceptConsent.onclick = function(e) {
-      e.preventDefault();
-      acceptLegalConsent();
-    };
-  }
-
-  if (btnAcceptFromModal) {
-    btnAcceptFromModal.onclick = function(e) {
-      e.preventDefault();
-      acceptLegalConsent();
-    };
-  }
-
-  if (consentCloseAttemptBtn) {
-    consentCloseAttemptBtn.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      triggerBannerShake();
-    };
-  }
-
-  if (consentOverlay) {
-    consentOverlay.onclick = function() {
-      triggerBannerShake();
-    };
-  }
-
-  // 4. Lógica de Pestañas y Modal Legal
-  window.openLegalModal = function(tabName = 'terms') {
-    if (legalModalOverlay) {
-      legalModalOverlay.classList.add('open');
-      switchLegalTab(tabName);
-    }
-  };
-
-  window.closeLegalModal = function() {
-    if (legalModalOverlay) {
-      legalModalOverlay.classList.remove('open');
-    }
-  };
-
-  function switchLegalTab(tabName) {
-    if (!legalTabsBar) return;
-
-    legalTabsBar.querySelectorAll('.legal-tab-btn').forEach(btn => {
-      const isTarget = btn.getAttribute('data-legal-tab') === tabName;
-      btn.classList.toggle('active', isTarget);
-    });
-
-    document.querySelectorAll('.legal-tab-pane').forEach(pane => {
-      pane.classList.remove('active');
-    });
-
-    const activePane = document.getElementById(`pane-${tabName}`);
-    if (activePane) activePane.classList.add('active');
-  }
-
-  // Asignar clics a los enlaces del banner (Términos, Privacidad, Cookies)
-  document.querySelectorAll('[data-open-legal]').forEach(btn => {
-    btn.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const tabTarget = btn.getAttribute('data-open-legal');
-      window.openLegalModal(tabTarget);
-    };
-  });
-
-  // Asignar clics a las pestañas superiores dentro del modal
-  if (legalTabsBar) {
-    legalTabsBar.querySelectorAll('.legal-tab-btn').forEach(btn => {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        const target = btn.getAttribute('data-legal-tab');
-        switchLegalTab(target);
-      };
-    });
-  }
-
-  // Cruz de cierre del modal legal
-  if (legalModalCloseBtn) {
-    legalModalCloseBtn.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.closeLegalModal();
-    };
-  }
-
-  // Clic fuera del modal para cerrar
-  if (legalModalOverlay) {
-    legalModalOverlay.onclick = function(e) {
-      if (e.target === legalModalOverlay) {
-        window.closeLegalModal();
-      }
-    };
-  }
-
-  // Ejecutar verificación inicial
-  checkLegalConsent();
-	
-  /* ==========================================================================
      1. CATÁLOGO DE PRODUCTOS (15 Productos: 5 Tecnología, 5 Home Office, 5 Café)
      ========================================================================== */
   const products = [
@@ -997,3 +848,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, observerOptions);
+
+  document.querySelectorAll('.fade-in-scroll').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  /* ==========================================================================
+     14. SCROLLSPY (INDICADOR DE SECCIÓN ACTIVA EN EL MENÚ)
+     ========================================================================== */
+  const navSections = [
+    { id: 'hero', link: document.querySelector('.nav-link[href="#hero"]') },
+    { id: 'deals', link: document.querySelector('.nav-link[href="#deals"]') },
+    { id: 'spotlight', link: document.querySelector('.nav-link[href="#spotlight"]') }
+  ];
+
+  window.addEventListener('scroll', () => {
+    const currentPos = window.scrollY + 130;
+    navSections.forEach(item => {
+      const section = document.getElementById(item.id);
+      if (section && item.link) {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (currentPos >= top && currentPos < top + height) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          item.link.classList.add('active');
+        }
+      }
+    });
+  }, { passive: true }); 
+
+  /* ==========================================================================
+     15. INICIALIZACIÓN
+     ========================================================================== */
+  renderProducts(); 
+});
