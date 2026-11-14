@@ -121,16 +121,37 @@
           </div>
 
           <h1 class="hero-title">
-            ENCONTRÁ&nbsp; <br>
-            <span class="highlight-accent">BUENAS COMPRAS</span> SIN PERDER EL TIEMPO!
+            ENCONTRÁ<br>
+            <span class="highlight-accent">BUENAS COMPRAS</span> SIN<br>
+            PERDER EL TIEMPO!
           </h1>
 
           <p class="hero-subtitle">
             Seleccionamos productos por utilidad, características y relación precio-beneficio. Consultá precio, disponibilidad, cuotas y condiciones actualizadas en cada publicación del vendedor.
           </p>
 
-          <!-- CONTADOR EN TIEMPO REAL (4 TARJETAS SPLIT COMO EN REFERENCIA 1) -->
-
+          <!--
+            CUENTA REGRESIVA PROMOCIONAL REUTILIZABLE.
+            Queda desactivada por defecto. Para una próxima campaña, configurar
+            PROMO_COUNTDOWN en script.js con enabled: true y endsAt: "AAAA-MM-DDTHH:MM:SS".
+            El contador se mostrará automáticamente; no usar fechas ficticias ni campañas vencidas.
+          -->
+          <div class="countdown-wrapper" id="promoCountdown" hidden>
+            <div class="countdown-header">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span id="countdownHeading">EL EVENTO TERMINA EN:</span>
+            </div>
+            <div class="countdown-timer" id="countdownTimer">
+              <div class="countdown-block"><div class="countdown-card"><span class="countdown-num" id="timerDays">00</span><div class="card-split"></div></div><span class="countdown-label">DÍAS</span></div>
+              <div class="countdown-block"><div class="countdown-card"><span class="countdown-num" id="timerHours">00</span><div class="card-split"></div></div><span class="countdown-label">HORAS</span></div>
+              <div class="countdown-block"><div class="countdown-card"><span class="countdown-num" id="timerMinutes">00</span><div class="card-split"></div></div><span class="countdown-label">MINUTOS</span></div>
+              <div class="countdown-block"><div class="countdown-card"><span class="countdown-num" id="timerSeconds">00</span><div class="card-split"></div></div><span class="countdown-label">SEGUNDOS</span></div>
+            </div>
+            <p class="countdown-expired-message" id="countdownExpired" hidden>¡Esta promoción ha finalizado!</p>
+          </div>
 
           <!-- Botones de Acción -->
           <div class="hero-buttons">
@@ -172,8 +193,41 @@
           </div>
         </div>
 
-        <!-- Muestra 3D Flotante (Referencia 1) -->
+        <!-- Productos reales del catálogo en composición flotante -->
+        <div class="hero-showcase" aria-label="Productos recomendados WorthIT">
+          <div class="showcase-glow-circle"></div>
 
+          <a class="floating-card card-vr" href="https://meli.la/13CTiHx" target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label="Ver Smartwatch HUAWEI Watch Fit 4 Pro GPS en Mercado Libre">
+            <div class="floating-badge">DESTACADO</div>
+            <div class="card-img-wrap"><img src="images/products/smartwatch2.png" alt="Smartwatch HUAWEI Watch Fit 4 Pro GPS" loading="lazy"></div>
+            <div class="floating-info">
+              <span class="floating-cat">Tecnología</span>
+              <h4 class="floating-name">HUAWEI Watch Fit 4 Pro GPS</h4>
+              <div class="floating-price"><span class="price-new">$299.999</span></div>
+              <span class="hero-free-shipping">💳 6 cuotas de $50.000</span>
+            </div>
+          </a>
+
+          <a class="floating-card card-phone" href="https://meli.la/2bgiQ1i" target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label="Ver Auriculares JBL Live 780 Bluetooth en Mercado Libre">
+            <div class="card-img-wrap"><img src="images/products/headphones-jbl.png" alt="Auriculares JBL Live 780 Bluetooth" loading="lazy"></div>
+            <div class="floating-info">
+              <span class="floating-cat">Tecnología</span>
+              <h4 class="floating-name">Auriculares JBL Live 780</h4>
+              <div class="floating-price"><span class="price-new">$309.999</span></div>
+              <span class="hero-free-shipping">💳 6 cuotas de $51.666</span>
+            </div>
+          </a>
+
+          <a class="floating-card card-audio" href="https://meli.la/2yB92ov" target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label="Ver Cafetera de filtro Oster de 12 tazas en Mercado Libre">
+            <div class="card-img-wrap"><img src="images/products/coffee.png" alt="Cafetera de filtro Oster de 12 tazas" loading="lazy"></div>
+            <div class="floating-info">
+              <span class="floating-cat">Café</span>
+              <h4 class="floating-name">Cafetera Oster 12 tazas</h4>
+              <div class="floating-price"><span class="price-new">$69.133</span></div>
+              <span class="hero-free-shipping">💳 2 cuotas de $34.566</span>
+            </div>
+          </a>
+        </div>
       </div>
 
       <!-- BANNER DESTACADO DEL DÍA (Referencia 1) -->
