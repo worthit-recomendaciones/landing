@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Política CSP compatible con la landing: conserva Google Fonts y estilos visuales inline,
        pero bloquea scripts inline, plugins y contenido ejecutable de orígenes no autorizados. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'none'; form-action 'self' https://meli.la https://mercadolibre.com.ar https://wa.me; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googletagmanager.com; form-action 'self' https://meli.la https://mercadolibre.com.ar https://wa.me; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>WorthIT | Recomendaciones con criterio</title>
   <meta name="description" content="Descubrí recomendaciones de productos en Tecnología, Home Office y Café de Especialidad. Selección de productos y acceso directo a las publicaciones de Mercado Libre.">
@@ -524,6 +524,7 @@
         <button type="button" data-open-legal="terms">Términos y condiciones</button>
         <button type="button" data-open-legal="privacy">Privacidad</button>
         <button type="button" data-open-legal="cookies">Cookies</button>
+        <button type="button" id="manageCookiePreferences">Preferencias de cookies</button>
       </nav>
       <div class="footer-bottom">
         <p>&copy; 2026 WorthIT Argentina. Todos los derechos reservados.</p>
@@ -597,6 +598,10 @@
             <span class="sep">•</span>
             <a class="consent-legal-link" href="#" data-open-legal="cookies">Política de Cookies</a>
           </div>
+          <label class="analytics-consent-option" for="analyticsConsent">
+            <input type="checkbox" id="analyticsConsent" name="analyticsConsent">
+            <span>Permitir estadísticas de uso para mejorar WorthIT (Google Analytics). Es opcional y podés cambiar esta decisión cuando quieras.</span>
+          </label>
         </div>
         <div class="consent-actions-col">
           <button class="btn btn-accent btn-block btn-accept-consent" id="btnAcceptConsent" type="button">
@@ -639,7 +644,7 @@
         <!-- PESTAÑA 1: TÉRMINOS Y CONDICIONES -->
         <article class="legal-tab-pane active" id="pane-terms">
 <h1 class="legal-doc-title">TÉRMINOS Y CONDICIONES DE USO</h1>
-<span class="legal-doc-date">Última actualización: 14 de noviembre de 2026</span>
+<span class="legal-doc-date">Última actualización: 16 de noviembre de 2026</span>
 <h2>1. Sobre WorthIT</h2>
 <p>WorthIT es un proyecto digital independiente que selecciona, analiza y recomienda productos de distintas categorías, entre ellas tecnología, hogar, home office y café. Su finalidad es ofrecer información y facilitar el acceso a publicaciones de productos comercializados por terceros.</p>
 <h2>2. Qué hace y qué no hace WorthIT</h2>
@@ -663,21 +668,22 @@
         <!-- PESTAÑA 2: POLÍTICA DE PRIVACIDAD -->
         <article class="legal-tab-pane" id="pane-privacy">
 <h1 class="legal-doc-title">POLÍTICA DE PRIVACIDAD</h1>
-<span class="legal-doc-date">Última actualización: 14 de noviembre de 2026</span>
+<span class="legal-doc-date">Última actualización: 16 de noviembre de 2026</span>
 <h2>1. Quién está detrás del sitio</h2>
 <p>WorthIT es el nombre del proyecto digital que administra este sitio y publica recomendaciones de productos. Para consultas relacionadas con privacidad, podés comunicarte por <a href="https://wa.me/5492234565003" target="_blank" rel="noopener noreferrer">WhatsApp</a>. Esta identificación pública del proyecto no reemplaza los datos de identificación y domicilio del responsable que pudieran resultar exigibles conforme a la normativa aplicable.</p>
 <h2>2. Qué datos se tratan en el sitio</h2>
-<p>La landing no ofrece registro de usuarios, cuentas personales, formularios de contacto ni procesos de compra propios. En la revisión del código publicado no encontramos herramientas propias de analítica, píxeles publicitarios ni mecanismos que envíen eventos de navegación a servicios de medición.</p>
+<p>La landing no ofrece registro de usuarios, cuentas personales, formularios de contacto ni procesos de compra propios. WorthIT utiliza Google Analytics 4, a través de Google Tag Manager, únicamente si la persona visitante acepta expresamente las estadísticas opcionales. Si no las acepta, la etiqueta de medición no se carga.</p>
 <ul>
-<li><strong>Preferencia de navegación:</strong> el sitio guarda en el navegador una constancia de aceptación para recordar la preferencia de navegación. Para ello utiliza almacenamiento local (localStorage) y una cookie propia llamada <strong>worthit_navigation_consent_v4</strong>, configurada con una duración de un año.</li>
+<li><strong>Preferencia de navegación:</strong> el sitio guarda en el navegador una constancia para recordar la aceptación del acuerdo de navegación, mediante almacenamiento local (localStorage) y una cookie propia de duración de un año.</li>
+<li><strong>Preferencia de analítica:</strong> si aceptás voluntariamente las estadísticas, el sitio recuerda esa elección en el almacenamiento local del navegador y carga Google Tag Manager para habilitar Google Analytics 4. Si no aceptás, Google Analytics no se carga.</li>
 <li><strong>Consultas por WhatsApp:</strong> si elegís iniciar una conversación, WhatsApp recibe los datos y el contenido que decidas enviar, como tu número de teléfono, nombre de perfil y mensaje. Esos datos se tratan a través de WhatsApp y del dispositivo que recibe la consulta.</li>
 <li><strong>Datos técnicos de conexión:</strong> al visitar un sitio web, el proveedor de alojamiento y la infraestructura de Internet pueden procesar datos técnicos necesarios para entregar la página, como dirección IP, fecha y hora de la solicitud e información del navegador. WorthIT no utiliza esos datos mediante una herramienta propia de analítica en el código revisado.</li>
 </ul>
 <h2>3. Para qué se utilizan</h2>
-<p>La preferencia almacenada se utiliza para recordar la decisión de navegación en visitas posteriores. Los mensajes enviados voluntariamente por WhatsApp se utilizan para responder consultas relacionadas con WorthIT y sus recomendaciones. No solicitamos datos personales para permitir la navegación ni para realizar compras desde este sitio.</p>
+<p>La preferencia de navegación se utiliza para recordar la aceptación del acuerdo. Si autorizás las estadísticas, Google Analytics 4 puede procesar información sobre el uso del sitio, como páginas visitadas, interacciones, información del dispositivo y datos técnicos de conexión, conforme a la configuración del servicio. Esta autorización es opcional y puede modificarse desde el enlace «Preferencias de cookies» del pie de página. Los mensajes enviados voluntariamente por WhatsApp se utilizan para responder consultas relacionadas con WorthIT y sus recomendaciones.</p>
 <h2>4. Servicios de terceros</h2>
-<p>El sitio carga tipografías desde Google Fonts (fonts.googleapis.com y fonts.gstatic.com). Al solicitar esos recursos, el proveedor puede recibir datos técnicos de la conexión, como la dirección IP y la información necesaria para atender la solicitud. Cuando seguís un enlace, también pasás a interactuar con el sitio externo correspondiente, por ejemplo Mercado Libre o WhatsApp, que trata los datos conforme a sus propias políticas.</p>
-<p>En el código de la landing revisado para esta actualización no encontramos integraciones activas de analítica, medición de audiencia ni seguimiento publicitario. Esta constatación se limita al código inspeccionado y no equivale a una auditoría de tráfico de red, de registros del proveedor de alojamiento ni de servicios externos.</p>
+<p>El sitio carga tipografías desde Google Fonts (fonts.googleapis.com y fonts.gstatic.com). Si aceptás las estadísticas opcionales, también se cargan Google Tag Manager y Google Analytics 4, servicios de Google que pueden recibir datos técnicos de conexión y datos de uso del sitio. Google puede procesar esos datos conforme a sus propias condiciones y políticas. Cuando seguís un enlace, también pasás a interactuar con el sitio externo correspondiente, por ejemplo Mercado Libre o WhatsApp.</p>
+<p>La integración de Google Analytics 4 se activa únicamente después de que la persona visitante otorga su consentimiento opcional para estadísticas. WorthIT utiliza esta integración para medición de audiencia y análisis de interacciones con las recomendaciones; no se incorpora una etiqueta publicitaria en esta implementación.</p>
 <h2>5. Conservación y seguridad</h2>
 <p>La preferencia de navegación permanece en el navegador hasta que venza la cookie o la elimines desde la configuración del navegador. Los mensajes de WhatsApp se conservan según el funcionamiento y las políticas de WhatsApp y del dispositivo desde el que se atienden. WorthIT aplica medidas razonables de seguridad en el sitio, aunque ningún medio de transmisión o almacenamiento puede garantizar seguridad absoluta.</p>
 <h2>6. Tus derechos</h2>
@@ -689,17 +695,17 @@
         <!-- PESTAÑA 3: POLÍTICA DE COOKIES -->
         <article class="legal-tab-pane" id="pane-cookies">
 <h1 class="legal-doc-title">POLÍTICA DE COOKIES Y ALMACENAMIENTO LOCAL</h1>
-<span class="legal-doc-date">Última actualización: 14 de noviembre de 2026</span>
+<span class="legal-doc-date">Última actualización: 16 de noviembre de 2026</span>
 <h2>1. Qué son las cookies y el almacenamiento local</h2>
 <p>Las cookies son pequeños archivos que un sitio puede guardar en el navegador. El almacenamiento local (localStorage) permite conservar información en el dispositivo para utilizarla en visitas posteriores. No son exactamente lo mismo, aunque ambos mecanismos pueden recordar preferencias.</p>
 <h2>2. Qué utiliza WorthIT</h2>
-<p>En el código revisado, WorthIT utiliza una cookie propia llamada <strong>worthit_navigation_consent_v4</strong> y una entrada de almacenamiento local con el mismo nombre para recordar la preferencia de navegación. La cookie tiene una duración configurada de un año y utiliza los atributos Path=/, SameSite=Lax y Secure.</p>
+<p>WorthIT utiliza almacenamiento local para recordar la aceptación del acuerdo de navegación y la preferencia opcional de analítica. Si aceptás las estadísticas, Google Analytics 4 puede utilizar cookies propias, como las de la familia _ga, para distinguir navegadores y medir el uso del sitio, según la configuración del servicio y los plazos establecidos por Google.</p>
 <h2>3. Analítica y publicidad</h2>
-<p>En el código de la landing revisado para esta actualización no encontramos cookies propias de analítica o publicidad ni integraciones activas de seguimiento publicitario. Los enlaces de afiliados pueden permitir atribuir una compra al enlace de origen una vez que ingresás a la plataforma externa; el tratamiento que realice esa plataforma se rige por sus propias políticas. Esta revisión de código no sustituye una comprobación de tráfico de red en el navegador.</p>
+<p>Las cookies de analítica de Google Analytics 4 solo pueden utilizarse si aceptás expresamente las estadísticas opcionales. Si rechazás o no seleccionás esa opción, WorthIT no carga Google Tag Manager ni Google Analytics. No se incorpora una etiqueta publicitaria en esta implementación. Los enlaces de afiliados pueden permitir atribuir una compra al enlace de origen una vez que ingresás a la plataforma externa; el tratamiento que realice esa plataforma se rige por sus propias políticas.</p>
 <h2>4. Servicios externos</h2>
 <p>La carga de tipografías de Google Fonts y el acceso a Mercado Libre o WhatsApp pueden implicar el uso de tecnologías y el tratamiento de datos por parte de esos proveedores, conforme a sus propias políticas y configuraciones.</p>
 <h2>5. Cómo administrar tus preferencias</h2>
-<p>Podés eliminar o bloquear cookies y administrar el almacenamiento del sitio desde la configuración de tu navegador. Si eliminás la preferencia guardada, el sitio podría volver a mostrar el aviso de navegación. Bloquear ciertos recursos externos puede afectar su visualización o funcionamiento.</p>
+<p>Podés cambiar tu elección en cualquier momento desde «Preferencias de cookies», en el pie de página. También podés eliminar o bloquear cookies y administrar el almacenamiento del sitio desde la configuración de tu navegador. Si revocás el consentimiento de analítica, el sitio dejará de cargar Google Analytics en las siguientes páginas o visitas; las cookies que Google ya haya guardado pueden eliminarse desde la configuración del navegador.</p>
 </article>
 
       </div>
