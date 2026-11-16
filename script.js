@@ -13,8 +13,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const consentOverlay = document.getElementById('consentOverlay');
   const btnAcceptConsent = document.getElementById('btnAcceptConsent');
   const closeConsentAttempt = document.getElementById('consentCloseAttemptBtn');
-  const CONSENT_KEY = 'worthit_navigation_consent_v4';
-  const CONSENT_COOKIE = 'worthit_navigation_consent_v4=accepted';
+  const CONSENT_KEY = 'worthit_navigation_consent_v5';
+  const CONSENT_COOKIE = 'worthit_navigation_consent_v5=accepted';
+  const ANALYTICS_KEY = 'worthit_analytics_consent_v1';
+  const ANALYTICS_COOKIE = 'worthit_analytics_consent_v1';
+  const analyticsCheckbox = document.getElementById('analyticsConsent');
+  const manageCookiePreferences = document.getElementById('manageCookiePreferences');
+  const GTM_ID = 'GTM-MSXK72MB';
+  let gtmLoaded = false;
+
+  const hasAnalyticsConsent = () => {
+    try {
+      const value = window.localStorage.getItem(ANALYTICS_KEY);
+      if (value === 'granted') return true;
+      if (value === 'denied') return false;
+    } catch (error) {}
+    try {
+      return document.cookie.split(';').some(cookie => cookie.trim() === ANALYTICS_COOKIE + '=granted');
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const saveAnalyticsConsent = (granted) => {
+    const value = granted ? 'granted' : 'denied';
+    try { window.localStorage.setItem(ANALYTICS_KEY, value); } catch (error) {}
+    try {
+      document.cookie = ANALYTICS_COOKIE + '=' + value + '; Max-Age=31536000; Path=/; SameSite=Lax; Secure';
+    } catch (error) {}
+  };
+
+  const loadGoogleTagManager = () => {
+    if (gtmLoaded || !hasAnalyticsConsent()) return;
+    gtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    const firstScript = document.getElementsByTagName('script')[0];
+    const gtmScript = document.createElement('script');
+    gtmScript.async = true;
+    gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(GTM_ID);
+    firstScript.parentNode.insertBefore(gtmScript, firstScript);
+  };
+
+  const trackWorthITEvent = (eventName, parameters) => {
+    if (!hasAnalyticsConsent() || !window.dataLayer) return;
+    window.dataLayer.push(Object.assign({ event: eventName }, parameters || {}));
+  };
 
   // Algunos navegadores integrados (por ejemplo, el de Instagram) pueden
   // restringir el almacenamiento. La interfaz nunca debe depender de él
@@ -47,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const showConsent = () => {
     if (!consentBanner || !consentOverlay) return;
+    if (analyticsCheckbox) analyticsCheckbox.checked = hasAnalyticsConsent();
     consentBanner.hidden = false;
     consentOverlay.hidden = false;
     consentBanner.classList.add('visible');
@@ -66,6 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
     consentOverlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('consent-locked');
     saveConsent();
+    const previousAnalyticsConsent = hasAnalyticsConsent();
+    const nextAnalyticsConsent = !!(analyticsCheckbox && analyticsCheckbox.checked);
+    saveAnalyticsConsent(nextAnalyticsConsent);
+    if (nextAnalyticsConsent) {
+      loadGoogleTagManager();
+    } else if (previousAnalyticsConsent && gtmLoaded) {
+      window.location.reload();
+    }
   };
 
   if (!hasAcceptedConsent()) {
@@ -74,6 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (consentBanner) consentBanner.hidden = true;
     if (consentOverlay) consentOverlay.hidden = true;
     document.body.classList.remove('consent-locked');
+  }
+
+  if (hasAcceptedConsent() && hasAnalyticsConsent()) loadGoogleTagManager();
+
+  if (manageCookiePreferences) {
+    manageCookiePreferences.addEventListener('click', () => showConsent());
   }
 
   if (btnAcceptConsent) {
@@ -486,7 +545,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openProductLink(product) {
-    if (product) window.open(getProductUrl(product), '_blank', 'noopener,noreferrer');
+    if (!product) return;
+    trackWorthITEvent('affiliate_click', {
+      product_id: product.id,
+      product_name: product.title,
+      product_category: product.categoryName,
+      destination: 'mercado_libre'
+    });
+    window.open(getProductUrl(product), '_blank', 'noopener,noreferrer');
   }
 
 
@@ -667,6 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
   categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.getAttribute('data-category');
+      trackWorthITEvent('select_category', { category_name: cat || 'all' });
       setCategory(cat);
     });
   });
