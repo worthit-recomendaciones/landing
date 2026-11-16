@@ -4051,3 +4051,24 @@ body.legal-modal-open { overflow:hidden !important; }
   font-weight: 400;
   line-height: 1.6;
 }
+
+
+/* Consentimiento opcional de analítica — WorthIT */
+.analytics-consent-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  color: #c3d1df;
+  font-size: .8rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.analytics-consent-option input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  flex: 0 0 16px;
+  accent-color: var(--color-accent);
+}
+.analytics-consent-option span { max-width: 780px; }
