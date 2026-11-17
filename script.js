@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ANALYTICS_COOKIE = 'worthit_analytics_consent_v1';
   const analyticsCheckbox = document.getElementById('analyticsConsent');
   const manageCookiePreferences = document.getElementById('manageCookiePreferences');
-  const GTM_ID = 'GTM-MSXK72MB';
+  const GTM_ID = 'GTM-NXZ7X585';
   let gtmLoaded = false;
 
   const hasAnalyticsConsent = () => {
