@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
       salePrice: 297189,
       installments: "9 cuotas de $33.000",
       freeShipping: true,
-      image: "images/products/office-desk.svg",
+      image: "images/products/escritorio-regulable-negro.png",
       featured: false,
       affiliateUrl: "https://meli.la/2RXRPk1",
       specs: [
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
       salePrice: 187299,
       installments: "12 cuotas de $15.600",
       freeShipping: true,
-      image: "images/products/coffee-espresso.svg",
+      image: "images/products/cafetera-cuk.png",
       featured: false,
       affiliateUrl: "https://meli.la/2CEqPUj",
       specs: [
