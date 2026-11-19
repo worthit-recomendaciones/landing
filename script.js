@@ -231,18 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const products =   [
     {
-      id: "BV92HN-FP8C",
+      id: "BV92HN-8JV7",
       category: "technology",
       categoryName: "Tecnología",
-      title: "Freidora de aire Suono 12 L con pantalla digital",
+      title: "Cafetera espresso CUK by Gadnic",
       shortDesc: "Una freidora de aire de gran capacidad, con 12 litros y controles digitales para preparar distintas comidas en casa.",
       fullDesc: "La Suono ofrece una capacidad de 12 litros y una interfaz digital. Una alternativa para quienes buscan cocinar porciones abundantes con freidora de aire. Confirmá en la publicación las funciones, accesorios y medidas incluidas.",
-      salePrice: 149459,
-      installments: "2 cuotas de $74.730",
+      salePrice: 187299,
+      installments: "12 cuotas de installments: "5.600"3.333"0.500"5.000",
       freeShipping: true,
       image: "images/products/air-fryer.png",
       featured: false,
-      affiliateUrl: "https://meli.la/2gGkHuK",
+      affiliateUrl: "https://meli.la/2CEqPUj",
       specs: [
         "Capacidad declarada: 12 litros",
         "Pantalla y controles digitales"
