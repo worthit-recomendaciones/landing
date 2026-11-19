@@ -379,13 +379,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: "BV92HN-E6MY",
       category: "home-office",
       categoryName: "Home Office",
-      title: "Escritorio eléctrico regulable Gadnic 120 × 60 cm",
-      shortDesc: "Escritorio eléctrico Gadnic de 120 × 60 cm para adaptar la altura de la superficie de trabajo.",
-      fullDesc: "Una alternativa de escritorio regulable eléctricamente, con superficie de 120 × 60 cm. Antes de comprar, revisá en la publicación el rango de altura, capacidad de carga y sistema de regulación.",
+      title: "Escritorio Computación Eléctrico 120x60cm Regulable Negro",
+      shortDesc: "Escritorio eléctrico regulable negro de 120 × 60 cm, pensado para adaptar la altura del espacio de trabajo.",
+      fullDesc: "Escritorio de computación con regulación eléctrica de altura y superficie negra de 120 × 60 cm. Antes de comprar, revisá en la publicación el rango de altura, la capacidad de carga y el sistema de regulación.",
       salePrice: 297189,
       installments: "9 cuotas de $33.000",
       freeShipping: true,
-      image: "images/products/escritorio-gadnic-electrico.png",
+      image: "images/products/escritorio-regulable-negro.png",
       featured: false,
       affiliateUrl: "https://meli.la/2RXRPk1",
       specs: [
@@ -470,17 +470,17 @@ document.addEventListener('DOMContentLoaded', () => {
       category: "coffee",
       categoryName: "Café",
       title: "Cafetera espresso CUK by Gadnic",
-      shortDesc: "Cafetera express Yelmo CE5107 con presión declarada de 19 bares.",
-      fullDesc: "Una cafetera express para preparar café en casa, con presión de 19 bares indicada en el modelo seleccionado. Revisá en la publicación los accesorios incluidos y las recomendaciones de uso y mantenimiento.",
+      shortDesc: "Cafetera espresso CUK by Gadnic para preparar café en casa con un equipo de formato compacto.",
+      fullDesc: "Cafetera espresso de la línea CUK by Gadnic. La imagen corresponde al equipo CUK y sus accesorios. Consultá en la publicación las funciones, especificaciones técnicas, accesorios incluidos y recomendaciones de uso y mantenimiento.",
       salePrice: 187299,
       installments: "12 cuotas de $15.600",
       freeShipping: true,
-      image: "images/products/cafetera-yelmo.png",
+      image: "images/products/cafetera-cuk.png",
       featured: false,
       affiliateUrl: "https://meli.la/2CEqPUj",
       specs: [
-        "Presión declarada: 19 bares",
-        "Modelo: Yelmo CE5107"
+        "Marca / línea: CUK by Gadnic",
+        "Consultar presión, funciones y accesorios exactos en la publicación"
       ]
     },
     {
